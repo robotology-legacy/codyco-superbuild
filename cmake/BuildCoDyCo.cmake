@@ -25,4 +25,5 @@ ycm_ep_helper(CoDyCo TYPE GIT
                       ICUB
                       orocos_kdl
                       kdl_codyco
+                      kdl_format_io
                       iDynTree)
