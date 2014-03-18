@@ -14,10 +14,10 @@ find_or_build_package(ICUB QUIET)
 find_or_build_package(orocos_kdl QUIET NO_CMAKE_PACKAGE_REGISTRY)
 find_or_build_package(kdl_codyco QUIET NO_CMAKE_PACKAGE_REGISTRY)
 
-ycm_ep_helper(CoDyCo TYPE GIT
+ycm_ep_helper(iDynTree TYPE GIT
               STYLE GITHUB
-              REPOSITORY robotology/codyco.git
-              TAG superbuild
+              REPOSITORY robotology-playground/iDynTree.git
+              TAG rovereto
               COMPONENT external
               DEPENDS YARP
                       ICUB
