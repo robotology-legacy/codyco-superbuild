@@ -17,7 +17,7 @@ find_or_build_package(kdl_codyco QUIET NO_CMAKE_PACKAGE_REGISTRY)
 ycm_ep_helper(iDynTree TYPE GIT
               STYLE GITHUB
               REPOSITORY robotology-playground/iDynTree.git
-              TAG rovereto
+              TAG master
               COMPONENT external
               DEPENDS YARP
                       ICUB
