@@ -13,6 +13,7 @@ find_or_build_package(ICUB QUIET)
 # NO_CMAKE_PACKAGE_REGISTRY
 find_or_build_package(orocos_kdl QUIET NO_CMAKE_PACKAGE_REGISTRY)
 find_or_build_package(kdl_codyco QUIET NO_CMAKE_PACKAGE_REGISTRY)
+find_or_build_package(iDynTree)
 
 ycm_ep_helper(CoDyCo TYPE GIT
               STYLE GITHUB
@@ -22,4 +23,5 @@ ycm_ep_helper(CoDyCo TYPE GIT
               DEPENDS YARP
                       ICUB
                       orocos_kdl
-                      kdl_codyco)
+                      kdl_codyco
+                      iDynTree)
