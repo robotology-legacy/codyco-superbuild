@@ -20,8 +20,9 @@ before_script:
   - cmake --version
   - mkdir build
   - cd build
-  # YCM need a properly defined github username to work
+  # YCM need a properly defined github username & email to work
   - git config --global user.name Silvio Traversaro
+  - git config --global user.email pegua1@gmail.com
   - cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} ..
  
 script:
