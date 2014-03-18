@@ -20,7 +20,9 @@ before_script:
   - cmake --version
   - mkdir build
   - cd build
-  - cmake  -DCMAKE_BUILD_TYPE=${IDYNTREE_TRAVIS_BUILD_TYPE} ..
+  # YCM need a properly defined github username to work
+  - git config --global user.name Silvio Traversaro
+  - cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} ..
  
 script:
   - make
