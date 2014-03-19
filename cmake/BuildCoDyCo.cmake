@@ -21,6 +21,7 @@ ycm_ep_helper(CoDyCo TYPE GIT
               REPOSITORY robotology/codyco.git
               TAG superbuild
               COMPONENT external
+              CMAKE_CACHE_ARGS -DCODYCO_TRAVIS_CI:BOOL=ON
               DEPENDS YARP
                       ICUB
                       orocos_kdl
