@@ -24,6 +24,15 @@ before_script:
   - git config --global user.name Silvio Traversaro
   - git config --global user.email pegua1@gmail.com
   - cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} ..
+  # Build and install YCM
+  - git clone https://github.com/robotology/ycm.git
+  - cd ycm
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
+  - sudo make install
+  - cd ../..
  
 script:
   - make
