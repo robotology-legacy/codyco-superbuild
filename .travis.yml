@@ -20,11 +20,8 @@ before_script:
   - cmake --version
   - mkdir build
   - cd build
-  # YCM need a properly defined github username & email to work
-  - git config --global user.name Silvio Traversaro
-  - git config --global user.email pegua1@gmail.com
   # Build and install codyco-superbuild
-  - cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} ..
+  - cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE}  -DNON_INTERACTIVE_BUILD:BOOL=TRUE ..
 
  
 script:
