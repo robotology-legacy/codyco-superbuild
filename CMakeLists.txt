@@ -15,6 +15,8 @@ set(CODYCO-SUPERBUILD_VERSION ${CODYCO-SUPERBUILD_MAJOR_VERSION}.${CODYCO-SUPERB
 include(CTest)
 include(FeatureSummary)
 
+set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake patches")
+
 # Bootstrap YCM
 include(YCMBootstrap)
 
