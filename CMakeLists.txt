@@ -16,6 +16,7 @@ include(CTest)
 include(FeatureSummary)
 
 set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake patches")
+set(NON_INTERACTIVE_BUILD TRUE CACHE BOOL "Use a YCM non interactive build")
 
 # Bootstrap YCM
 include(YCMBootstrap)
