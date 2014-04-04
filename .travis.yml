@@ -4,10 +4,6 @@ compiler:
   - gcc
   - clang
 
-env:
-  - TRAVIS_BUILD_TYPE=Debug
-  - TRAVIS_BUILD_TYPE=Release
-
 install:
   - sudo sh -c 'echo "deb http://www.icub.org/ubuntu precise contrib/science" > /etc/apt/sources.list.d/icub.list'
   - sudo add-apt-repository -y ppa:kalakris/cmake
