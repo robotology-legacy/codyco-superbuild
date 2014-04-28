@@ -55,16 +55,31 @@ _ycm_clean_path("${CMAKE_BINARY_DIR}/install" PATH)
 
 
 find_package(YCM QUIET)
-set_package_properties(YCM PROPERTIES TYPE RECOMMENDED
-                                      PURPOSE "Used by the build system")
-
+if(COMMAND set_package_properties)
+  set_package_properties(YCM PROPERTIES TYPE RECOMMENDED
+                                        PURPOSE "Used by the build system")
+endif()
 if(YCM_FOUND)
     return()
 endif()
 
 message(STATUS "YCM not found. Bootstrapping it.")
 
+<<<<<<< HEAD
 set(YCM_BOOTSTRAP_BASE_ADDRESS "https://raw.github.com/robotology/ycm/HEAD" CACHE STRING "Base address of YCM repository")
+=======
+set(YCM_BOOTSTRAP_BASE_ADDRESS "https://raw.githubusercontent.com/robotology/ycm/HEAD" CACHE STRING "Base address of YCM repository")
+# Replace old raw.github address to support existing builds
+if("${YCM_BOOTSTRAP_BASE_ADDRESS}" MATCHES "raw.github.com")
+    string(REPLACE "raw.github.com" "raw.githubusercontent.com" _tmp ${YCM_BOOTSTRAP_BASE_ADDRESS})
+    set_property(CACHE YCM_BOOTSTRAP_BASE_ADDRESS PROPERTY VALUE "${_tmp}")
+endif()
+# New github address does not accept "//" in the path, therefore we remove the last slash
+if("${YCM_BOOTSTRAP_BASE_ADDRESS}" MATCHES "/$")
+    string(REGEX REPLACE "/$" "" _tmp ${_tmp})
+    set_property(CACHE YCM_BOOTSTRAP_BASE_ADDRESS PROPERTY VALUE "${_tmp}")
+endif()
+>>>>>>> be5237812ea6e7661721220199fb12a659ce2ea3
 mark_as_advanced(YCM_BOOTSTRAP_BASE_ADDRESS)
 
 include(IncludeUrl)
