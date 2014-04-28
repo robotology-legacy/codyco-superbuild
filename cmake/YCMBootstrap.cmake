@@ -64,7 +64,7 @@ endif()
 
 message(STATUS "YCM not found. Bootstrapping it.")
 
-set(YCM_BOOTSTRAP_BASE_ADDRESS "https://raw.github.com/robotology/ycm/HEAD/" CACHE STRING "Base address of YCM repository")
+set(YCM_BOOTSTRAP_BASE_ADDRESS "https://raw.github.com/robotology/ycm/HEAD" CACHE STRING "Base address of YCM repository")
 mark_as_advanced(YCM_BOOTSTRAP_BASE_ADDRESS)
 
 include(IncludeUrl)
