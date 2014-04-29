@@ -14,7 +14,10 @@ find_or_build_package(ICUB QUIET)
 find_or_build_package(orocos_kdl QUIET NO_CMAKE_PACKAGE_REGISTRY)
 find_or_build_package(kdl_codyco QUIET NO_CMAKE_PACKAGE_REGISTRY)
 find_or_build_package(kdl_format_io QUIET NO_CMAKE_PACKAGE_REGISTRY)
+<<<<<<< HEAD
 #find_or_build_package(paramHelp)
+=======
+>>>>>>> 1ee593afa8cf23a763df3a228b3f7d313708f6f1
 
 ycm_ep_helper(CoDyCo TYPE GIT
               STYLE GITHUB
@@ -23,10 +26,9 @@ ycm_ep_helper(CoDyCo TYPE GIT
               COMPONENT codyco
               CMAKE_CACHE_ARGS -DCODYCO_TRAVIS_CI:BOOL=ON
                                -DSIMULINK_LIBRARY:BOOL=OFF
+                               -DCODYCO_USES_URDFDOM:BOOL=ON
               DEPENDS YARP
                       ICUB
                       orocos_kdl
                       kdl_codyco
-                      kdl_format_io
-                      iDynTree
-                      paramHelp)
+                      kdl_format_io)
