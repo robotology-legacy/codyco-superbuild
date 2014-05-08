@@ -19,9 +19,8 @@ before_script:
   # Build and install codyco-superbuild
   - cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE}  -DNON_INTERACTIVE_BUILD:BOOL=TRUE ..
 
- 
 script:
-  - make
+  - VERBOSE=1 make -k
 
 notifications:
   email:
