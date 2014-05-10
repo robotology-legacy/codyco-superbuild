@@ -76,7 +76,6 @@ if("${YCM_BOOTSTRAP_BASE_ADDRESS}" MATCHES "/$")
     string(REGEX REPLACE "/$" "" _tmp ${_tmp})
     set_property(CACHE YCM_BOOTSTRAP_BASE_ADDRESS PROPERTY VALUE "${_tmp}")
 endif()
-
 mark_as_advanced(YCM_BOOTSTRAP_BASE_ADDRESS)
 
 include(IncludeUrl)
