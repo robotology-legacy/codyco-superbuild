@@ -6,7 +6,7 @@ set -e
 if [ "$TRAVIS_OS_NAME" = linux -o -z "$TRAVIS_OS_NAME" ]; then
     mkdir build 
     cd build
-    cmake ..
+    cmake -DNON_INTERACTIVE_BUILD:BOOL=TRUE ..
     make -j4
 elif [ "$TRAVIS_OS_NAME" = osx ]; then
     mkdir build
