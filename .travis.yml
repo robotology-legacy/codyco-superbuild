@@ -30,7 +30,7 @@ before_script:
   - cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE}  -DNON_INTERACTIVE_BUILD:BOOL=TRUE ..
 
 script:
-  - VERBOSE=1 make -k
+  - make -k
 
 notifications:
   email:
