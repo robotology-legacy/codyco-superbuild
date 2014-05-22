@@ -18,9 +18,9 @@ find_or_build_package(iDynTree QUIET)
 find_or_build_package(paramHelp QUIET)
 find_or_build_package(wholeBodyInterface QUIET)
 find_or_build_package(yarpWholeBodyInterface QUIET)
-find_or_build_package(modHelp QUIET)
+#find_or_build_package(modHelp QUIET)
 find_or_build_package(sensorsInterfaces QUIET)
-find_or_build_package(codyco-commons QUIET)
+find_or_build_package(codycoCommons QUIET)
 
 ycm_ep_helper(CoDyCo TYPE GIT
               STYLE GITHUB
@@ -29,11 +29,15 @@ ycm_ep_helper(CoDyCo TYPE GIT
               COMPONENT codyco
               CMAKE_CACHE_ARGS -DCODYCO_TRAVIS_CI:BOOL=ON
                                -DSIMULINK_LIBRARY:BOOL=OFF
-                               -DCODYCO_USES_URDFDOM:BOOL=ON
+                               -DCODYCO_USES_URDFDOM:BOOL=OFF
               DEPENDS YARP
                       ICUB
                       orocos_kdl
                       kdl_codyco
                       kdl_format_io
                       iDynTree
-                      paramHelp)
+                      paramHelp
+                      wholeBodyInterface
+                      yarpWholeBodyInterface
+                      sensorsInterfaces
+                      codycoCommons)
