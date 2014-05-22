@@ -25,4 +25,5 @@ ycm_ep_helper(iDynTree TYPE GIT
               DEPENDS YARP
                       ICUB
                       orocos_kdl
-                      kdl_codyco)
+                      kdl_codyco
+                      kdl_format_io)
