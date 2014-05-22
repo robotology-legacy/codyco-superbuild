@@ -4,6 +4,7 @@ include(FindOrBuildPackage)
 find_or_build_package(YARP QUIET)
 find_or_build_package(ICUB QUIET)
 find_or_build_package(iDynTree QUIET)
+find_or_build_package(wholeBodyInterface QUIET)
 
 ycm_ep_helper(yarpWholeBodyInterface TYPE GIT
               STYLE GITHUB
@@ -12,4 +13,5 @@ ycm_ep_helper(yarpWholeBodyInterface TYPE GIT
               COMPONENT external
               DEPENDS YARP
                       ICUB
-                      iDynTree)
+                      iDynTree
+                      wholeBodyInterface)
