@@ -24,4 +24,5 @@ elif [ "$TRAVIS_OS_NAME" = osx ]; then
     brew tap homebrew/versions
     brew install cmake
     brew install eigen
+    brew install boost
 fi
