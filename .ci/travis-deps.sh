@@ -25,4 +25,5 @@ elif [ "$TRAVIS_OS_NAME" = osx ]; then
     brew install cmake
     brew install eigen
     brew install boost
+    brew install ace
 fi
