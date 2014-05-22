@@ -22,5 +22,5 @@ if [ "$TRAVIS_OS_NAME" = linux -o -z "$TRAVIS_OS_NAME" ]; then
     cd ../..
 elif [ "$TRAVIS_OS_NAME" = osx ]; then
     brew tap homebrew/versions
-    brew install cmake eigen boost ace pkg-config gtk+ jpeg gtkmm sqlite readline gsl libglademm
+    brew install cmake eigen boost ace pkg-config sqlite readline gsl
 fi
