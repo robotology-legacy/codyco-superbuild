@@ -8,14 +8,20 @@ enable_language(C)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 set(CODYCO-SUPERBUILD_MAJOR_VERSION 0)
-set(CODYCO-SUPERBUILD_MINOR_VERSION 0)
-set(CODYCO-SUPERBUILD_PATCH_VERSION 1)
+set(CODYCO-SUPERBUILD_MINOR_VERSION 1)
+set(CODYCO-SUPERBUILD_PATCH_VERSION 0)
 set(CODYCO-SUPERBUILD_VERSION ${CODYCO-SUPERBUILD_MAJOR_VERSION}.${CODYCO-SUPERBUILD_MINOR_VERSION}.${CODYCO-SUPERBUILD_PATCH_VERSION})
 
 include(CTest)
 include(FeatureSummary)
 
 set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake patches")
+
+#Add options
+option(CODYCO_USES_WBI_TOOLBOX "Whole Body Interface Toolbox - Simulink library" FALSE)
+option(CODYCO_USES_URDFDOM "Enable support for URDF input in iDynTree" TRUE)
+option(CODYCO_TRAVIS_CI "Set if build is done with Travis-CI flags" FALSE)
+option(CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE_CONTROL "Set if iCub WBI implementation uses external torque control. False to use YARP Torque Control." FALSE)
 
 # Bootstrap YCM
 include(YCMBootstrap)
