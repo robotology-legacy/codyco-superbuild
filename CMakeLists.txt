@@ -36,6 +36,11 @@ find_or_build_package(CoDyCo)
 #modules
 find_or_build_package(comStepper)
 
+#WBI-Toolbox
+if( ${CODYCO_USES_WBI_TOOLBOX} )
+    find_or_build_package(WBIToolbox)
+endif()
+
 set_package_properties(Git PROPERTIES TYPE RUNTIME)
 set_package_properties(Subversion PROPERTIES TYPE RUNTIME)
 set_package_properties(PkgConfig PROPERTIES TYPE RUNTIME)
