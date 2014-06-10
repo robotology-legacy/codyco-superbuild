@@ -1,36 +1,22 @@
+os:
+  - linux
+  - osx
+
 language: cpp
 
 compiler:
   - gcc
   - clang
-
-install:
-  - sudo sh -c 'echo "deb http://www.icub.org/ubuntu precise contrib/science" > /etc/apt/sources.list.d/icub.list'
-  - sudo add-apt-repository -y ppa:kalakris/cmake
-  - sudo apt-get update
-  - sudo apt-get install -qq libboost-system-dev libboost-thread-dev libtinyxml-dev
-  - sudo apt-get --force-yes install icub
-  - sudo apt-get install cmake
-
+  
+matrix:
+  allow_failures:
+  - os: osx 
+  
 before_script:
-  #eigen 3.2 support
-  - hg clone https://bitbucket.org/eigen/eigen/
-  - cd eigen
-  - hg checkout 3.2.0
-  - mkdir build
-  - cd build
-  - cmake ..
-  - make
-  - sudo make install
-  - cd ../..
-  - cmake --version
-  - mkdir build
-  - cd build
-  # Build and install codyco-superbuild
-  - cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE}  -DNON_INTERACTIVE_BUILD:BOOL=TRUE ..
-
+  - sh .ci/travis-deps.sh
+  
 script:
-  - make -k
+  - sh .ci/travis-build.sh
 
 notifications:
   email:
