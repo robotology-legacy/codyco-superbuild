@@ -17,28 +17,34 @@ YCM will take care of compiling all the missing dependencies, except the one tha
 ##System Dependencies
 ###CMake
 CMake is the multiplatform build system used by CoDyCo software. 
-On Windows and OS X you can install it by downloading [the official binaries](http://www.cmake.org/cmake/resources/software.html), 
-while on Linux you can install it using your package manager.
 
 **The minimum version of CMake required by CoDyCo software is 2.8.11**
 
+On Windows and OS X you can install it by downloading [the official binaries](http://www.cmake.org/cmake/resources/software.html), 
+while on Linux you can install it using your package manager.
+
+
 ###Eigen 
 Eigen is a C++ matrix library. 
+
+**The minimum version of Eigen required by CoDyCo is 3.2.0**
+
+
+####Windows 
+On Windows you can install Eigen from source code available from the [Eigen official website](http://eigen.tuxfamily.org).
+Eigen is also available as a [NuGet package](https://www.nuget.org/packages/Eigen/)/
 
 ####OS X
 On OS X you can install Eigen using `brew`:
 ``
 brew install eigen
 ``
-
 ####Linux
 #####Debian/Ubuntu
 On Debian/Ebuntu you can install Eigen using the `libeigen3-dev` package:
 ```
 sudo apt-get install libeigen3-dev
 ```
-
-**The minimum version of Eigen required by CoDyCo is 3.2.0**
 
 ###YARP/ICUB
 You can follow the instructions on: http://wiki.icub.org/wiki/ICub_Software_Installation . 
