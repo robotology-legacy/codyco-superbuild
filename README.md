@@ -34,9 +34,9 @@ brew install eigen
 ####Linux
 #####Debian/Ubuntu
 On Debian/Ebuntu you can install Eigen using the `libeigen3-dev` package:
-``
+```
 sudo apt-get install libeigen3-dev
-``
+```
 
 **The minimum version of Eigen required by CoDyCo is 3.2.0**
 
