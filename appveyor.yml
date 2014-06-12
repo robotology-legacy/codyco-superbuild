@@ -37,7 +37,7 @@ install:
 build:
 
 build_script:
-  - cd c:\dev\codyco-superbuild\main
+  - cd c:\dev\codyco-superbuild
   - md build
   - cd build
   - cmake -G"Visual Studio 11" ..
