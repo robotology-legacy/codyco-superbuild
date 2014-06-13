@@ -43,6 +43,8 @@ We provide different instructions on how to install codyco-superbuild, depending
 * [**Linux**](#Linux): use the superbuild with make 
 
 ##Windows
+**WARNING: YCM based superbuild is currently broken in Windows, due to a [YCM upstream bug](https://github.com/robotology/ycm/issues/16)**
+
 ###System Dependencies 
 To install CMake you can use the official installer available at http://www.cmake.org/cmake/resources/software.html .
 
@@ -66,6 +68,8 @@ Set the environment variable CODYCO\_SUPERBUILD\_DIR so that it points to the  d
 Append $CODYCO\_SUPERBUILD\_DIR/build/install/bin to your PATH.
 
 ##OS X
+**WARNING: YCM based superbuild is currently broken with XCode generators, please use the make generator also in OS X.**
+
 ###System Dependencies 
 To install Eigen and CMake, it is possible to use [Homebrew](http://brew.sh/):
 ```
@@ -85,6 +89,7 @@ ccmake ../
 make
 ```
 ###Configure your enviroment
+You should follow the [steps required for Linux installation](https://github.com/robotology-playground/codyco-superbuild#configure-your-enviroment-2) but modifing the relative OS X enviroment variables.
 
 ##Linux 
 ###System Dependencies 
