@@ -89,7 +89,24 @@ ccmake ../
 make
 ```
 ###Configure your enviroment
-You should follow the [steps required for Linux installation](https://github.com/robotology-playground/codyco-superbuild#configure-your-enviroment-2) but modifing the relative OS X enviroment variables.
+Currently the YCM superbuild does not support building a global install target, so all binaries are installed in `codyco-superbuild/build/install/bin` and all libraries in `codyco-superbuild/build/install/lib`.
+
+To use this binaries and libraries, you should update the `PATH` and `LD_CONFIG_PATH` enviroment variables.
+
+An easy way is to add this lines to the '.bashrc` file in your home directory:
+```
+CODYCO_SUPERBUILD_ROOT=/directory/where/you/downloaded/codyco-superbuild
+export PATH=$CODYCO_SUPERBUILD_ROOT/build/install/bin:$PATH
+export DYLD_LIBRARY_PATH=$CODYCO_SUPERBUILD_ROOT/build/install/lib:$DYLD_LIBRARY_PATH
+```
+To use the updated `.bashrc` in your terminal you should run the following command:
+```bash
+user@host:~$ source ~/.bashrc
+```
+It may also be necessary to update the cache of the dynamic linker:
+```bash
+user@host:~$ sudo ldconfig
+```
 
 ##Linux 
 ###System Dependencies 
@@ -128,4 +145,8 @@ export LD_LIBRARY_PATH=$CODYCO_SUPERBUILD_ROOT/build/install/lib:$LD_LIBRARY_PAT
 To use the updated `.bashrc` in your terminal you should run the following command:
 ```bash
 user@host:~$ source ~/.bashrc
+```
+If may also be necessary to updates the cache of the dynamic linker:
+```bash
+user@host:~$ sudo ldconfig
 ```
