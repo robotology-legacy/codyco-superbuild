@@ -13,43 +13,24 @@ Code documentation automatically generated: http://wiki.icub.org/codyco/dox/html
 
 System Dependencies
 -------------------
-###CMake
+**CMake 2.8.11 or greater**
+
 CMake is the multiplatform build system used by CoDyCo software. 
 
-**The minimum version of CMake required by CoDyCo software is 2.8.11**
 
-On Windows and OS X you can install it by downloading [the official binaries](http://www.cmake.org/cmake/resources/software.html), 
-while on Linux you can install it using your package manager.
+**Eigen 3.2.0 or greater**
 
-
-###Eigen 
 Eigen is a C++ matrix library. 
 
-**The minimum version of Eigen required by CoDyCo is 3.2.0**
+
+**YARP 2.3.62 or greater**
+
+YARP is a library for communication and device interfaces in robots.
 
 
-####Windows 
-On Windows you can install Eigen from source code available from the [Eigen official website](http://eigen.tuxfamily.org).
-Eigen is also available as a [NuGet package](https://www.nuget.org/packages/Eigen/)/
+**ICUB 1.1.14 or greater** 
 
-####OS X
-On OS X you can install Eigen using `brew`:
-``
-brew install eigen
-``
-####Linux
-#####Debian/Ubuntu
-On Debian/Ebuntu you can install Eigen using the `libeigen3-dev` package:
-```
-sudo apt-get install libeigen3-dev
-```
-
-###YARP/ICUB
-You can follow the instructions on: http://wiki.icub.org/wiki/ICub_Software_Installation . 
-
-**The minimum version of YARP required by CoDyCo is 2.3.62**
-
-**The minimum version of ICUB required by CoDyCo is 1.1.14**
+ICUB is a collection of software developed by the iCub humanoid robot community.
 
 Installation
 ------------
@@ -62,17 +43,36 @@ We provide different instructions on how to install codyco-superbuild, depending
 * [**Linux**](#Linux): use the superbuild with make 
 
 ##Windows
+###System Dependencies 
+To install CMake you can use the official installer available at http://www.cmake.org/cmake/resources/software.html .
 
+You can install Eigen from source code available from the [Eigen official website](http://eigen.tuxfamily.org).
+Eigen is also available as a [NuGet package](https://www.nuget.org/packages/Eigen/).
+
+For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
+
+###Superbuild
+You can clone the superbuild repository as any other git repository, and generate the Visual Studio solution
+using the CMake gui. Then you open the generated solution with Visual Studio and build the target `all`. 
+Visual Studio will then download, build and install in a local directory all the CoDyCo software and its dependencies.
+
+###Configure your enviroment
+Currently the YCM superbuild does not support building a global install target, so all binaries are installed in `codyco-superbuild/build/install/bin` and all libraries in `codyco-superbuild/build/install/lib`.
+
+To use this binaries and libraries, you should update the necessary enviroment variables.
+
+Set the environment variable CODYCO\_SUPERBUILD\_DIR so that it points to the  directory where you clone the codyco-superbuild repository.
+
+Append $CODYCO\_SUPERBUILD\_DIR/build/install/bin to your PATH.
 
 ##OS X
-
-
-##Linux 
 ###System Dependencies 
-On Debian based systems (as Ubuntu) you can install CMake and Eigen using `apt-get`:
+To install Eigen and CMake, it is possible to use [Homebrew](http://brew.sh/):
 ```
-sudo apt-get install libeigen3-dev cmake
+brew install eigen cmake
 ```
+
+For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
 
 ###Superbuild
 Finally, after installing all the system dependencies, it is possible to install CoDyCo software using the YCM superbuild:
@@ -84,7 +84,31 @@ cd build
 ccmake ../
 make
 ```
+###Configure your enviroment
 
+##Linux 
+###System Dependencies 
+On Debian based systems (as Ubuntu) you can install CMake and Eigen using `apt-get`:
+```
+sudo apt-get install libeigen3-dev cmake
+```
+The packages provided in the official distro repositories work out of the box for **Ubuntu 14.04** (`trusty`), **Ubuntu 13.10** (`saucy`) and **Debian 8** (`jessie`).
+For older distros the included CMake and Eigen are too old, and is necessary to find a way to install them from an alternative
+source.. 
+For example in **Debian 7** (`wheezy`) it is sufficient to [enable the `wheezy-backports` repository](http://backports.debian.org/Instructions/) to get recent versions of CMake and Eigen.
+
+For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
+
+###Superbuild
+Finally, after installing all the system dependencies, it is possible to install CoDyCo software using the YCM superbuild:
+```bash
+git clone https://github.com/robotology-playground/codyco-superbuild.git
+cd codyco-superbuild
+mkdir build
+cd build
+ccmake ../
+make
+```
 ###Configure your enviroment
 Currently the YCM superbuild does not support building a global install target, so all binaries are installed in `codyco-superbuild/build/install/bin` and all libraries in `codyco-superbuild/build/install/lib`.
 
