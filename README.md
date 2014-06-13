@@ -9,13 +9,10 @@ More info at http://codyco.eu/
 
 Code documentation automatically generated: http://wiki.icub.org/codyco/dox/html/index.html
 
-Installation
-------------
-This is a meta repository (so-called "superbuild") that uses [YCM](https://github.com/robotology/ycm) to compile CoDyCo software.
-YCM will take care of compiling all the missing dependencies, except the one that you should not install from source code (so-called "system dependencies"). 
 
 
-##System Dependencies
+System Dependencies
+-------------------
 ###CMake
 CMake is the multiplatform build system used by CoDyCo software. 
 
@@ -54,7 +51,30 @@ You can follow the instructions on: http://wiki.icub.org/wiki/ICub_Software_Inst
 
 **The minimum version of ICUB required by CoDyCo is 1.1.14**
 
-##Superbuild
+Installation
+------------
+This is a meta repository (so-called "superbuild") that uses [YCM](https://github.com/robotology/ycm) to compile CoDyCo software.
+YCM will take care of compiling all the missing dependencies, except the one that you should not install from source code (so-called "system dependencies"). 
+
+We provide different instructions on how to install codyco-superbuild, depending on your operating system:
+* [**Windows**](#Windows): use the superbuild with Microsoft Visual Studio
+* [**OS X**](#OS-X): use the superbuild with XCode or make
+* [**Linux**](#Linux): use the superbuild with make 
+
+##Windows
+
+
+##OS X
+
+
+##Linux 
+###System Dependencies 
+On Debian based systems (as Ubuntu) you can install CMake and Eigen using `apt-get`:
+```
+sudo apt-get install libeigen3-dev cmake
+```
+
+###Superbuild
 Finally, after installing all the system dependencies, it is possible to install CoDyCo software using the YCM superbuild:
 ```bash
 git clone https://github.com/robotology-playground/codyco-superbuild.git
@@ -63,4 +83,20 @@ mkdir build
 cd build
 ccmake ../
 make
+```
+
+###Configure your enviroment
+Currently the YCM superbuild does not support building a global install target, so all binaries are installed in `codyco-superbuild/build/install/bin` and all libraries in `codyco-superbuild/build/install/lib`.
+
+To use this binaries and libraries, you should update the `PATH` and `LD_CONFIG_PATH` enviroment variables.
+
+An easy way is to add this lines to the '.bashrc` file in your home directory:
+```
+CODYCO_SUPERBUILD_ROOT=/directory/where/you/downloaded/codyco-superbuild
+export PATH=$CODYCO_SUPERBUILD_ROOT/build/install/bin:$PATH
+export LD_LIBRARY_PATH=$CODYCO_SUPERBUILD_ROOT/build/install/lib:$LD_LIBRARY_PATH
+```
+To use the updated `.bashrc` in your terminal you should run the following command:
+```bash
+user@host:~$ source ~/.bashrc
 ```
