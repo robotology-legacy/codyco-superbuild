@@ -26,6 +26,7 @@ elif [ "$TRAVIS_OS_NAME" = osx ]; then
     hdiutil mount XQuartz-${XQUARTZ_VERSION}.dmg
     sudo installer -store -pkg /Volumes/XQuartz-${XQUARTZ_VERSION}/XQuartz.pkg -target /
     hdiutil unmount /Volumes/XQuartz-${XQUARTZ_VERSION}
+    brew update
     brew tap homebrew/versions
     brew install cmake eigen boost ace pkg-config gtk+ jpeg gtkmm sqlite readline gsl libglademm
     brew install yarp
