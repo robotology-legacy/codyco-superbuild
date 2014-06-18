@@ -29,5 +29,5 @@ elif [ "$TRAVIS_OS_NAME" = osx ]; then
     brew update
     brew tap homebrew/versions
     brew install cmake eigen boost ace pkg-config gtk+ jpeg gtkmm sqlite readline gsl libglademm tinyxml
-    brew install yarp
+    brew install yarp --HEAD
 fi
