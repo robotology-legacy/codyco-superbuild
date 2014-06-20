@@ -37,6 +37,9 @@ Installation
 This is a meta repository (so-called "superbuild") that uses [YCM](https://github.com/robotology/ycm) to compile CoDyCo software.
 YCM will take care of compiling all the missing dependencies, except the one that you should not install from source code (so-called "system dependencies"). 
 
+**WARNING: If you still have the old codyco repository installed, you should uninstall it (for example using `sudo make uninstall` in Linux) before proceeding with `codyco-superbuild` installation.**
+
+
 We provide different instructions on how to install codyco-superbuild, depending on your operating system:
 * [**Windows**](#Windows): use the superbuild with Microsoft Visual Studio
 * [**OS X**](#OS-X): use the superbuild with XCode or make
