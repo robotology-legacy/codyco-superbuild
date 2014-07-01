@@ -41,9 +41,9 @@ A YCM Superbuild is a CMake project whose only goal is to download and build sev
 
 
 We provide different instructions on how to install codyco-superbuild, depending on your operating system:
-* [**Windows**](#Windows): use the superbuild with Microsoft Visual Studio
-* [**OS X**](#OS-X): use the superbuild with XCode or make
-* [**Linux**](#Linux): use the superbuild with make 
+* [**Windows**](#windows): use the superbuild with Microsoft Visual Studio
+* [**OS X**](#os-x): use the superbuild with XCode or make
+* [**Linux**](#linux): use the superbuild with make 
 
 ##Windows
 **WARNING: YCM based superbuild is currently broken in Windows, due to a [YCM upstream bug](https://github.com/robotology/ycm/issues/16)**
