@@ -111,6 +111,10 @@ It may also be necessary to update the cache of the dynamic linker:
 user@host:~$ sudo ldconfig
 ```
 
+###Troubleshooting
+Several OS X users have experienced problems using YCM. Some workarounds for YCM-related issues are 
+reported in [YCM issue tracker](https://github.com/robotology/ycm/issues/59).
+
 ##Linux 
 ###System Dependencies 
 On Debian based systems (as Ubuntu) you can install CMake and Eigen using `apt-get`:
