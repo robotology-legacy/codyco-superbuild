@@ -34,13 +34,16 @@ ICUB is a collection of software developed by the iCub humanoid robot community.
 
 Installation
 ------------
-This is a meta repository (so-called "superbuild") that uses [YCM](https://github.com/robotology/ycm) to compile CoDyCo software.
-YCM will take care of compiling all the missing dependencies, except the one that you should not install from source code (so-called "system dependencies"). 
+This is a meta repository (so-called "superbuild") that uses [YCM](https://github.com/robotology/ycm) to compile CoDyCo software. 
+A YCM Superbuild is a CMake project whose only goal is to download and build several other projects. You can read more about the superbuild concept in [YCM documentation](http://robotology.github.io/ycm/gh-pages/master/manual/ycm-superbuild.7.html).
+
+**WARNING: If you still have the old codyco repository installed, you should uninstall it (for example using `sudo make uninstall` in Linux) before proceeding with `codyco-superbuild` installation.**
+
 
 We provide different instructions on how to install codyco-superbuild, depending on your operating system:
-* [**Windows**](#Windows): use the superbuild with Microsoft Visual Studio
-* [**OS X**](#OS-X): use the superbuild with XCode or make
-* [**Linux**](#Linux): use the superbuild with make 
+* [**Windows**](#windows): use the superbuild with Microsoft Visual Studio
+* [**OS X**](#os-x): use the superbuild with XCode or make
+* [**Linux**](#linux): use the superbuild with make 
 
 ##Windows
 **WARNING: YCM based superbuild is currently broken in Windows, due to a [YCM upstream bug](https://github.com/robotology/ycm/issues/16)**
@@ -108,6 +111,10 @@ It may also be necessary to update the cache of the dynamic linker:
 user@host:~$ sudo ldconfig
 ```
 
+###Troubleshooting
+Several OS X users have experienced problems using YCM. Some workarounds for YCM-related issues are 
+reported in [YCM issue tracker](https://github.com/robotology/ycm/issues/59).
+
 ##Linux 
 ###System Dependencies 
 On Debian based systems (as Ubuntu) you can install CMake and Eigen using `apt-get`:
@@ -116,8 +123,9 @@ sudo apt-get install libeigen3-dev cmake
 ```
 The packages provided in the official distro repositories work out of the box for **Ubuntu 14.04** (`trusty`), **Ubuntu 13.10** (`saucy`) and **Debian 8** (`jessie`).
 For older distros the included CMake and Eigen are too old, and is necessary to find a way to install them from an alternative
-source.. 
-For example in **Debian 7** (`wheezy`) it is sufficient to [enable the `wheezy-backports` repository](http://backports.debian.org/Instructions/) to get recent versions of CMake and Eigen.
+source:
+* In **Debian 7** (`wheezy`) it is sufficient to [enable the `wheezy-backports` repository](http://backports.debian.org/Instructions/) to get recent versions of CMake and Eigen.
+* In **Ubuntu 12.04** (`precise`) a [PPA is available to easily install CMake 2.8.11](https://launchpad.net/~kalakris/+archive/cmake). To install a recent version of Eigen the easiest solution is [to get Eigen from source](http://eigen.tuxfamily.org/index.php?title=Main_Page#Download). 
 
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
 
