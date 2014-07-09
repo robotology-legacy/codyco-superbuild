@@ -7,8 +7,8 @@ if [ "$TRAVIS_OS_NAME" = linux -o -z "$TRAVIS_OS_NAME" ]; then
     mkdir build 
     cd build
     if [ $CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE ]; then
-        cmake -DNON_INTERACTIVE_BUILD:BOOL=TRUE -DCODYCO_ICUBWBI_USE_EXTERNAL_TORQUE:BOOL=TRUE ..
-    elif
+        cmake -DNON_INTERACTIVE_BUILD:BOOL=TRUE -DCODYCO_ICUBWBI_USE_EXTERNAL_TORQUE_CONTROL:BOOL=TRUE ..
+    else 
         cmake -DNON_INTERACTIVE_BUILD:BOOL=TRUE ..
     fi
     make -k
