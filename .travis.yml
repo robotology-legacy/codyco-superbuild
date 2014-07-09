@@ -8,6 +8,10 @@ compiler:
   - gcc
   - clang
   
+env:
+  - CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE=True
+  - CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE=False
+  
 matrix:
   allow_failures:
   - os: osx 
