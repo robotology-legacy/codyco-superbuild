@@ -9,8 +9,10 @@ if [ "$TRAVIS_OS_NAME" = linux -o -z "$TRAVIS_OS_NAME" ]; then
     sudo apt-get update
     sudo apt-get install -qq libboost-system-dev libboost-thread-dev libtinyxml-dev
     if [ $CODYCO_YARP_FROM_SUPERBUILD ]; then
+        echo -e "codyco-superbuild travis testing: installing yarp from superbuild\n"
         sudo apt-get --force-yes install icub-common
     else
+        echo -e "codyco-superbuild travis testing: installing yarp from deb packages\n"
         sudo apt-get --force-yes install icub
     fi
     sudo apt-get install cmake
