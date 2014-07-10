@@ -8,7 +8,11 @@ if [ "$TRAVIS_OS_NAME" = linux -o -z "$TRAVIS_OS_NAME" ]; then
     sudo add-apt-repository -y ppa:kalakris/cmake
     sudo apt-get update
     sudo apt-get install -qq libboost-system-dev libboost-thread-dev libtinyxml-dev
-    sudo apt-get --force-yes install icub
+    if [ $CODYCO_YARP_FROM_SUPERBUILD ]; then
+        sudo apt-get --force-yes install icub-common
+    else
+        sudo apt-get --force-yes install icub
+    fi
     sudo apt-get install cmake
     #eigen 3.2 support
     hg clone https://bitbucket.org/eigen/eigen/
