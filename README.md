@@ -76,7 +76,7 @@ Append $CODYCO\_SUPERBUILD\_DIR/build/install/bin to your PATH.
 ###System Dependencies 
 To install Eigen and CMake, it is possible to use [Homebrew](http://brew.sh/):
 ```
-brew install eigen cmake
+brew install eigen cmake boost tinyxml
 ```
 
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
@@ -119,7 +119,7 @@ reported in [YCM issue tracker](https://github.com/robotology/ycm/issues/59).
 ###System Dependencies 
 On Debian based systems (as Ubuntu) you can install CMake and Eigen using `apt-get`:
 ```
-sudo apt-get install libeigen3-dev cmake
+sudo apt-get install libeigen3-dev cmake libboost-system-dev libboost-thread-dev libtinyxml-dev
 ```
 The packages provided in the official distro repositories work out of the box for **Ubuntu 14.04** (`trusty`), **Ubuntu 13.10** (`saucy`) and **Debian 8** (`jessie`).
 For older distros the included CMake and Eigen are too old, and is necessary to find a way to install them from an alternative
