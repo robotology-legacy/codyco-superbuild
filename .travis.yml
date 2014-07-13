@@ -15,6 +15,7 @@ env:
 matrix:
   allow_failures:
   - os: osx 
+  - env: CODYCO_YARP_FROM_SUPERBUILD=True
   
 before_script:
   - sh .ci/travis-deps.sh
