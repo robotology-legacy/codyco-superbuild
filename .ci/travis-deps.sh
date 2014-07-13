@@ -6,6 +6,9 @@ set -e
 if [ "$TRAVIS_OS_NAME" = linux -o -z "$TRAVIS_OS_NAME" ]; then
     sudo sh -c 'echo "deb http://www.icub.org/ubuntu precise contrib/science" > /etc/apt/sources.list.d/icub.list'
     sudo add-apt-repository -y ppa:kalakris/cmake
+    if [ "$CODYCO_YARP_FROM_SUPERBUILD" = True ]; then
+        sudo add-apt-repository -y ppa:kubuntu-ppa/backports 
+    fi
     sudo apt-get update
     sudo apt-get install -qq libboost-system-dev libboost-thread-dev libtinyxml-dev
     if [ "$CODYCO_YARP_FROM_SUPERBUILD" = True ]; then
