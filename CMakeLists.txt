@@ -41,6 +41,9 @@ if( ${CODYCO_USES_WBI_TOOLBOX} )
     find_or_build_package(WBIToolbox)
 endif()
 
+#Documentation
+add_subdirectory(doc)
+
 set_package_properties(Git PROPERTIES TYPE RUNTIME)
 set_package_properties(Subversion PROPERTIES TYPE RUNTIME)
 set_package_properties(PkgConfig PROPERTIES TYPE RUNTIME)
