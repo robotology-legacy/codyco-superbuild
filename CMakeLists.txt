@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.11)
-project(CoDyCo-superbuild NONE)
+project(codyco-superbuild NONE)
 
 ## we have to enable C because it is currently used
 ## by CMake to describe packages (in Config*.cmake files)
