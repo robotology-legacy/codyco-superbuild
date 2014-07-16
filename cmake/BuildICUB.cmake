@@ -9,5 +9,5 @@ ycm_ep_helper(ICUB TYPE GIT
                    REPOSITORY robotology/icub-main.git
                    DEPENDS YARP
                    CMAKE_CACHE_ARGS -DYARP_USE_GTK2:BOOL=ON
-                                    -DICUB_SHARED_LIBRARY:BOOL=ON
+                                    -DICUB_SHARED_LIBRARY:BOOL=OFF
                                     -DICUB_USE_GLUT:BOOL=ON)
