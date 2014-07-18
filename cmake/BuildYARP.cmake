@@ -50,7 +50,7 @@ ycm_ep_helper(YARP TYPE GIT
                                     -DENABLE_yarpidl_thrift:BOOL=ON
                                     -DCREATE_DEVICE_LIBRARY_MODULES:BOOL=ON
                                     -DENABLE_yarpcar_human_carrier:BOOL=ON
-                                    -DENABLE_yarpcar_mjpeg_carrier:BOOL=ON
+                                    -DENABLE_yarpcar_mjpeg_carrier:BOOL=OFF
                                     -DENABLE_yarpcar_rossrv_carrier:BOOL=ON
                                     -DENABLE_yarpmod_fakebot:BOOL=ON
                                     -DENABLE_yarpmod_opencv_grabber:BOOL=OFF

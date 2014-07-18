@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.11)
-project(CoDyCo-superbuild NONE)
+project(codyco-superbuild NONE)
 
 ## we have to enable C because it is currently used
 ## by CMake to describe packages (in Config*.cmake files)
@@ -29,6 +29,15 @@ include(YCMBootstrap)
 
 include(FindOrBuildPackage)
 include(YCMEPHelper)
+
+# Require system dependencies 
+find_package(Eigen3 3.2 REQUIRED)
+find_package(Boost REQUIRED system thread)
+
+if(CODYCO_USES_URDFDOM)
+    find_or_build_package(kdl_format_io)
+    message(STATUS "kdl_format_io is version: ${kdl_format_io_VERSION}")
+endif()
 
 find_or_build_package(YARP 2.3.60)
 find_or_build_package(ICUB)

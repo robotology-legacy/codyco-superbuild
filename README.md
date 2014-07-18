@@ -2,35 +2,12 @@ CoDyCo Project Superbuild
 ---------------
 | Linux/OS X | Windows |
 |:----------:|:--------|
-| [![Build Status](https://travis-ci.org/robotology-playground/codyco-superbuild.png?branch=master)](https://travis-ci.org/robotology-playground/codyco-superbuild) | [![Build status](https://ci.appveyor.com/api/projects/status/61nm80pingh680x5)](https://ci.appveyor.com/project/traversaro/codyco-superbuild-112) |
+| [![Build Status](https://travis-ci.org/robotology/codyco-superbuild.png?branch=master)](https://travis-ci.org/robotology/codyco-superbuild) | [![Build status](https://ci.appveyor.com/api/projects/status/61nm80pingh680x5)](https://ci.appveyor.com/project/traversaro/codyco-superbuild-112) |
 The CoDyCo project is a four-years long project that started in March 2013. At the end of each year a scenario will be used to validate on the iCub the theoretical advances of the project.
 
 More info at http://codyco.eu/
 
 Code documentation automatically generated: http://wiki.icub.org/codyco/dox/html/index.html
-
-
-
-System Dependencies
--------------------
-**CMake 2.8.11 or greater**
-
-CMake is the multiplatform build system used by CoDyCo software. 
-
-
-**Eigen 3.2.0 or greater**
-
-Eigen is a C++ matrix library. 
-
-
-**YARP 2.3.62 or greater**
-
-YARP is a library for communication and device interfaces in robots.
-
-
-**ICUB 1.1.14 or greater** 
-
-ICUB is a collection of software developed by the iCub humanoid robot community.
 
 Installation
 ------------
