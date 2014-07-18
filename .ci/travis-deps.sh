@@ -30,11 +30,6 @@ if [ "$TRAVIS_OS_NAME" = linux -o -z "$TRAVIS_OS_NAME" ]; then
     sudo make install
     cd ../..
 elif [ "$TRAVIS_OS_NAME" = osx ]; then
-    export XQUARTZ_VERSION=2.7.6
-    curl -L -O http://xquartz.macosforge.org/downloads/SL/XQuartz-${XQUARTZ_VERSION}.dmg 
-    hdiutil mount XQuartz-${XQUARTZ_VERSION}.dmg
-    sudo installer -store -pkg /Volumes/XQuartz-${XQUARTZ_VERSION}/XQuartz.pkg -target /
-    hdiutil unmount /Volumes/XQuartz-${XQUARTZ_VERSION}
     brew update
     brew tap homebrew/versions
     brew install eigen boost ace pkg-config gtk+ jpeg gtkmm sqlite readline gsl libglademm tinyxml
