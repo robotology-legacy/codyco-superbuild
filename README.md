@@ -29,7 +29,7 @@ Installation
 
 We provide different instructions on how to install codyco-superbuild, depending on your operating system:
 * [**Windows**](#windows): use the superbuild with Microsoft Visual Studio
-* [**OS X**](#os-x): use the superbuild with XCode or make
+* [**OS X**](#os-x): use the superbuild with Xcode or GNU make
 * [**Linux**](#linux): use the superbuild with make 
 
 ##Windows
@@ -58,7 +58,7 @@ Set the environment variable CODYCO\_SUPERBUILD\_DIR so that it points to the  d
 Append $CODYCO\_SUPERBUILD\_DIR/build/install/bin to your PATH.
 
 ##OS X
-**WARNING: YCM based superbuild is currently broken with XCode generators, please use the make generator also in OS X.**
+**WARNING: YCM based superbuild is currently broken with Xcode generators, please use the GNU make generator also in OS X.**
 
 ###System Dependencies 
 To install Eigen and CMake, it is possible to use [Homebrew](http://brew.sh/):
