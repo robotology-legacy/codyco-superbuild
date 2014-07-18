@@ -22,6 +22,7 @@ option(CODYCO_USES_WBI_TOOLBOX "Whole Body Interface Toolbox - Simulink library"
 option(CODYCO_USES_URDFDOM "Enable support for URDF input in iDynTree" TRUE)
 option(CODYCO_TRAVIS_CI "Set if build is done with Travis-CI flags" FALSE)
 option(CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE_CONTROL "Set if iCub WBI implementation uses external torque control. False to use YARP Torque Control." FALSE)
+option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
 
 # Bootstrap YCM
 include(YCMBootstrap)
@@ -39,6 +40,11 @@ find_or_build_package(comStepper)
 #WBI-Toolbox
 if( ${CODYCO_USES_WBI_TOOLBOX} )
     find_or_build_package(WBIToolbox)
+endif()
+
+#icub-model-generator
+if(${CODYCO_BUILD_ICUB_MODEL_GENERATOR})
+    find_or_build_package(icub-model-generator)
 endif()
 
 #Documentation
