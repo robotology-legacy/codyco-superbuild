@@ -14,6 +14,15 @@ Installation
 This is a meta repository (so-called "superbuild") that uses [YCM](https://github.com/robotology/ycm) to compile CoDyCo software. 
 A YCM Superbuild is a CMake project whose only goal is to download and build several other projects. You can read more about the superbuild concept in [YCM documentation](http://robotology.github.io/ycm/gh-pages/master/manual/ycm-superbuild.7.html).
 
+codyco-superbuild will download and build the following projects:
+* `codyco-commons`: A collection of functions and utilities used in the other projects [Project page](https://github.com/robotology-playground/codyco-commons)
+* `idyntree`: YARP-based Floating Base Robot Dynamics Library [Project Page](https://github.com/robotology-playground/idyntree)
+* `paramHelp`: Library for simplifying the management of the parameters of YARP modules [Project page](https://github.com/robotology-playground/paramHelp)
+* `wholebodyinterface`: C++ Interfaces to sensor measurements, state estimations, kinematic/dynamic model and actuators for a floating base robot [Project Page](https://github.com/robotology-playground/wholebodyinterface)
+* `yarp-wholebodyinterface`: Implementation of the wholeBodyInterface for YARP robots [Project Page](https://github.com/robotology-playground/yarp-wholebodyinterface)
+* `WBI-Toolbox`: Simulink Toolbox for rapid prototyping of Whole Body Robot Controllers [Project Page](https://github.com/robotology-playground/WBI-Toolbox)
+* `codyco`: YARP modules and controllers developed within the European Project CoDyCo [project Page](https://github.com/robotology/codyco)
+
 **WARNING: If you still have the old codyco repository installed, you should uninstall it (for example using `sudo make uninstall` in Linux) before proceeding with `codyco-superbuild` installation.**
 
 
