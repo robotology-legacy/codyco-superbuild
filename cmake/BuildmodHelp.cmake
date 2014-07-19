@@ -8,6 +8,6 @@ ycm_ep_helper(modHelp TYPE GIT
               STYLE GITHUB
               REPOSITORY robotology-playground/modHelp.git
               TAG master
-              COMPONENT external
+              COMPONENT misc
               DEPENDS YARP
                       ICUB)

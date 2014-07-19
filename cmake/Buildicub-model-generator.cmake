@@ -11,7 +11,7 @@ ycm_ep_helper(icub-model-generator TYPE GIT
               STYLE GITHUB
               REPOSITORY robotology-playground/icub-model-generator.git
               TAG master
-              COMPONENT codyco-misc
+              COMPONENT misc
               DEPENDS YARP
                       ICUB
                       iDynTree)

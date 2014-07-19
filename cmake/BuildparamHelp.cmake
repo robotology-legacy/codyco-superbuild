@@ -8,5 +8,5 @@ ycm_ep_helper(paramHelp TYPE GIT
               STYLE GITHUB
               REPOSITORY robotology-playground/paramHelp.git
               TAG master
-              COMPONENT external
+              COMPONENT libraries
               DEPENDS YARP)

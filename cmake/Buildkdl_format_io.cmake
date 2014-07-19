@@ -11,7 +11,7 @@ ycm_ep_helper(kdl_format_io TYPE GIT
                             STYLE GITHUB
                             REPOSITORY traversaro/kdl_format_io.git
                             TAG master
-                            COMPONENT external
+                            COMPONENT libraries
                             DEPENDS orocos_kdl
                                     console_bridge
                                     urdfdom_headers

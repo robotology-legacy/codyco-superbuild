@@ -20,8 +20,8 @@ ycm_ep_helper(iDynTree TYPE GIT
               STYLE GITHUB
               REPOSITORY robotology-playground/iDynTree.git
               TAG master
-              COMPONENT external
-                CMAKE_CACHE_ARGS -DIDYNTREE_ENABLE_URDF:BOOL=ON
+              COMPONENT libraries
+              CMAKE_CACHE_ARGS -DIDYNTREE_ENABLE_URDF:BOOL=ON
               DEPENDS YARP
                       ICUB
                       orocos_kdl

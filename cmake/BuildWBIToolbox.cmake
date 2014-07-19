@@ -36,7 +36,7 @@ ycm_ep_helper(WBIToolbox TYPE GIT
               STYLE GITHUB
               REPOSITORY robotology-playground/WBI-Toolbox.git
               TAG master
-              COMPONENT codyco
+              COMPONENT main
               CMAKE_CACHE_ARGS ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED}
               DEPENDS YARP
                       ICUB

@@ -47,11 +47,11 @@ elseif()
     set(CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED} -DCODYCO_ICUBWBI_USE_EXTERNAL_TORQUE_CONTROL:BOOL=OFF)
 endif()
 
-ycm_ep_helper(CoDyCo TYPE GIT
+ycm_ep_helper(codyco-modules TYPE GIT
               STYLE GITHUB
               REPOSITORY robotology/codyco.git
-              TAG superbuild
-              COMPONENT codyco
+              TAG master
+              COMPONENT main
               CMAKE_CACHE_ARGS ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED}
               DEPENDS YARP
                       ICUB
