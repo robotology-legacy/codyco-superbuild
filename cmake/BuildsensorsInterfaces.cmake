@@ -8,6 +8,6 @@ ycm_ep_helper(sensorsInterfaces TYPE GIT
               STYLE GITHUB
               REPOSITORY robotology-playground/sensorsInterfaces.git
               TAG master
-              COMPONENT external
+              COMPONENT misc
               DEPENDS YARP
                       ICUB)

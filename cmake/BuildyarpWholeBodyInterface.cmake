@@ -20,7 +20,7 @@ ycm_ep_helper(yarpWholeBodyInterface TYPE GIT
               STYLE GITHUB
               REPOSITORY robotology-playground/yarpWholeBodyInterface.git
               TAG master
-              COMPONENT external
+              COMPONENT libraries
               CMAKE_CACHE_ARGS ${YARP_WBI_CMAKE_CACHE_ARGS_USER_DEFINED}
               DEPENDS YARP
                       ICUB

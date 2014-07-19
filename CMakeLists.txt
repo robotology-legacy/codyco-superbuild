@@ -30,7 +30,7 @@ include(YCMBootstrap)
 include(FindOrBuildPackage)
 include(YCMEPHelper)
 
-# Require system dependencies 
+# Require system dependencies
 find_package(Eigen3 3.2 REQUIRED)
 find_package(Boost REQUIRED system thread)
 
@@ -41,7 +41,7 @@ endif()
 
 find_or_build_package(YARP 2.3.60)
 find_or_build_package(ICUB)
-find_or_build_package(CoDyCo)
+find_or_build_package(codyco-modules)
 
 #modules
 find_or_build_package(comStepper)

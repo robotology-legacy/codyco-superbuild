@@ -8,5 +8,5 @@ ycm_ep_helper(kdl_codyco TYPE GIT
                          STYLE GITHUB
                          REPOSITORY traversaro/kdl_codyco.git
                          TAG master
-                         COMPONENT external
+                         COMPONENT libraries
                          DEPENDS orocos_kdl)

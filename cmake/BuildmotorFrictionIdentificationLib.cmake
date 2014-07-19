@@ -16,7 +16,7 @@ ycm_ep_helper(motorFrictionIdentificationLib TYPE GIT
               STYLE GITHUB
               REPOSITORY robotology-playground/codyco-motor-friction-identification-lib.git
               TAG master
-              COMPONENT external
+              COMPONENT libraries
               CMAKE_CACHE_ARGS ${YARP_WBI_CMAKE_CACHE_ARGS_USER_DEFINED}
               DEPENDS YARP
                       paramHelp)
