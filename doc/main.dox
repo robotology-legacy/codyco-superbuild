@@ -7,7 +7,6 @@
 
 This is the documentation extracted from
 the software repository of the CoDyCo project.  
-Its intended audience is developers within the consortium.  
 
 Topics:
 
@@ -15,7 +14,7 @@ Topics:
  - \ref codyco_libraries - a list of documented libraries
 
  - Reference material:
-  - The <a href="http://www.codyco.org/">CoDyCo project website</a>.
+  - The <a href="http://www.codyco.eu/">CoDyCo project website</a>.
   - \ref copyright_and_license - how to declare authorship and copyright
   - \ref module_documentation - a template for documenting modules
 
