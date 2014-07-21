@@ -10,4 +10,3 @@ else
     cmake -G"${TRAVIS_CMAKE_GENERATOR}" -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} -DNON_INTERACTIVE_BUILD:BOOL=TRUE ..
 fi
 cmake --build . --config ${TRAVIS_BUILD_TYPE}
-cmake --build . --config ${TRAVIS_BUILD_TYPE} --target install
