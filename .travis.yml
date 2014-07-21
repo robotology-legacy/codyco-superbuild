@@ -1,25 +1,24 @@
-os:
-  - linux
-  - osx
-
 language: cpp
 
-compiler:
-  - gcc
-  - clang
-  
-env:
-  - CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE=True, CODYCO_YARP_FROM_SUPERBUILD=True
-  - CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE=False, CODYCO_YARP_FROM_SUPERBUILD=False
-  
 matrix:
-  allow_failures:
-  - os: osx 
-  - env: CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE=True, CODYCO_YARP_FROM_SUPERBUILD=True
-  
+  include:
+    - os: linux
+      compiler: clang
+      env: CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE=True, CODYCO_YARP_FROM_SUPERBUILD=True, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug"
+    - os: linux
+      compiler: gcc
+      env: CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE=False, CODYCO_YARP_FROM_SUPERBUILD=False, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Release"
+    - os: osx
+      compiler: gcc
+      env: CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE=False, CODYCO_YARP_FROM_SUPERBUILD=True, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug"
+    - os: linux
+      compiler: clang
+      env: CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE=True, CODYCO_YARP_FROM_SUPERBUILD=False, TRAVIS_CMAKE_GENERATOR="Xcode", TRAVIS_BUILD_TYPE="Release"
+
+
 before_script:
   - sh .ci/travis-deps.sh
-  
+
 script:
   - sh .ci/travis-build.sh
 
