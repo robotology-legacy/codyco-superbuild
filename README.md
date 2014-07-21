@@ -44,7 +44,12 @@ Eigen is also available as a [NuGet package](https://www.nuget.org/packages/Eige
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
 
 ###Superbuild
-You can clone the superbuild repository as any other git repository, and generate the Visual Studio solution
+If you didn't already configured your git, you have to set your name and email to sign your commits:
+```
+git config --global user.name FirstName LastName
+git config --global user.email user@email.domain 
+```
+After that you can clone the superbuild repository as any other git repository, and generate the Visual Studio solution
 using the CMake gui. Then you open the generated solution with Visual Studio and build the target `all`. 
 Visual Studio will then download, build and install in a local directory all the CoDyCo software and its dependencies.
 
@@ -69,7 +74,12 @@ brew install eigen cmake boost tinyxml
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
 
 ###Superbuild
-Finally, after installing all the system dependencies, it is possible to install CoDyCo software using the YCM superbuild:
+If you didn't already configured your git, you have to set your name and email to sign your commits:
+```
+git config --global user.name FirstName LastName
+git config --global user.email user@email.domain 
+```
+Finally it is possible to install CoDyCo software using the YCM superbuild:
 ```bash
 git clone https://github.com/robotology-playground/codyco-superbuild.git
 cd codyco-superbuild
@@ -117,7 +127,12 @@ source:
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
 
 ###Superbuild
-Finally, after installing all the system dependencies, it is possible to install CoDyCo software using the YCM superbuild:
+If you didn't already configured your git, you have to set your name and email to sign your commits:
+```
+git config --global user.name FirstName LastName
+git config --global user.email user@email.domain 
+```
+Finally it is possible to install CoDyCo software using the YCM superbuild:
 ```bash
 git clone https://github.com/robotology-playground/codyco-superbuild.git
 cd codyco-superbuild
