@@ -49,7 +49,7 @@ endif()
 
 ycm_ep_helper(codyco-modules TYPE GIT
               STYLE GITHUB
-              REPOSITORY robotology/codyco.git
+              REPOSITORY robotology/codyco-modules.git
               TAG master
               COMPONENT main
               CMAKE_CACHE_ARGS ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED}
