@@ -9,6 +9,6 @@ ycm_ep_helper(comStepper TYPE GIT
               STYLE GITHUB
               REPOSITORY robotology-playground/comStepper.git
               TAG master
-              COMPONENT codyco
+              COMPONENT main
               DEPENDS YARP
                       ICUB)
