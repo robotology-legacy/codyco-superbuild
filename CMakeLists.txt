@@ -23,6 +23,8 @@ option(CODYCO_USES_URDFDOM "Enable support for URDF input in iDynTree" TRUE)
 option(CODYCO_TRAVIS_CI "Set if build is done with Travis-CI flags" FALSE)
 option(CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE_CONTROL "Set if iCub WBI implementation uses external torque control. False to use YARP Torque Control." FALSE)
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
+option(CODYCO_USE_EIGEN_320 "Enable compilation of software that depends on Eigen 3.2.0 (if false just depend on Eigen 3.0.5)" TRUE)
+
 
 # Bootstrap YCM
 include(YCMBootstrap)
@@ -30,9 +32,12 @@ include(YCMBootstrap)
 include(FindOrBuildPackage)
 include(YCMEPHelper)
 
-# Require system dependencies
-find_package(Eigen3 3.2 REQUIRED)
+# Required system dependencies
 find_package(Boost REQUIRED system thread)
+
+if(CODYCO_USE_EIGEN_320)
+    find_library(Eigen3 3.2 REQUIRED)
+endif()
 
 if(CODYCO_USES_URDFDOM)
     find_or_build_package(kdl_format_io)
@@ -41,7 +46,12 @@ endif()
 
 find_or_build_package(YARP 2.3.60)
 find_or_build_package(ICUB)
-find_or_build_package(codyco-modules)
+find_or_build_package(yarpWholeBodyInterface)
+
+#build codyco-modules and codycoCommons library only if the use of Eigen 3.2 is enable
+if(CODYCO_USE_EIGEN_320)
+    find_or_build_package(codyco-modules)
+endif()
 
 #modules
 find_or_build_package(comStepper)
