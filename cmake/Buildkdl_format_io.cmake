@@ -9,7 +9,7 @@ find_or_build_package(urdfdom QUIET)
 
 ycm_ep_helper(kdl_format_io TYPE GIT
                             STYLE GITHUB
-                            REPOSITORY traversaro/kdl_format_io.git
+                            REPOSITORY robotology-playground/kdl_format_io.git
                             TAG master
                             COMPONENT libraries
                             DEPENDS orocos_kdl
