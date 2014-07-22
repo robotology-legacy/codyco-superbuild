@@ -24,6 +24,7 @@ option(CODYCO_TRAVIS_CI "Set if build is done with Travis-CI flags" FALSE)
 option(CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE_CONTROL "Set if iCub WBI implementation uses external torque control. False to use YARP Torque Control." FALSE)
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
 option(CODYCO_USES_EIGEN_320 "Enable compilation of software that depends on Eigen 3.2.0 (if false just depend on Eigen 3.0.5)" TRUE)
+option(CODYCO_BUILD_ISIR_MODULES "Enable compilation of ISIR controllers" TRUE)
 
 
 # Bootstrap YCM
@@ -49,11 +50,16 @@ find_or_build_package(ICUB)
 find_or_build_package(yarpWholeBodyInterface)
 
 #build codyco-modules and codycoCommons library only if the use of Eigen 3.2 is enable
-if(CODYCO_USE_EIGEN_320)
+if(CODYCO_USES_EIGEN_320)
     find_or_build_package(codyco-modules)
 endif()
 
-#modules
+#codyco isir modules
+if( ${CODYCO_BUILD_ISIR_MODULES} )
+    find_or_build_package(codyco-isir)
+endif()
+
+#additional modules
 find_or_build_package(comStepper)
 
 #WBI-Toolbox
