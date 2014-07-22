@@ -33,7 +33,6 @@ We provide different instructions on how to install codyco-superbuild, depending
 * [**Linux**](#linux): use the superbuild with make 
 
 ##Windows
-**WARNING: YCM based superbuild is currently broken in Windows, due to a [YCM upstream bug](https://github.com/robotology/ycm/issues/16)**
 
 ###System Dependencies 
 To install CMake you can use the official installer available at http://www.cmake.org/cmake/resources/software.html .
