@@ -1,12 +1,13 @@
 /**
-@mainpage notitle
+
+\mainpage
 
 \image html codyco_logo.gif ""
 
-\section codyco_software_documentation The CoDyCo Software Repository
+\section codyco_software_documentation The CoDyCo superbuild Software Repository
 
 This is the documentation extracted from
-the software repository of the CoDyCo project.  
+the software repository of the CoDyCo project.
 
 Topics:
 
@@ -15,19 +16,25 @@ Topics:
 
  - Reference material:
   - The <a href="http://www.codyco.eu/">CoDyCo project website</a>.
-  - \ref copyright_and_license - how to declare authorship and copyright
-  - \ref module_documentation - a template for documenting modules
+  - CoDyCo superbuild installation guide on the <a href="https://github.com/robotology/codyco-superbuild#installation">repository README</a>
 
-This documentation is developed by scanning all source code 
-in the src directory of the repository. You can produce this documentation on 
-your computer by running:
+This documentation is developed by scanning all source code
+in the libraries and main components of the superbuild.
+You can produce this documentation on your computer by running:
 
 \verbatim
-  doxygen doc/Doxyfile.in
+  make dox
 \endverbatim
 
 locally on your repository, to figure out what's going on.
 The output can be browsed at doc/html/index.html.
+
+To produce the documentation without updating all the subprojects (for example
+if you are not connected to the internet) you can run:
+
+\verbatim
+  make dox-noupdate
+\endverbatim
 
 This page can be edited at doc/main.dox.
 

@@ -18,6 +18,7 @@ if(DOXYGEN_FOUND)
     # partially stripped of stuff less interesting to end-users.
 
     add_custom_target(dox COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+    add_custom_target(dox-noupdate COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
     set(DOX_EXTRA_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
     get_property(_projects GLOBAL PROPERTY YCM_PROJECTS)
