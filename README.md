@@ -24,7 +24,7 @@ codyco-superbuild will download and build the following projects:
 
 Installation
 ------------
-**WARNING: If you still have the old codyco repository installed, you should uninstall it (for example using `sudo make uninstall` in Linux) before proceeding with `codyco-superbuild` installation.**
+**The gazebo-yarp-plugins software, that are usually used for testing CoDyCo software simulating the iCub in Gazebo, is not handled by the superbuild. If you want to simulate the iCub in Gazebo you have to follow the instruction in [gazebo-yarp-plugins README](https://github.com/robotology/gazebo_yarp_plugins).**
 
 
 We provide different instructions on how to install codyco-superbuild, depending on your operating system:
