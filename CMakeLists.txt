@@ -25,7 +25,7 @@ option(CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE_CONTROL "Set if iCub WBI implementatio
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
 option(CODYCO_USES_EIGEN_320 "Enable compilation of software that depends on Eigen 3.2.0 (if false just depend on Eigen 3.0.5)" TRUE)
 option(CODYCO_BUILD_ISIR_MODULES "Enable compilation of ISIR controllers" TRUE)
-
+#option(CODYCO_USES_MEX_WHOLEBODYMODEL "Enable to compile the matlab mex inteface for iWholeBodyModel" FALSE)
 
 # Bootstrap YCM
 include(YCMBootstrap)
@@ -66,6 +66,11 @@ find_or_build_package(comStepper)
 if( ${CODYCO_USES_WBI_TOOLBOX} )
     find_or_build_package(WBIToolbox)
 endif()
+
+#mex wholeBodyModel interface
+#if( ${CODYCO_USES_MEX_WHOLEBODYMODEL} )
+#   find_or_build_package(mexWholeBodyModel)
+#endif()
 
 #icub-model-generator
 if(${CODYCO_BUILD_ICUB_MODEL_GENERATOR})
