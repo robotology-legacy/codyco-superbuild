@@ -9,14 +9,10 @@
 This is the documentation extracted from
 the software repository of the CoDyCo project.
 
-Topics:
-
- - \ref codyco_module - a list of documented modules
- - \ref codyco_libraries - a list of documented libraries
-
- - Reference material:
+Reference material:
   - The <a href="http://www.codyco.eu/">CoDyCo project website</a>.
   - CoDyCo superbuild installation guide on the <a href="https://github.com/robotology/codyco-superbuild#installation">repository README</a>
+  - \ref dynamics_notation
 
 This documentation is developed by scanning all source code
 in the libraries and main components of the superbuild.
