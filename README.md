@@ -62,7 +62,6 @@ Set the environment variable CODYCO\_SUPERBUILD\_DIR so that it points to the  d
 Append $CODYCO\_SUPERBUILD\_DIR/build/install/bin to your PATH.
 
 ##OS X
-**WARNING: YCM based superbuild is currently broken with Xcode generators, please use the GNU make generator also in OS X.**
 
 ###System Dependencies 
 To install Eigen and CMake, it is possible to use [Homebrew](http://brew.sh/):
@@ -84,13 +83,22 @@ git clone https://github.com/robotology-playground/codyco-superbuild.git
 cd codyco-superbuild
 mkdir build
 cd build
-ccmake ../
+```
+To use GNU Makefile generators:
+```bash
+cmake ../
 make
 ```
+To use Xcode project generators
+```bash
+cmake ../ -G Xcode
+xcodebuild -configuration Release
+```
+
 ###Configure your enviroment
 Currently the YCM superbuild does not support building a global install target, so all binaries are installed in `codyco-superbuild/build/install/bin` and all libraries in `codyco-superbuild/build/install/lib`.
 
-To use this binaries and libraries, you should update the `PATH` and `LD_CONFIG_PATH` enviroment variables.
+To use this binaries and libraries, you should update the `PATH` and `DYLD_LIBRARY_PATH` enviroment variables.
 
 An easy way is to add this lines to the '.bashrc` file in your home directory:
 ```
@@ -102,14 +110,6 @@ To use the updated `.bashrc` in your terminal you should run the following comma
 ```bash
 user@host:~$ source ~/.bashrc
 ```
-It may also be necessary to update the cache of the dynamic linker:
-```bash
-user@host:~$ sudo ldconfig
-```
-
-###Troubleshooting
-Several OS X users have experienced problems using YCM. Some workarounds for YCM-related issues are 
-reported in [YCM issue tracker](https://github.com/robotology/ycm/issues/59).
 
 ##Linux 
 ###System Dependencies 
