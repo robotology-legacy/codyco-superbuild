@@ -43,8 +43,8 @@ list(APPEND _cmake_cmd "@orocos_kdl_SOURCE_DIR@/orocos_kdl")
 
 ycm_ep_helper(orocos_kdl TYPE GIT
                          STYLE GITHUB
-                         REPOSITORY orocos/orocos_kinematics_dynamics.git
-                         TAG master
+                         REPOSITORY traversaro/orocos_kinematics_dynamics.git
+                         TAG working_find_eigen
                          COMPONENT external
                          CONFIGURE_COMMAND ${_cmake_cmd})
 unset(_cmake_cmd)

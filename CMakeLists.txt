@@ -37,7 +37,7 @@ include(YCMEPHelper)
 find_package(Boost REQUIRED system thread)
 
 if(CODYCO_USE_EIGEN_320)
-    find_library(Eigen3 3.2 REQUIRED)
+    find_or_build_package(Eigen3 3.2)
 endif()
 
 if(CODYCO_USES_URDFDOM)
