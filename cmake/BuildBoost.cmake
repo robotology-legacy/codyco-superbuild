@@ -44,7 +44,7 @@ else()
 endif()
 
 
-ExternalProject_add(buildBoost
+ExternalProject_add(Boost
     URL http://downloads.sourceforge.net/boost/boost_1_55_0.tar.gz
     URL_MD5 93780777cfbf999a600f62883bd54b17
     BUILD_IN_SOURCE 1
@@ -123,5 +123,5 @@ endif()
 
 
 set(Boost_FOUND 1)
-set_target_properties(buildBoost PROPERTIES EXCLUDE_FROM_ALL 1)
+set_target_properties(Boost PROPERTIES EXCLUDE_FROM_ALL 1)
 

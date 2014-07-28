@@ -2,6 +2,7 @@
 include(YCMEPHelper)
 include(FindOrBuildPackage)
 
+find_or_build_package(Boost QUIET)
 find_or_build_package(console_bridge QUIET)
 find_or_build_package(urdfdom_headers QUIET)
 
