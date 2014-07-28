@@ -48,8 +48,8 @@ ExternalProject_add(buildBoost
     URL http://downloads.sourceforge.net/boost/boost_1_55_0.tar.gz
     URL_MD5 93780777cfbf999a600f62883bd54b17
     BUILD_IN_SOURCE 1
-    SOURCE_DIR  ${EXTERNAL_PREFIX}/src/boost
-    INSTALL_DIR ${EXTERNAL_PREFIX}/
+    SOURCE_DIR  ${CMAKE_SOURCE_DIR}/external/boost
+    INSTALL_DIR ${CMAKE_BINARY_DIR}/install
     CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.${EXT} ${CONF_TOOLSET}
     BUILD_COMMAND <SOURCE_DIR>/b2 ${BUILD_TOOLSET} ${MAKE_ARGS} ${ADDRESS_MODEL} 
                 variant=${Boost_VARIANT}
