@@ -34,7 +34,7 @@ include(FindOrBuildPackage)
 include(YCMEPHelper)
 
 # Required system dependencies
-find_package(Boost REQUIRED system thread)
+find_or_build_package(Boost)
 
 if(CODYCO_USE_EIGEN_320)
     find_or_build_package(Eigen3 3.2)
