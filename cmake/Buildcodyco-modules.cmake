@@ -47,6 +47,13 @@ elseif()
     set(CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED} -DCODYCO_ICUBWBI_USE_EXTERNAL_TORQUE_CONTROL:BOOL=OFF)
 endif()
 
+if(${CODYCO_USES_EIGEN_320})
+    set(CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED} -DCODYCO_USES_EIGEN_320:BOOL=ON)
+    set(CODYCO_COMMONS_DEPENDENCY codycoCommons)
+elseif()
+    set(CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED} -DCODYCO_USES_EIGEN_320:BOOL=OFF)
+endif()
+
 ycm_ep_helper(codyco-modules TYPE GIT
               STYLE GITHUB
               REPOSITORY robotology/codyco-modules.git
@@ -63,4 +70,4 @@ ycm_ep_helper(codyco-modules TYPE GIT
                       wholeBodyInterface
                       yarpWholeBodyInterface
                       sensorsInterfaces
-                      codycoCommons)
+                      ${CODYCO_COMMONS_DEPENDENCY})

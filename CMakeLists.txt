@@ -36,8 +36,8 @@ include(YCMEPHelper)
 # Required system dependencies
 find_package(Boost REQUIRED system thread)
 
-if(CODYCO_USE_EIGEN_320)
-    find_or_build_package(Eigen3 3.2)
+if(CODYCO_USES_EIGEN_320)
+    find_package(Eigen3 3.2)
 endif()
 
 if(CODYCO_USES_URDFDOM)
@@ -50,9 +50,7 @@ find_or_build_package(ICUB)
 find_or_build_package(yarpWholeBodyInterface)
 
 #build codyco-modules and codycoCommons library only if the use of Eigen 3.2 is enable
-if(CODYCO_USES_EIGEN_320)
-    find_or_build_package(codyco-modules)
-endif()
+find_or_build_package(codyco-modules)
 
 #codyco isir modules
 if( ${CODYCO_BUILD_ISIR_MODULES} )
