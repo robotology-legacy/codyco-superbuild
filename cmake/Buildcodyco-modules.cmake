@@ -20,7 +20,10 @@ find_or_build_package(wholeBodyInterface QUIET NO_CMAKE_PACKAGE_REGISTRY)
 find_or_build_package(yarpWholeBodyInterface QUIET)
 #find_or_build_package(modHelp QUIET)
 find_or_build_package(sensorsInterfaces QUIET)
-find_or_build_package(codycoCommons QUIET)
+
+if (${CODYCO_USES_EIGEN_320})
+	find_or_build_package(codycoCommons QUIET)
+endif()
 
 set(CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED "")
 if(${CODYCO_USES_URDFDOM})
