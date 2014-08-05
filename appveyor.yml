@@ -27,7 +27,7 @@ install:
   - cmd: wget -q http://www.icub.org/download/packages/windows/common/gtkmm-2.22-0-2.zip -O c:\dev\gtkmm.zip
   - cmd: wget -q --no-check-certificate https://googledrive.com/host/0BzentpyZAll7Z2JtblBHTkhiVDQ -O c:\yarp.zip
   - cmd: wget -q --no-check-certificate https://googledrive.com/host/0BzentpyZAll7REZwMnIzSkdJdTA -O c:\icub.zip
-  - cmd: wget -q http://bitbucket.org/eigen/eigen/get/3.2.1.zip  -O c:\eigen.zip
+  - cmd: wget -q --no-check-certificate http://bitbucket.org/eigen/eigen/get/3.2.1.zip  -O c:\eigen.zip
   - cmd: wget -q --no-check-certificate https://googledrive.com/host/0B9oJQYfVcguORjNZRlVkZzFUUHM -O c:\boost.zip
   
   - cmd: 7z x c:\dev\gsl.zip -oc:\dev -y > nul
