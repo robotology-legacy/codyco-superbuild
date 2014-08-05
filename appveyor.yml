@@ -14,6 +14,9 @@ environment:
   YARP_DIR: c:\YARP
   ICUB_DIR: c:\iCub
   YARP_DATA_DIRS: c:\YARP\share\yarp;c:\iCub\share\iCub
+  BOOST_LIBRARYDIR: c:\boost_1_55_0_codyco_superbuild\lib32-msvc-11.0
+  BOOST_INCLUDEDIR: c:\boost_1_55_0_codyco_superbuild
+  EIGEN3_INCLUDE_DIR: c:\eigen-eigen-6b38706d90a9
 
 install:
   - cmd: cinst wget -x86
@@ -24,12 +27,17 @@ install:
   - cmd: wget -q http://www.icub.org/download/packages/windows/common/gtkmm-2.22-0-2.zip -O c:\dev\gtkmm.zip
   - cmd: wget -q --no-check-certificate https://googledrive.com/host/0BzentpyZAll7Z2JtblBHTkhiVDQ -O c:\yarp.zip
   - cmd: wget -q --no-check-certificate https://googledrive.com/host/0BzentpyZAll7REZwMnIzSkdJdTA -O c:\icub.zip
+  - cmd: wget -q http://bitbucket.org/eigen/eigen/get/3.2.1.zip  -O c:\eigen.zip
+  - cmd: wget -q --no-check-certificate https://googledrive.com/host/0B9oJQYfVcguORjNZRlVkZzFUUHM -O c:\boost.zip
   
   - cmd: 7z x c:\dev\gsl.zip -oc:\dev -y > nul
   - cmd: 7z x c:\dev\ipopt.zip -oc:\dev -y > nul
   - cmd: 7z x c:\dev\gtkmm.zip -oc:\dev -y > nul
   - cmd: 7z x c:\yarp.zip -oc:\ -y > nul
   - cmd: 7z x c:\icub.zip -oc:\ -y > nul
+  - cmd: 7z x c:\eigen.zip -oc:\ -y > nul
+  - cmd: 7z x c:\boost.zip -oc:\ -y > nul
+
     
   - ps: rename-item c:\dev\Ipopt-3.10.1-win32-msvc11_mumps+metis+clapack c:\dev\ipopt-3.10.1
   - ps: rename-item c:\dev\gtkmm c:\dev\gtkmm-2.22.0-2
