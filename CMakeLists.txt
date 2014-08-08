@@ -25,7 +25,7 @@ option(CODYCO_USES_URDFDOM "Enable support for URDF input in iDynTree" TRUE)
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
 option(CODYCO_USES_EIGEN_320 "Enable compilation of software that depends on Eigen 3.2.0 (if false just depend on Eigen 3.0.5)" TRUE)
 option(CODYCO_BUILD_ISIR_MODULES "Enable compilation of ISIR controllers" FALSE)
-#option(CODYCO_USES_MEX_WHOLEBODYMODEL "Enable to compile the matlab mex inteface for iWholeBodyModel" FALSE)
+option(CODYCO_USES_MEX_WHOLEBODYMODEL "Enable to compile the matlab mex inteface for iWholeBodyModel" FALSE)
 
 #options for testing
 option(CODYCO_TRAVIS_CI "Set if build is done with Travis-CI flags" FALSE)
@@ -75,9 +75,9 @@ if( ${CODYCO_USES_WBI_TOOLBOX} )
 endif()
 
 #mex wholeBodyModel interface
-#if( ${CODYCO_USES_MEX_WHOLEBODYMODEL} )
-#   find_or_build_package(mexWholeBodyModel)
-#endif()
+if( ${CODYCO_USES_MEX_WHOLEBODYMODEL} )
+   find_or_build_package(mexWholeBodyModel)
+endif()
 
 #icub-model-generator
 if(${CODYCO_BUILD_ICUB_MODEL_GENERATOR})
