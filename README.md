@@ -21,6 +21,18 @@ codyco-superbuild will download and build the following projects:
 * `WBI-Toolbox`: Simulink Toolbox for rapid prototyping of Whole Body Robot Controllers [Project Page](https://github.com/robotology-playground/WBI-Toolbox)
 * `codyco`: YARP modules and controllers developed within the European Project CoDyCo [project Page](https://github.com/robotology/codyco)
 
+Update
+------
+For updating the codyco-superbuild repository it is possible to just fetch the last changes using the usual 
+git command:
+~~~
+git pull
+~~~
+However, for running the equivalent of `git pull` on all the repositories managed by
+the codyco-superbuild, you have to execute in your build system the appropriate target, for example:
+~~~
+make update-all
+~~~
 
 Installation
 ------------
