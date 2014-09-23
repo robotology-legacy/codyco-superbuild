@@ -87,7 +87,10 @@ To use this binaries and libraries, you should update the necessary enviroment v
 
 Set the environment variable CODYCO\_SUPERBUILD\_DIR so that it points to the  directory where you clone the codyco-superbuild repository.
 
-Append $CODYCO\_SUPERBUILD\_DIR/build/install/bin to your PATH.
+Append $CODYCO\_SUPERBUILD\_DIR/build/install/bin to your PATH
+
+Append $CODYCO\_SUPERBUILD\_ROOT/build/install/share/codyco to your [YARP\_DATA\_DIRS](http://wiki.icub.org/yarpdoc/yarp_data_dirs.html) enviroment variable.
+
 
 ##OS X
 
@@ -133,6 +136,7 @@ An easy way is to add this lines to the '.bashrc` file in your home directory:
 CODYCO_SUPERBUILD_ROOT=/directory/where/you/downloaded/codyco-superbuild
 export PATH=$CODYCO_SUPERBUILD_ROOT/build/install/bin:$PATH
 export DYLD_LIBRARY_PATH=$CODYCO_SUPERBUILD_ROOT/build/install/lib:$DYLD_LIBRARY_PATH
+export YARP_DATA_DIRS=$YARP_DATA_DIRS:$CODYCO_SUPERBUILD_ROOT/build/install/share/codyco
 ```
 To use the updated `.bashrc` in your terminal you should run the following command:
 ```bash
@@ -180,6 +184,7 @@ An easy way is to add this lines to the '.bashrc` file in your home directory:
 CODYCO_SUPERBUILD_ROOT=/directory/where/you/downloaded/codyco-superbuild
 export PATH=$CODYCO_SUPERBUILD_ROOT/build/install/bin:$PATH
 export LD_LIBRARY_PATH=$CODYCO_SUPERBUILD_ROOT/build/install/lib:$LD_LIBRARY_PATH
+export YARP_DATA_DIRS=$YARP_DATA_DIRS:$CODYCO_SUPERBUILD_ROOT/build/install/share/codycow
 ```
 To use the updated `.bashrc` in your terminal you should run the following command:
 ```bash
