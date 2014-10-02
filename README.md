@@ -19,7 +19,7 @@ codyco-superbuild will download and build the following projects:
 * `wholebodyinterface`: C++ Interfaces to sensor measurements, state estimations, kinematic/dynamic model and actuators for a floating base robot [Project Page](https://github.com/robotology-playground/wholebodyinterface)
 * `yarp-wholebodyinterface`: Implementation of the wholeBodyInterface for YARP robots [Project Page](https://github.com/robotology-playground/yarp-wholebodyinterface)
 * `WBI-Toolbox`: Simulink Toolbox for rapid prototyping of Whole Body Robot Controllers [Project Page](https://github.com/robotology-playground/WBI-Toolbox)
-* `codyco`: YARP modules and controllers developed within the European Project CoDyCo [project Page](https://github.com/robotology/codyco)
+* `codyco-modules`: YARP modules and controllers developed within the European Project CoDyCo [project Page](https://github.com/robotology/codyco-modules)
 
 Update
 ------
