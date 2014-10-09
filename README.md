@@ -53,7 +53,7 @@ To install CMake you can use the official installer available at http://www.cmak
 
 ####Eigen
 You can install Eigen from source code available from the [Eigen official website](http://eigen.tuxfamily.org).
-You can simply extract the Eigen source code in a directory, and then define the ``EIGEN3_INCLUDE_DIR` enviroment variable to the path of the directory that contains the file `signature_of_eigen3_matrix_library` (it should be the first directory contained in the compressed file.  
+You can simply extract the Eigen source code in a directory, and then define the `EIGEN3_ROOT` enviroment variable to the path of the directory that contains the file `signature_of_eigen3_matrix_library` (it should be the first directory contained in the compressed file.  
 
 ####Boost 
 The easy way to install Boost on Windows is to use the [Boost binaries installers](http://sourceforge.net/projects/boost/files/boost-binaries/1.55.0/). Pay attention to 
@@ -153,7 +153,7 @@ The packages provided in the official distro repositories work out of the box fo
 For older distros the included CMake and Eigen are too old, and is necessary to find a way to install them from an alternative
 source:
 * In **Debian 7** (`wheezy`) it is sufficient to [enable the `wheezy-backports` repository](http://backports.debian.org/Instructions/) to get recent versions of CMake and Eigen.
-* In **Ubuntu 12.04** (`precise`) a [PPA is available to easily install CMake 2.8.11](https://launchpad.net/~kalakris/+archive/cmake). To install a recent version of Eigen the easiest solution is [to get Eigen from source](http://eigen.tuxfamily.org/index.php?title=Main_Page#Download). 
+* In **Ubuntu 12.04** (`precise`) a [PPA is available to easily install CMake 2.8.11](https://launchpad.net/~kalakris/+archive/cmake). To install a recent version of Eigen the easiest solution is [to get Eigen from source](http://eigen.tuxfamily.org/index.php?title=Main_Page#Download).
 
 If for some reason you are bound to use Eigen 3.0.5 (for example for XDE compatibility) you can just set to off the `CODYCO_USES_EIGEN_320` CMake variable. In this way you will compile just the software that is compatible with Eigen 3.0.5 .  
 
