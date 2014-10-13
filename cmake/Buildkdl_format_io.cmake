@@ -12,7 +12,10 @@ ycm_ep_helper(kdl_format_io TYPE GIT
                             REPOSITORY robotology-playground/kdl_format_io.git
                             TAG master
                             COMPONENT libraries
+                            CMAKE_CACHE_ARGS -DENABLE_IKIN -DENABLE_URDF
                             DEPENDS orocos_kdl
                                     console_bridge
                                     urdfdom_headers
-                                    urdfdom)
+                                    urdfdom
+                                    YARP
+                                    ICUB)
