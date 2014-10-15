@@ -33,8 +33,10 @@ include(YCMBootstrap)
 include(FindOrBuildPackage)
 include(YCMEPHelper)
 
-# Required system dependencies
-find_or_build_package(Boost)
+# Require Boost here to simplify debug for now
+# (BuildBoost.cmake requires CMake 3.0, but the 
+#  theory is that you need it only on Windows) 
+find_or_build_package(Boost COMPONENTS system filesystem)
 
 if(CODYCO_USE_EIGEN_320)
     find_or_build_package(Eigen3 3.2)

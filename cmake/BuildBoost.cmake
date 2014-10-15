@@ -1,5 +1,7 @@
 # Copyright (C) 2011-2013  Istituto Italiano di Tecnologia, Massachussets Institute of Techology
-# Authors: Elena Ceseracciu <elena.ceseracciu@iit.it>, Matteo Santoro <msantoro@mit.edu>
+# Authors: Elena Ceseracciu  <elena.ceseracciu@iit.it>, 
+#          Matteo Santoro    <msantoro@mit.edu>,
+#          Silvio Traversaro <silvio.traversaro@iit.it>
 
 include(ExternalProject)
 
@@ -43,30 +45,56 @@ else()
 
 endif()
 
+#Some boost components need to be compiled, keep a list from proper adding options
+#incomplete list, TODO FIXME update with information from
+# http://www.boost.org/doc/libs/1_56_0/more/getting_started/windows.html#header-only-libraries
+set(COMPONENTS_TO_COMPILE "filesystem"
+                          "system"
+                          "wave"
+                          "chrono"
+                          "date_time")
+
+#Add the submodules that is necessary to pull 
+#given the requested submodules. Some are added
+#by default becuase are necessary for building
+#the boost library
+#adding also libs/wave by default, not really clear
+#why this is required
+set(COMPONENTS_SUBMODULES "tools/build"
+                          "tools/inspect"
+                          "libs/wave")
+
+set(COMPONENTS_COMPILE_OPTIONS "")
+
+foreach(_comp in BOOST_BUILD_COMPONENTS)
+    list(append COMPONENTS_SUBMODULES "libs/"_comp)
+    # if a requested library is not header only
+    # we have to specify the proper option for building
+    if(_comp in COMPONENTS_TO_COMPILE)
+        list(append COMPONENTS_COMPILE_OPTIONS "--with-"_comp)
+    endif()
+endforeach()
+                 
 
 ExternalProject_add(Boost
-    URL http://downloads.sourceforge.net/boost/boost_1_55_0.tar.gz
-    URL_MD5 93780777cfbf999a600f62883bd54b17
-    BUILD_IN_SOURCE 1
-    SOURCE_DIR  ${CMAKE_SOURCE_DIR}/external/boost
-    INSTALL_DIR ${CMAKE_BINARY_DIR}/install
-    CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.${EXT} ${CONF_TOOLSET}
-    BUILD_COMMAND <SOURCE_DIR>/b2 ${BUILD_TOOLSET} ${MAKE_ARGS} ${ADDRESS_MODEL} 
-                variant=${Boost_VARIANT}
-                link=static 
-                threading=multi 
-                runtime-link=shared
-                -d0 
-                --layout=${LAYOUT}
-                --prefix=${EXTERNAL_PREFIX}
-                --with-serialization
-                --with-date_time
-                --with-filesystem
-                --with-test
-                --with-system
-                --with-signals
-                install
-    INSTALL_COMMAND ""
+                    GIT_REPOSITORY "https://github.com/boostorg/boost"
+                    GIT_TAG "master"
+                    GIT_SUBMODULE ${COMPONENTS_SUBMODULES}
+                    #BUILD_IN_SOURCE 1
+                    SOURCE_DIR  ${CMAKE_SOURCE_DIR}/external/boost
+                    INSTALL_DIR ${CMAKE_BINARY_DIR}/install
+                    CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.${EXT} ${CONF_TOOLSET}
+                    BUILD_COMMAND <SOURCE_DIR>/b2 ${BUILD_TOOLSET} ${MAKE_ARGS} ${ADDRESS_MODEL} 
+                                                  variant=${Boost_VARIANT}
+                                                  link=static 
+                                                  threading=multi 
+                                                  runtime-link=shared
+                                                  -d0 
+                                                  --layout=${LAYOUT}
+                                                  --prefix=${EXTERNAL_PREFIX}
+                                                  ${COMPONENTS_COMPILE_OPTIONS}
+                                                  install
+                    INSTALL_COMMAND ""
 )
 
 if(NOT MSVC)

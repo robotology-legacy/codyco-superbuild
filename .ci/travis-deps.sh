@@ -10,7 +10,13 @@ if [ "$TRAVIS_OS_NAME" = linux -o -z "$TRAVIS_OS_NAME" ]; then
         sudo add-apt-repository -y ppa:kubuntu-ppa/backports 
     fi
     sudo apt-get update
-    sudo apt-get install -qq libboost-system-dev libboost-thread-dev libtinyxml-dev
+    sudo apt-get install -qq libtinyxml-dev
+    if [ "$CODYCO_BOOST_FROM_SUPERBUILD" = True ]; then
+        echo -e "codyco-superbuild travis testing: installing boost from superbuild\n"
+    else
+        echo -e "codyco-superbuild travis testing: installing boost from deb packages\n"
+        sudo apt-get install -qq libboost-system-dev libboost-thread-dev
+    fi
     if [ "$CODYCO_YARP_FROM_SUPERBUILD" = True ]; then
         echo -e "codyco-superbuild travis testing: installing yarp from superbuild\n"
         sudo apt-get --force-yes install icub-common
