@@ -67,10 +67,11 @@ set(COMPONENTS_SUBMODULES "tools/build"
 set(COMPONENTS_COMPILE_OPTIONS "")
 
 foreach(_comp in BOOST_BUILD_COMPONENTS)
-    list(append COMPONENTS_SUBMODULES "libs/"_comp)
+    list(APPEND COMPONENTS_SUBMODULES "libs/"_comp)
     # if a requested library is not header only
     # we have to specify the proper option for building
-    if(_comp in COMPONENTS_TO_COMPILE)
+    list(FIND COMPONENTS_TO_COMPILE _comp result) 
+    if(NOT result EQUAL -1)
         list(append COMPONENTS_COMPILE_OPTIONS "--with-"_comp)
     endif()
 endforeach()
