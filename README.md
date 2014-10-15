@@ -184,7 +184,7 @@ An easy way is to add this lines to the '.bashrc` file in your home directory:
 CODYCO_SUPERBUILD_ROOT=/directory/where/you/downloaded/codyco-superbuild
 export PATH=$CODYCO_SUPERBUILD_ROOT/build/install/bin:$PATH
 export LD_LIBRARY_PATH=$CODYCO_SUPERBUILD_ROOT/build/install/lib:$LD_LIBRARY_PATH
-export YARP_DATA_DIRS=$YARP_DATA_DIRS:$CODYCO_SUPERBUILD_ROOT/build/install/share/codycow
+export YARP_DATA_DIRS=$YARP_DATA_DIRS:$CODYCO_SUPERBUILD_ROOT/build/install/share/codyco
 ```
 To use the updated `.bashrc` in your terminal you should run the following command:
 ```bash
