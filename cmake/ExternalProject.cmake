@@ -459,7 +459,7 @@ if(NOT IS_DIRECTORY \"${source_dir}/.git\")
   set(number_of_tries 0)
   while(error_code AND number_of_tries LESS 3)
     execute_process(
-      COMMAND \"${git_EXECUTABLE}\" clone \"${git_repository}\" \"${src_name}\"
+      COMMAND \"${git_EXECUTABLE}\" clone --depth 1 \"${git_repository}\" \"${src_name}\"
       WORKING_DIRECTORY \"${work_dir}\"
       RESULT_VARIABLE error_code
       )
@@ -493,7 +493,7 @@ if(error_code)
 endif()
 
 execute_process(
-  COMMAND \"${git_EXECUTABLE}\" submodule update --recursive ${git_submodules}
+  COMMAND \"${git_EXECUTABLE}\" submodule update --depth 1 --recursive ${git_submodules}
   WORKING_DIRECTORY \"${work_dir}/${src_name}\"
   RESULT_VARIABLE error_code
   )
