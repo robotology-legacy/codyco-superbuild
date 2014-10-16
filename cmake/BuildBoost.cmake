@@ -45,14 +45,78 @@ else()
 
 endif()
 
+# Address components dependencies: unfortunatly boost build 
+# system does not address for now automatic dependency resolution
+# so we hardcode dependencies for the components we are interested in 
+# (I know, it is ugly. But it works. As soon as things evolve on the Boost
+#    side, we will promptly adapt. If you have any better idea please 
+#    ping me at silvio DOT traversaro AT iit DOT it ).
+
+# smart_ptr dependencies
+set(smart_ptr_BOOST_COMPONENTS_DEPENDS throw_exception)
+
+# iterator dependencies
+set(iterator_BOOST_COMPONENTS_DEPENDS static_assert)
+
+# range dependencies
+set(range_BOOST_COMPONENTS_DEPENDS iterator)
+list(APPEND range_BOOST_COMPONENTS_DEPENDS 
+            ${iterator_BOOST_COMPONENTS_DEPENDS})
+
+# mpl dependencies
+set(mpl_BOOST_COMPONENTS_DEPENDS preprocessor)
+
+# type_traits dependencies
+set(type_traits_BOOST_COMPONENTS_DEPENDS mpl)
+list(APPEND type_traits_BOOST_COMPONENTS_DEPENDS 
+            ${mpl_BOOST_COMPONENTS_DEPENDS})
+
+# thread dependencies
+set(thread_BOOST_COMPONENTS_DEPENDS config)
+
+# system dependencies
+set(system_BOOST_COMPONENTS_DEPENDS core
+                                    config
+                                    assert
+                                    utility
+                                    predef)
+
+# filesystem dependencies
+set(filesystem_BOOST_COMPONENTS_DEPENDS system
+                                        type_traits
+                                        detail
+                                        range
+                                        smart_ptr
+                                        io
+                                        functional)
+foreach(_comp_dep ${filesystem_BOOST_COMPONENTS_DEPENDS})
+        message(STATUS "Adding dep " ${_comp_deb})
+	list(APPEND filesystem_BOOST_COMPONENTS_DEPENDS 
+                    ${${_comp_dep}_BOOST_COMPONENTS_DEPENDS})
+endforeach()
+
+
+
+# Expand dependencies (NOTE: it does not address recursive dependencies)
+set(BOOST_BUILD_COMPONENTS_WITH_DEPS "")
+foreach(_comp ${BOOST_BUILD_COMPONENTS})
+    list(APPEND BOOST_BUILD_COMPONENTS_WITH_DEPS ${_comp})
+    foreach(_comp_dep ${${_comp}_BOOST_COMPONENTS_DEPENDS})
+        list(APPEND BOOST_BUILD_COMPONENTS_WITH_DEPS ${_comp_dep})
+    endforeach()
+endforeach()
+
+# Remove duplicated components
+list(REMOVE_DUPLICATES BOOST_BUILD_COMPONENTS_WITH_DEPS)
+
 #Some boost components need to be compiled, keep a list from proper adding options
 #incomplete list, TODO FIXME update with information from
 # http://www.boost.org/doc/libs/1_56_0/more/getting_started/windows.html#header-only-libraries
-set(COMPONENTS_TO_COMPILE "filesystem"
-                          "system"
-                          "wave"
-                          "chrono"
-                          "date_time")
+set(COMPONENTS_TO_COMPILE filesystem
+                          system
+                          wave
+                          chrono
+                          date_time)
 
 #Add the submodules that is necessary to pull 
 #given the requested submodules. Some are added
@@ -60,28 +124,43 @@ set(COMPONENTS_TO_COMPILE "filesystem"
 #the boost library
 #adding also libs/wave by default, not really clear
 #why this is required
-set(COMPONENTS_SUBMODULES "tools/build"
-                          "tools/inspect"
-                          "libs/wave")
+set(COMPONENTS_SUBMODULES tools/build
+                          tools/inspect
+                          libs/wave)
 
 set(COMPONENTS_COMPILE_OPTIONS "")
 
-foreach(_comp in BOOST_BUILD_COMPONENTS)
-    list(APPEND COMPONENTS_SUBMODULES "libs/"_comp)
+foreach(_comp ${BOOST_BUILD_COMPONENTS_WITH_DEPS})
+    message(STATUS "Considering component " ${_comp})
+    list(APPEND COMPONENTS_SUBMODULES "libs/${_comp}")
     # if a requested library is not header only
     # we have to specify the proper option for building
-    list(FIND COMPONENTS_TO_COMPILE _comp result) 
-    if(NOT result EQUAL -1)
-        list(append COMPONENTS_COMPILE_OPTIONS "--with-"_comp)
+    list(FIND COMPONENTS_TO_COMPILE ${_comp} result) 
+    message(STATUS "Result is " ${result})
+    if(NOT ${result} EQUAL -1)
+        list(APPEND COMPONENTS_COMPILE_OPTIONS "--with-${_comp}")
     endif()
 endforeach()
-                 
+
+foreach(_comp ${COMPONENTS_TO_COMPILE})
+    message(STATUS "The non header only libraries are " ${_comp})
+endforeach()
+            
+foreach(_comp ${COMPONENTS_SUBMODULES})
+    message(STATUS "We have to get submodule " ${_comp})
+endforeach()
+
+foreach(_comp ${COMPONENTS_COMPILE_OPTIONS})
+    message(STATUS "We have to compile boost with option " ${_comp})
+endforeach()
+
+set(EXTERNAL_PREFIX ${CMAKE_BINARY_DIR}/install)
 
 ExternalProject_add(Boost
                     GIT_REPOSITORY "https://github.com/boostorg/boost"
                     GIT_TAG "master"
-                    GIT_SUBMODULE ${COMPONENTS_SUBMODULES}
-                    #BUILD_IN_SOURCE 1
+                    GIT_SUBMODULES ${COMPONENTS_SUBMODULES}
+                    BUILD_IN_SOURCE 1
                     SOURCE_DIR  ${CMAKE_SOURCE_DIR}/external/boost
                     INSTALL_DIR ${CMAKE_BINARY_DIR}/install
                     CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.${EXT} ${CONF_TOOLSET}
@@ -142,8 +221,8 @@ else()
 
     set(Boost_SIGNALS_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_signals-${TAG_TOOLSET}-mt-gd-1_55.lib)
 endif()
-set(Boost_INCLUDE_DIRS ${EXTERNAL_PREFIX}/include/boost-1_55)
 
+set(Boost_INCLUDE_DIRS ${EXTERNAL_PREFIX}/include/boost-1_55)
 set(Boost_INCLUDE_DIR ${EXTERNAL_PREFIX}/include)
 
 

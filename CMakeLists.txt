@@ -27,6 +27,11 @@ option(CODYCO_USES_EIGEN_320 "Enable compilation of software that depends on Eig
 option(CODYCO_BUILD_ISIR_MODULES "Enable compilation of ISIR controllers" FALSE)
 #option(CODYCO_USES_MEX_WHOLEBODYMODEL "Enable to compile the matlab mex inteface for iWholeBodyModel" FALSE)
 
+#Set CMake policies
+if(NOT CMAKE_VERSION VERSION_LESS 3.0)
+    cmake_policy(SET CMP0045 OLD)
+endif()
+
 # Bootstrap YCM
 include(YCMBootstrap)
 
