@@ -177,59 +177,7 @@ ExternalProject_add(Boost
                     INSTALL_COMMAND ""
 )
 
-if(NOT MSVC)
-
-    set(Boost_SERIALIZATION_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_serialization-mt.a)
-
-    set(Boost_DATE_TIME_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_date_time-mt.a)
-
-    set(Boost_FILESYSTEM_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_filesystem-mt.a)
-
-    set(Boost_UNIT_TEST_FRAMEWORK_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_unit_test_framework-mt.a)
-
-    set(Boost_SYSTEM_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_system-mt.a)
-
-    set(Boost_SIGNALS_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_signals-mt.a)
-
-set(Boost_INCLUDE_DIR ${EXTERNAL_PREFIX}/include)
-
-else()
-
-set(TAG_TOOLSET ${CONF_TOOLSET}0)
-if(${Boost_VARIANT} STREQUAL release)
-    set(Boost_SERIALIZATION_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_serialization-${TAG_TOOLSET}-mt-1_55.lib)
-
-    set(Boost_DATE_TIME_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_date_time-${TAG_TOOLSET}-mt-1_55.lib)
-
-    set(Boost_FILESYSTEM_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_filesystem-${TAG_TOOLSET}-mt-1_55.lib)
-
-    set(Boost_UNIT_TEST_FRAMEWORK_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_unit_test_framework-${TAG_TOOLSET}-mt-1_55.lib)
-
-    set(Boost_SYSTEM_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_system-${TAG_TOOLSET}-mt-1_55.lib)
-
-    set(Boost_SIGNALS_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_signals-${TAG_TOOLSET}-mt-1_55.lib)
-else()
-    set(Boost_SERIALIZATION_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_serialization-${TAG_TOOLSET}-mt-gd-1_55.lib)
-
-    set(Boost_DATE_TIME_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_date_time-${TAG_TOOLSET}-mt-gd-1_55.lib)
-
-    set(Boost_FILESYSTEM_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_filesystem-${TAG_TOOLSET}-mt-gd-1_55.lib)
-
-    set(Boost_UNIT_TEST_FRAMEWORK_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_unit_test_framework-${TAG_TOOLSET}-mt-gd-1_55.lib)
-
-    set(Boost_SYSTEM_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_system-${TAG_TOOLSET}-mt-gd-1_55.lib)
-
-    set(Boost_SIGNALS_LIBRARY ${EXTERNAL_PREFIX}/lib/libboost_signals-${TAG_TOOLSET}-mt-gd-1_55.lib)
-endif()
-
-set(Boost_INCLUDE_DIRS ${EXTERNAL_PREFIX}/include/boost-1_55)
-set(Boost_INCLUDE_DIR ${EXTERNAL_PREFIX}/include)
-
-
 endif()
 
 
-
-set(Boost_FOUND 1)
-set_target_properties(Boost PROPERTIES EXCLUDE_FROM_ALL 1)
 
