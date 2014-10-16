@@ -32,6 +32,7 @@ install:
   - cmd: c:\dev\icub.exe /S
   - cmd: dir "c:\Program Files (x86)\robotology"
   
+build:
 
 build_script:
   - cd c:\dev\codyco-superbuild
