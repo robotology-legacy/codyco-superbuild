@@ -493,7 +493,7 @@ if(error_code)
 endif()
 
 execute_process(
-  COMMAND \"${git_EXECUTABLE}\" submodule update --depth 1 --recursive ${git_submodules}
+  COMMAND \"${git_EXECUTABLE}\" submodule update --recursive ${git_submodules}
   WORKING_DIRECTORY \"${work_dir}/${src_name}\"
   RESULT_VARIABLE error_code
   )
