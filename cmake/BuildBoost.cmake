@@ -66,13 +66,69 @@ list(APPEND range_BOOST_COMPONENTS_DEPENDS
 # mpl dependencies
 set(mpl_BOOST_COMPONENTS_DEPENDS preprocessor)
 
+# chrono dependencies
+set(chrono_BOOST_COMPONENTS_DEPENDS ratio
+                                    typeof)
+
+# format dependencies
+set(format_BOOST_COMPONENTS_DEPENDS optional) 
+
+# math dependencies
+set(math_BOOST_COMPONENTS_DEPENDS format
+                                  fusion)
+foreach(_comp_dep ${math_BOOST_COMPONENTS_DEPENDS})
+        message(STATUS "Adding dep "${_comp_deb})
+	list(APPEND math_BOOST_COMPONENTS_DEPENDS 
+                    ${${_comp_dep}_BOOST_COMPONENTS_DEPENDS})
+endforeach()
+
+
+# lexical_cast dependencies
+set(lexical_cast_BOOST_COMPONENTS_DEPENDS numeric
+                                          array
+                                          container
+                                          math)
+foreach(_comp_dep ${lexical_cast_BOOST_COMPONENTS_DEPENDS})
+        message(STATUS "Adding dep " ${_comp_deb})
+	list(APPEND lexical_cast_BOOST_COMPONENTS_DEPENDS 
+                    ${${_comp_dep}_BOOST_COMPONENTS_DEPENDS})
+endforeach()
+
+
+# date_time dependencies
+set(date_time_BOOST_COMPONENTS_DEPENDS lexical_cast
+                                       concept_check
+                                       tokenizer)
+foreach(_comp_dep ${date_time_BOOST_COMPONENTS_DEPENDS})
+        message(STATUS "Adding dep " ${_comp_deb})
+	list(APPEND date_time_BOOST_COMPONENTS_DEPENDS 
+                    ${${_comp_dep}_BOOST_COMPONENTS_DEPENDS})
+endforeach()
+
+
 # type_traits dependencies
 set(type_traits_BOOST_COMPONENTS_DEPENDS mpl)
 list(APPEND type_traits_BOOST_COMPONENTS_DEPENDS 
             ${mpl_BOOST_COMPONENTS_DEPENDS})
 
 # thread dependencies
-set(thread_BOOST_COMPONENTS_DEPENDS config)
+set(thread_BOOST_COMPONENTS_DEPENDS config
+                                    atomic
+                                    chrono
+                                    move
+                                    tuple
+                                    bind
+                                    date_time
+                                    integer
+                                    exception
+                                    function
+				    algorithm)
+foreach(_comp_dep ${thread_BOOST_COMPONENTS_DEPENDS})
+        message(STATUS "Adding dep " ${_comp_deb})
+	list(APPEND thread_BOOST_COMPONENTS_DEPENDS 
+                    ${${_comp_dep}_BOOST_COMPONENTS_DEPENDS})
+endforeach()
+
 
 # system dependencies
 set(system_BOOST_COMPONENTS_DEPENDS core
@@ -112,18 +168,23 @@ list(REMOVE_DUPLICATES BOOST_BUILD_COMPONENTS_WITH_DEPS)
 #Some boost components need to be compiled, keep a list from proper adding options
 #incomplete list, TODO FIXME update with information from
 # http://www.boost.org/doc/libs/1_56_0/more/getting_started/windows.html#header-only-libraries
-set(COMPONENTS_TO_COMPILE filesystem
+set(COMPONENTS_TO_COMPILE atomic
+                          filesystem
                           system
                           wave
                           chrono
-                          date_time)
+                          date_time
+                          thread
+                          exception
+                          math
+                          container)
 
 #Add the submodules that is necessary to pull 
 #given the requested submodules. Some are added
 #by default becuase are necessary for building
 #the boost library
 #adding also libs/wave by default, not really clear
-#why this is required
+#why this is required (build otherwise always give an error)
 set(COMPONENTS_SUBMODULES tools/build
                           tools/inspect
                           libs/wave)
