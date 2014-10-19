@@ -81,7 +81,8 @@ list(APPEND type_traits_BOOST_COMPONENTS_DEPENDS
 # math dependencies
 set(math_BOOST_COMPONENTS_DEPENDS format
                                   fusion
-                                  type_traits)
+                                  type_traits
+                                  static_assert)
 foreach(_comp_dep ${math_BOOST_COMPONENTS_DEPENDS})
         message(STATUS "Adding dep "${_comp_deb})
 	list(APPEND math_BOOST_COMPONENTS_DEPENDS 
