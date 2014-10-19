@@ -13,4 +13,6 @@ ycm_ep_helper(urdfdom TYPE GIT
               COMPONENT external
               DEPENDS console_bridge
                       urdfdom_headers
-                      TinyXML)
+                      TinyXML
+              CMAKE_CACHE_ARGS -DURDFDOM_DO_NOT_INSTALL_URDFPARSERPY:BOOL=ON
+                               -DURDFDOM_DO_NOT_USE_CONSOLEBRIDGE:BOOL=ON)
