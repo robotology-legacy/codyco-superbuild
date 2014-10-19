@@ -71,7 +71,8 @@ set(chrono_BOOST_COMPONENTS_DEPENDS ratio
                                     typeof)
                                     
 # optional dependencies
-set(optional_BOOST_COMPONENTS_DEPENDS detail) 
+set(optional_BOOST_COMPONENTS_DEPENDS detail
+                                      utility) 
 
 # format dependencies
 set(format_BOOST_COMPONENTS_DEPENDS optional) 
