@@ -95,7 +95,8 @@ set(math_BOOST_COMPONENTS_DEPENDS format
                                   static_assert
                                   assert
                                   core
-                                  move)
+                                  move
+                                  range)
 foreach(_comp_dep ${math_BOOST_COMPONENTS_DEPENDS})
         message(STATUS "Adding dep "${_comp_deb})
 	list(APPEND math_BOOST_COMPONENTS_DEPENDS 
