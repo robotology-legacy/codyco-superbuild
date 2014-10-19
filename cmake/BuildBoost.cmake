@@ -60,7 +60,8 @@ set(smart_ptr_BOOST_COMPONENTS_DEPENDS throw_exception
 set(iterator_BOOST_COMPONENTS_DEPENDS static_assert)
 
 # range dependencies
-set(range_BOOST_COMPONENTS_DEPENDS iterator)
+set(range_BOOST_COMPONENTS_DEPENDS iterator
+                                   concept_check)
 list(APPEND range_BOOST_COMPONENTS_DEPENDS 
             ${iterator_BOOST_COMPONENTS_DEPENDS})
 
