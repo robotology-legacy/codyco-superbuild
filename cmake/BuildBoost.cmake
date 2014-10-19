@@ -72,9 +72,16 @@ set(mpl_BOOST_COMPONENTS_DEPENDS preprocessor)
 set(chrono_BOOST_COMPONENTS_DEPENDS ratio
                                     typeof)
                                     
+# detail dependencies
+set(detail_BOOST_COMPONENTS_DEPENDS integer)
+                                    
 # optional dependencies
 set(optional_BOOST_COMPONENTS_DEPENDS detail
                                       utility) 
+foreach(_comp_dep ${optional_BOOST_COMPONENTS_DEPENDS})
+	list(APPEND optional_BOOST_COMPONENTS_DEPENDS 
+                    ${${_comp_dep}_BOOST_COMPONENTS_DEPENDS})
+endforeach()
 
 # format dependencies
 set(format_BOOST_COMPONENTS_DEPENDS optional
