@@ -73,9 +73,15 @@ set(chrono_BOOST_COMPONENTS_DEPENDS ratio
 # format dependencies
 set(format_BOOST_COMPONENTS_DEPENDS optional) 
 
+# type_traits dependencies
+set(type_traits_BOOST_COMPONENTS_DEPENDS mpl)
+list(APPEND type_traits_BOOST_COMPONENTS_DEPENDS 
+            ${mpl_BOOST_COMPONENTS_DEPENDS})
+
 # math dependencies
 set(math_BOOST_COMPONENTS_DEPENDS format
-                                  fusion)
+                                  fusion
+                                  type_traits)
 foreach(_comp_dep ${math_BOOST_COMPONENTS_DEPENDS})
         message(STATUS "Adding dep "${_comp_deb})
 	list(APPEND math_BOOST_COMPONENTS_DEPENDS 
@@ -106,10 +112,7 @@ foreach(_comp_dep ${date_time_BOOST_COMPONENTS_DEPENDS})
 endforeach()
 
 
-# type_traits dependencies
-set(type_traits_BOOST_COMPONENTS_DEPENDS mpl)
-list(APPEND type_traits_BOOST_COMPONENTS_DEPENDS 
-            ${mpl_BOOST_COMPONENTS_DEPENDS})
+
 
 # thread dependencies
 set(thread_BOOST_COMPONENTS_DEPENDS config
