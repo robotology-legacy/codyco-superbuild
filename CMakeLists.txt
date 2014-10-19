@@ -17,15 +17,24 @@ include(FeatureSummary)
 
 set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake patches")
 
-#Add options
+#Compilation options
+
+#options to build specific software or use a reduced set of dependencies 
 option(CODYCO_USES_WBI_TOOLBOX "Whole Body Interface Toolbox - Simulink library" FALSE)
 option(CODYCO_USES_URDFDOM "Enable support for URDF input in iDynTree" TRUE)
-option(CODYCO_TRAVIS_CI "Set if build is done with Travis-CI flags" FALSE)
-option(CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE_CONTROL "Set if iCub WBI implementation uses external torque control. False to use YARP Torque Control." FALSE)
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
 option(CODYCO_USES_EIGEN_320 "Enable compilation of software that depends on Eigen 3.2.0 (if false just depend on Eigen 3.0.5)" TRUE)
 option(CODYCO_BUILD_ISIR_MODULES "Enable compilation of ISIR controllers" FALSE)
-#option(CODYCO_USES_MEX_WHOLEBODYMODEL "Enable to compile the matlab mex inteface for iWholeBodyModel" FALSE)
+option(CODYCO_USES_MEX_WHOLEBODYMODEL "Enable to compile the matlab mex inteface for iWholeBodyModel" FALSE)
+
+#options for testing
+option(CODYCO_TRAVIS_CI "Set if build is done with Travis-CI flags" FALSE)
+
+#options for using torque control on a real iCub using JTC module 
+#do not set to true unless you know what are you doing
+option(CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE_CONTROL "Set if iCub WBI implementation uses external torque control. False to use YARP Torque Control." FALSE)
+
+
 
 #Set CMake policies
 if(NOT CMAKE_VERSION VERSION_LESS 3.0)
@@ -43,8 +52,8 @@ include(YCMEPHelper)
 #  theory is that you need it only on Windows) 
 find_or_build_package(Boost COMPONENTS system filesystem thread)
 
-if(CODYCO_USE_EIGEN_320)
-    find_or_build_package(Eigen3 3.2)
+if(CODYCO_USES_EIGEN_320)
+    find_package(Eigen3 3.2)
 endif()
 
 if(CODYCO_USES_URDFDOM)
@@ -57,9 +66,7 @@ find_or_build_package(ICUB)
 find_or_build_package(yarpWholeBodyInterface)
 
 #build codyco-modules and codycoCommons library only if the use of Eigen 3.2 is enable
-if(CODYCO_USES_EIGEN_320)
-    find_or_build_package(codyco-modules)
-endif()
+find_or_build_package(codyco-modules)
 
 #codyco isir modules
 if( ${CODYCO_BUILD_ISIR_MODULES} )
@@ -75,9 +82,9 @@ if( ${CODYCO_USES_WBI_TOOLBOX} )
 endif()
 
 #mex wholeBodyModel interface
-#if( ${CODYCO_USES_MEX_WHOLEBODYMODEL} )
-#   find_or_build_package(mexWholeBodyModel)
-#endif()
+if( ${CODYCO_USES_MEX_WHOLEBODYMODEL} )
+   find_or_build_package(mexWholeBodyModel)
+endif()
 
 #icub-model-generator
 if(${CODYCO_BUILD_ICUB_MODEL_GENERATOR})

@@ -1,8 +1,8 @@
 CoDyCo Project Superbuild
 ---------------
-| Linux/OS X | Windows |
-|:----------:|:--------|
-| [![Build Status](https://travis-ci.org/robotology/codyco-superbuild.png?branch=master)](https://travis-ci.org/robotology/codyco-superbuild) | [![Build status](https://ci.appveyor.com/api/projects/status/qldqe8tq0w7siueb)](https://ci.appveyor.com/project/traversaro/codyco-superbuild) |
+| Linux/OS X | 
+|:----------:|
+| [![Build Status](https://travis-ci.org/robotology/codyco-superbuild.png?branch=master)](https://travis-ci.org/robotology/codyco-superbuild) | 
 The CoDyCo project is a four-years long project that started in March 2013. At the end of each year a scenario will be used to validate on the iCub the theoretical advances of the project.
 
 More info at http://codyco.eu/
@@ -19,8 +19,20 @@ codyco-superbuild will download and build the following projects:
 * `wholebodyinterface`: C++ Interfaces to sensor measurements, state estimations, kinematic/dynamic model and actuators for a floating base robot [Project Page](https://github.com/robotology-playground/wholebodyinterface)
 * `yarp-wholebodyinterface`: Implementation of the wholeBodyInterface for YARP robots [Project Page](https://github.com/robotology-playground/yarp-wholebodyinterface)
 * `WBI-Toolbox`: Simulink Toolbox for rapid prototyping of Whole Body Robot Controllers [Project Page](https://github.com/robotology-playground/WBI-Toolbox)
-* `codyco`: YARP modules and controllers developed within the European Project CoDyCo [project Page](https://github.com/robotology/codyco)
+* `codyco-modules`: YARP modules and controllers developed within the European Project CoDyCo [project Page](https://github.com/robotology/codyco-modules)
 
+Update
+------
+For updating the codyco-superbuild repository it is possible to just fetch the last changes using the usual 
+git command:
+~~~
+git pull
+~~~
+However, for running the equivalent of `git pull` on all the repositories managed by
+the codyco-superbuild, you have to execute in your build system the appropriate target, for example:
+~~~
+make update-all
+~~~
 
 Installation
 ------------
@@ -35,11 +47,27 @@ We provide different instructions on how to install codyco-superbuild, depending
 ##Windows
 
 ###System Dependencies 
+
+####CMake
 To install CMake you can use the official installer available at http://www.cmake.org/cmake/resources/software.html .
 
+####Eigen
 You can install Eigen from source code available from the [Eigen official website](http://eigen.tuxfamily.org).
-Eigen is also available as a [NuGet package](https://www.nuget.org/packages/Eigen/).
+You can simply extract the Eigen source code in a directory, and then define the `EIGEN3_ROOT` enviroment variable to the path of the directory that contains the file `signature_of_eigen3_matrix_library` (it should be the first directory contained in the compressed file.  
 
+####Boost 
+The easy way to install Boost on Windows is to use the [Boost binaries installers](http://sourceforge.net/projects/boost/files/boost-binaries/1.55.0/). Pay attention to 
+download a release that matches your Visual Studio version. Furthermore as iCub software does not 
+support 64bit compilation at the moment we reccomend to compile the codyco-superbuild as 32bit software, and
+thus you have to downalod 32bit binaries for Boost. 
+
+After downloading and installing the Boost libraries, you then need to set the following two environment variables to point respectively to the path of the libraries and the headers, for example:
+~~~
+BOOST_LIBRARYDIR=C:\path\where\boost\is\libboost_1_54_0\lib32-msvc-10.0
+BOOST_INCLUDEDIR=C:\path\where\boost\is\libboost_1_54_0
+~~~
+
+####YARP & iCub
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
 
 ###Superbuild
@@ -59,7 +87,10 @@ To use this binaries and libraries, you should update the necessary enviroment v
 
 Set the environment variable CODYCO\_SUPERBUILD\_DIR so that it points to the  directory where you clone the codyco-superbuild repository.
 
-Append $CODYCO\_SUPERBUILD\_DIR/build/install/bin to your PATH.
+Append $CODYCO\_SUPERBUILD\_DIR/build/install/bin to your PATH
+
+Append $CODYCO\_SUPERBUILD\_ROOT/build/install/share/codyco to your [YARP\_DATA\_DIRS](http://wiki.icub.org/yarpdoc/yarp_data_dirs.html) enviroment variable.
+
 
 ##OS X
 
@@ -105,6 +136,7 @@ An easy way is to add this lines to the '.bashrc` file in your home directory:
 CODYCO_SUPERBUILD_ROOT=/directory/where/you/downloaded/codyco-superbuild
 export PATH=$CODYCO_SUPERBUILD_ROOT/build/install/bin:$PATH
 export DYLD_LIBRARY_PATH=$CODYCO_SUPERBUILD_ROOT/build/install/lib:$DYLD_LIBRARY_PATH
+export YARP_DATA_DIRS=$YARP_DATA_DIRS:$CODYCO_SUPERBUILD_ROOT/build/install/share/codyco
 ```
 To use the updated `.bashrc` in your terminal you should run the following command:
 ```bash
@@ -113,15 +145,15 @@ user@host:~$ source ~/.bashrc
 
 ##Linux 
 ###System Dependencies 
-On Debian based systems (as Ubuntu) you can install CMake and Eigen using `apt-get`:
+On Debian based systems (as Ubuntu) you can install CMake and Eigen (and other dependencies necessary for the codyco-superbuild) using `apt-get`:
 ```
-sudo apt-get install libeigen3-dev cmake libboost-system-dev libboost-thread-dev libtinyxml-dev
+sudo apt-get install libeigen3-dev cmake cmake-curses-gui libboost-system-dev libboost-thread-dev libtinyxml-dev libace-dev libgtkmm-2.4-dev libglademm-2.4-dev libgsl0-dev libcv-dev libhighgui-dev libcvaux-dev libode-dev
 ```
 The packages provided in the official distro repositories work out of the box for **Ubuntu 14.04** (`trusty`), **Ubuntu 13.10** (`saucy`) and **Debian 8** (`jessie`).
 For older distros the included CMake and Eigen are too old, and is necessary to find a way to install them from an alternative
 source:
 * In **Debian 7** (`wheezy`) it is sufficient to [enable the `wheezy-backports` repository](http://backports.debian.org/Instructions/) to get recent versions of CMake and Eigen.
-* In **Ubuntu 12.04** (`precise`) a [PPA is available to easily install CMake 2.8.11](https://launchpad.net/~kalakris/+archive/cmake). To install a recent version of Eigen the easiest solution is [to get Eigen from source](http://eigen.tuxfamily.org/index.php?title=Main_Page#Download). 
+* In **Ubuntu 12.04** (`precise`) a [PPA is available to easily install CMake 2.8.11](https://launchpad.net/~kalakris/+archive/cmake). To install a recent version of Eigen the easiest solution is [to get Eigen from source](http://eigen.tuxfamily.org/index.php?title=Main_Page#Download).
 
 If for some reason you are bound to use Eigen 3.0.5 (for example for XDE compatibility) you can just set to off the `CODYCO_USES_EIGEN_320` CMake variable. In this way you will compile just the software that is compatible with Eigen 3.0.5 .  
 
@@ -152,6 +184,7 @@ An easy way is to add this lines to the '.bashrc` file in your home directory:
 CODYCO_SUPERBUILD_ROOT=/directory/where/you/downloaded/codyco-superbuild
 export PATH=$CODYCO_SUPERBUILD_ROOT/build/install/bin:$PATH
 export LD_LIBRARY_PATH=$CODYCO_SUPERBUILD_ROOT/build/install/lib:$LD_LIBRARY_PATH
+export YARP_DATA_DIRS=$YARP_DATA_DIRS:$CODYCO_SUPERBUILD_ROOT/build/install/share/codyco
 ```
 To use the updated `.bashrc` in your terminal you should run the following command:
 ```bash

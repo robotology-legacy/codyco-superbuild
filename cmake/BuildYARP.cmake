@@ -40,7 +40,7 @@ ycm_ep_helper(YARP TYPE GIT
                                     -DYARP_USE_SYSTEM_SQLITE:BOOL=ON
                                     -DCREATE_LIB_MATH:BOOL=ON
                                     -DYARP_USE_ATLAS:BOOL=OFF
-                                    -DDOX_GENERATE_XML:BOOL=ON
+                                    -DDOX_GENERATE_XML:BOOL=OFF
                                     -DCREATE_OPTIONAL_CARRIERS:BOOL=ON
                                     -DENABLE_yarpcar_bayer_carrier:BOOL=ON
                                     -DUSE_LIBDC1394:BOOL=OFF

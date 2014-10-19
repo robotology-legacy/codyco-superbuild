@@ -5,7 +5,7 @@ set -e
 #if OS is linux or is not set
 if [ "$TRAVIS_OS_NAME" = linux -o -z "$TRAVIS_OS_NAME" ]; then
     sudo sh -c 'echo "deb http://www.icub.org/ubuntu precise contrib/science" > /etc/apt/sources.list.d/icub.list'
-    sudo add-apt-repository -y ppa:kalakris/cmake
+    sudo add-apt-repository -y ppa:robotology/ppa
     if [ "$CODYCO_YARP_FROM_SUPERBUILD" = True ]; then
         sudo add-apt-repository -y ppa:kubuntu-ppa/backports 
     fi
