@@ -53,7 +53,8 @@ endif()
 #    ping me at silvio DOT traversaro AT iit DOT it ).
 
 # smart_ptr dependencies
-set(smart_ptr_BOOST_COMPONENTS_DEPENDS throw_exception)
+set(smart_ptr_BOOST_COMPONENTS_DEPENDS throw_exception
+                                       predef)
 
 # iterator dependencies
 set(iterator_BOOST_COMPONENTS_DEPENDS static_assert)
@@ -75,7 +76,8 @@ set(optional_BOOST_COMPONENTS_DEPENDS detail
                                       utility) 
 
 # format dependencies
-set(format_BOOST_COMPONENTS_DEPENDS optional) 
+set(format_BOOST_COMPONENTS_DEPENDS optional
+                                    smart_ptr) 
 foreach(_comp_dep ${format_BOOST_COMPONENTS_DEPENDS})
 	list(APPEND format_BOOST_COMPONENTS_DEPENDS 
                     ${${_comp_dep}_BOOST_COMPONENTS_DEPENDS})
