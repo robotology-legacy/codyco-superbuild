@@ -111,6 +111,19 @@ foreach(_comp_dep ${math_BOOST_COMPONENTS_DEPENDS})
                     ${${_comp_dep}_BOOST_COMPONENTS_DEPENDS})
 endforeach()
 
+# array dependencies
+set(array_BOOST_COMPONENTS_DEPENDS functional
+                                   core
+                                   assert
+                                   detail
+                                   throw_exception
+                                   config)
+foreach(_comp_dep ${array_BOOST_COMPONENTS_DEPENDS})
+        message(STATUS "Adding dep " ${_comp_deb})
+	list(APPEND array_BOOST_COMPONENTS_DEPENDS 
+                    ${${_comp_dep}_BOOST_COMPONENTS_DEPENDS})
+endforeach()
+
 
 # lexical_cast dependencies
 set(lexical_cast_BOOST_COMPONENTS_DEPENDS numeric
