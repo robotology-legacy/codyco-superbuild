@@ -185,9 +185,12 @@ set(COMPONENTS_TO_COMPILE atomic
 #the boost library
 #adding also libs/wave by default, not really clear
 #why this is required (build otherwise always give an error)
+# libs/config is added by default because it contains the version.hpp
+# file used by FindBoost.cmake for checking Boost version
 set(COMPONENTS_SUBMODULES tools/build
                           tools/inspect
-                          libs/wave)
+                          libs/wave
+                          libs/config)
 
 set(COMPONENTS_COMPILE_OPTIONS "")
 
@@ -217,6 +220,8 @@ endforeach()
 
 set(EXTERNAL_PREFIX ${CMAKE_BINARY_DIR}/install)
 
+set(BOOST_BUILDING_TYPE shared)
+
 ExternalProject_add(Boost
                     GIT_REPOSITORY "https://github.com/boostorg/boost"
                     GIT_TAG "master"
@@ -227,7 +232,7 @@ ExternalProject_add(Boost
                     CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.${EXT} ${CONF_TOOLSET}
                     BUILD_COMMAND <SOURCE_DIR>/b2 ${BUILD_TOOLSET} ${MAKE_ARGS} ${ADDRESS_MODEL} 
                                                   variant=${Boost_VARIANT}
-                                                  link=static 
+                                                  link=${BOOST_BUILDING_TYPE} 
                                                   threading=multi 
                                                   runtime-link=shared
                                                   -d0 
