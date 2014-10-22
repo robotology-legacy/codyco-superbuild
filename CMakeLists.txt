@@ -34,7 +34,11 @@ option(CODYCO_TRAVIS_CI "Set if build is done with Travis-CI flags" FALSE)
 #do not set to true unless you know what are you doing
 option(CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE_CONTROL "Set if iCub WBI implementation uses external torque control. False to use YARP Torque Control." FALSE)
 
-
+# Optionally load a file named ProjectsTags
+# for overwriting the desired branch/tag/commit
+# of the included subprojects of the superbuild
+# Useful for having superbuild "branches"
+include(ProjectsTags OPTIONAL)
 
 # Bootstrap YCM
 include(YCMBootstrap)
