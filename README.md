@@ -58,7 +58,9 @@ You can simply extract the Eigen source code in a directory, and then define the
 ####Boost 
 Some software of codyco-superbuild requires Boost. If you have already a copy of the Boost libraries 
 installed on your system, you can use them for compiling codyco-superbuild by defining the appropriate
-`BOOST_DIR`, `BOOST_LIBRARYDIR` and `BOOST_INCLUDEDIR` enviroment variables. If you don't have Boost libraries
+`BOOST_DIR`, `BOOST_LIBRARYDIR` and `BOOST_INCLUDEDIR` enviroment variables. 
+
+If you don't have Boost libraries
 installed in your system, don't worry! The superbuild will download and compile only the necessary Boost components.
 
 ####YARP & iCub
