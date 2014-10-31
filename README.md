@@ -56,16 +56,10 @@ You can install Eigen from source code available from the [Eigen official websit
 You can simply extract the Eigen source code in a directory, and then define the `EIGEN3_ROOT` enviroment variable to the path of the directory that contains the file `signature_of_eigen3_matrix_library` (it should be the first directory contained in the compressed file.  
 
 ####Boost 
-The easy way to install Boost on Windows is to use the [Boost binaries installers](http://sourceforge.net/projects/boost/files/boost-binaries/1.55.0/). Pay attention to 
-download a release that matches your Visual Studio version. Furthermore as iCub software does not 
-support 64bit compilation at the moment we reccomend to compile the codyco-superbuild as 32bit software, and
-thus you have to downalod 32bit binaries for Boost. 
-
-After downloading and installing the Boost libraries, you then need to set the following two environment variables to point respectively to the path of the libraries and the headers, for example:
-~~~
-BOOST_LIBRARYDIR=C:\path\where\boost\is\libboost_1_54_0\lib32-msvc-10.0
-BOOST_INCLUDEDIR=C:\path\where\boost\is\libboost_1_54_0
-~~~
+Some software of codyco-superbuild requires Boost. If you have already a copy of the Boost libraries 
+installed on your system, you can use them for compiling codyco-superbuild by defining the appropriate
+`BOOST_DIR`, `BOOST_LIBRARYDIR` and `BOOST_INCLUDEDIR` enviroment variables. If you don't have Boost libraries
+installed in your system, don't worry! The superbuild will download and compile only the necessary Boost components.
 
 ####YARP & iCub
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
