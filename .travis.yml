@@ -4,7 +4,7 @@ matrix:
   include:
     - os: linux
       compiler: clang
-      env: CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE=True, CODYCO_YARP_FROM_SUPERBUILD=True, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug"
+      env: CODYCO_YARP_FROM_SUPERBUILD=True, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug"
     - os: linux
       compiler: gcc
       env: CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE=False, CODYCO_YARP_FROM_SUPERBUILD=False, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Release"
@@ -13,7 +13,7 @@ matrix:
       env: CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE=False, CODYCO_YARP_FROM_SUPERBUILD=True, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug"
     - os: osx
       compiler: clang
-      env: CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE=True, CODYCO_YARP_FROM_SUPERBUILD=False, TRAVIS_CMAKE_GENERATOR="Xcode", TRAVIS_BUILD_TYPE="Release"
+      env: CODYCO_YARP_FROM_SUPERBUILD=False, TRAVIS_CMAKE_GENERATOR="Xcode", TRAVIS_BUILD_TYPE="Release"
   exclude:
     - os: linux 
   allow_failures:
