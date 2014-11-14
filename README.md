@@ -7,7 +7,7 @@ The CoDyCo project is a four-years long project that started in March 2013. At t
 
 More info at http://codyco.eu/
 
-**The CoDyCo sofrware is currently under migration from version 0.1 (contained in the `master` branch) to version 0.2 (in the `new_wbi_ID` branch). Please check that you are executing the superbuild from the branch that you are interested in.**
+**The CoDyCo software is currently under migration from version 0.1 (contained in the `master` branch) to version 0.2 (in the `new_wbi_ID` branch). Please check that you are executing the superbuild from the branch that you are interested in.**
 
 Code documentation automatically generated: http://wiki.icub.org/codyco/dox/html/index.html
 
@@ -184,8 +184,8 @@ To use this binaries and libraries, you should update the `PATH` and `LD_CONFIG_
 An easy way is to add this lines to the '.bashrc` file in your home directory:
 ```
 CODYCO_SUPERBUILD_ROOT=/directory/where/you/downloaded/codyco-superbuild
-export PATH=$CODYCO_SUPERBUILD_ROOT/build/install/bin:$PATH
-export LD_LIBRARY_PATH=$CODYCO_SUPERBUILD_ROOT/build/install/lib:$LD_LIBRARY_PATH
+export PATH=$PATH:$CODYCO_SUPERBUILD_ROOT/build/install/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CODYCO_SUPERBUILD_ROOT/build/install/lib
 export YARP_DATA_DIRS=$YARP_DATA_DIRS:$CODYCO_SUPERBUILD_ROOT/build/install/share/codyco
 ```
 To use the updated `.bashrc` in your terminal you should run the following command:
