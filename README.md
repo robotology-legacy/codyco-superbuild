@@ -7,6 +7,8 @@ The CoDyCo project is a four-years long project that started in March 2013. At t
 
 More info at http://codyco.eu/
 
+**The CoDyCo sofrware is currently under migration from version 0.1 (contained in the `master` branch) to version 0.2 (in the `new_wbi_ID` branch). Please check that you are executing the superbuild from the branch that you are interested in.**
+
 Code documentation automatically generated: http://wiki.icub.org/codyco/dox/html/index.html
 
 This is a meta repository (so-called "superbuild") that uses [YCM](https://github.com/robotology/ycm) to compile CoDyCo software. 
@@ -53,7 +55,7 @@ To install CMake you can use the official installer available at http://www.cmak
 
 ####Eigen
 You can install Eigen from source code available from the [Eigen official website](http://eigen.tuxfamily.org).
-You can simply extract the Eigen source code in a directory, and then define the `EIGEN3_ROOT` enviroment variable to the path of the directory that contains the file `signature_of_eigen3_matrix_library` (it should be the first directory contained in the compressed file.  
+You can simply extract the Eigen source code in a directory, and then define the `EIGEN3_ROOT` environment variable to the path of the directory that contains the file `signature_of_eigen3_matrix_library` (it should be the first directory contained in the compressed file.  
 
 ####Boost 
 The easy way to install Boost on Windows is to use the [Boost binaries installers](http://sourceforge.net/projects/boost/files/boost-binaries/1.55.0/). Pay attention to 
@@ -80,16 +82,16 @@ After that you can clone the superbuild repository as any other git repository, 
 using the CMake gui. Then you open the generated solution with Visual Studio and build the target `all`. 
 Visual Studio will then download, build and install in a local directory all the CoDyCo software and its dependencies.
 
-###Configure your enviroment
+###Configure your environment
 Currently the YCM superbuild does not support building a global install target, so all binaries are installed in `codyco-superbuild/build/install/bin` and all libraries in `codyco-superbuild/build/install/lib`.
 
-To use this binaries and libraries, you should update the necessary enviroment variables.
+To use this binaries and libraries, you should update the necessary environment variables.
 
 Set the environment variable CODYCO\_SUPERBUILD\_DIR so that it points to the  directory where you clone the codyco-superbuild repository.
 
 Append $CODYCO\_SUPERBUILD\_DIR/build/install/bin to your PATH
 
-Append $CODYCO\_SUPERBUILD\_ROOT/build/install/share/codyco to your [YARP\_DATA\_DIRS](http://wiki.icub.org/yarpdoc/yarp_data_dirs.html) enviroment variable.
+Append $CODYCO\_SUPERBUILD\_ROOT/build/install/share/codyco to your [YARP\_DATA\_DIRS](http://wiki.icub.org/yarpdoc/yarp_data_dirs.html) environment variable.
 
 
 ##OS X
@@ -126,10 +128,10 @@ cmake ../ -G Xcode
 xcodebuild -configuration Release
 ```
 
-###Configure your enviroment
+###Configure your environment
 Currently the YCM superbuild does not support building a global install target, so all binaries are installed in `codyco-superbuild/build/install/bin` and all libraries in `codyco-superbuild/build/install/lib`.
 
-To use this binaries and libraries, you should update the `PATH` and `DYLD_LIBRARY_PATH` enviroment variables.
+To use this binaries and libraries, you should update the `PATH` and `DYLD_LIBRARY_PATH` environment variables.
 
 An easy way is to add this lines to the '.bashrc` file in your home directory:
 ```
@@ -174,10 +176,10 @@ cd build
 ccmake ../
 make
 ```
-###Configure your enviroment
+###Configure your environment
 Currently the YCM superbuild does not support building a global install target, so all binaries are installed in `codyco-superbuild/build/install/bin` and all libraries in `codyco-superbuild/build/install/lib`.
 
-To use this binaries and libraries, you should update the `PATH` and `LD_CONFIG_PATH` enviroment variables.
+To use this binaries and libraries, you should update the `PATH` and `LD_CONFIG_PATH` environment variables.
 
 An easy way is to add this lines to the '.bashrc` file in your home directory:
 ```
