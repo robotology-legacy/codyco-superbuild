@@ -46,5 +46,6 @@ ycm_ep_helper(orocos_kdl TYPE GIT
                          REPOSITORY traversaro/orocos_kinematics_dynamics.git
                          TAG working_find_eigen
                          COMPONENT external
+                         CMAKE_CACHE_ARGS -DOROCOSKDL_ENABLE_RPATH:BOOL=ON
                          CONFIGURE_COMMAND ${_cmake_cmd})
 unset(_cmake_cmd)
