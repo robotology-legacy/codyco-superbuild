@@ -61,7 +61,7 @@ if(CODYCO_USES_URDFDOM)
     message(STATUS "kdl_format_io is version: ${kdl_format_io_VERSION}")
 endif()
 
-find_or_build_package(YARP 2.3.60)
+find_or_build_package(YARP 2.3.63.1)
 find_or_build_package(ICUB)
 find_or_build_package(yarpWholeBodyInterface)
 
