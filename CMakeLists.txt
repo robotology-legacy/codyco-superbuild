@@ -58,7 +58,7 @@ if(CODYCO_USES_URDFDOM)
 endif()
 
 find_or_build_package(YARP 2.3.63.1)
-find_or_build_package(ICUB)
+find_or_build_package(ICUB 1.1.15)
 find_or_build_package(yarpWholeBodyInterface)
 
 #build codyco-modules and codycoCommons library only if the use of Eigen 3.2 is enable
