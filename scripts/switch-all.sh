@@ -62,12 +62,6 @@ do
     fi
 done
 
-
-
-#
-# cd ${WALKMAN_ROOT}
-# mkdir -p build
-# cd build
-# cmake ..
-# make update-all
-#
+cd ${CODYCO_SUPERBUILD_ROOT}
+cd build
+make update-all
