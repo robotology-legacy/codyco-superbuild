@@ -64,4 +64,7 @@ done
 
 cd ${CODYCO_SUPERBUILD_ROOT}
 cd build
-make update-all
+if (( $(make update-all) == 2 )); then
+    echo "${redColor}Error: There were errors during compilation ${resetColor}"
+fi
+>>>>>>> 
