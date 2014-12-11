@@ -5,6 +5,7 @@ include(FindOrBuildPackage)
 find_or_build_package(YARP QUIET)
 find_or_build_package(ICUB QUIET)
 find_or_build_package(yarpWholeBodyInterface QUIET)
+find_or_build_package(modHelp QUIET)
 
 
 set(CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED "")
@@ -40,6 +41,7 @@ ycm_ep_helper(codyco-isir TYPE GIT
               CMAKE_CACHE_ARGS ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED}
               DEPENDS YARP
                       ICUB
+                      modHelp
                       orocos_kdl
                       kdl_codyco
                       kdl_format_io
