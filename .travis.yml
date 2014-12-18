@@ -24,6 +24,7 @@ matrix:
     - os: linux
   allow_failures:
     - os: osx
+    - compiler: clang
 
 before_script:
   - sh .ci/travis-deps.sh
