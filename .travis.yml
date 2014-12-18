@@ -6,6 +6,12 @@ matrix:
       compiler: clang
       env: CODYCO_YARP_FROM_SUPERBUILD=True, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug"
     - os: linux
+      compiler: clang
+      env: CODYCO_YARP_FROM_SUPERBUILD=True, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Release"
+    - os: linux
+      compiler: gcc
+      env: CODYCO_YARP_FROM_SUPERBUILD=True, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug"
+    - os: linux
       compiler: gcc
       env: CODYCO_YARP_FROM_SUPERBUILD=True, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Release"
     - os: osx
