@@ -19,22 +19,25 @@ set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake p
 
 #Compilation options
 
-#options to build specific software or use a reduced set of dependencies 
+#options to build specific software or use a reduced set of dependencies
 option(CODYCO_USES_WBI_TOOLBOX "Whole Body Interface Toolbox - Simulink library" FALSE)
 option(CODYCO_USES_URDFDOM "Enable support for URDF input in iDynTree" TRUE)
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
 option(CODYCO_USES_EIGEN_320 "Enable compilation of software that depends on Eigen 3.2.0 (if false just depend on Eigen 3.0.5)" TRUE)
 option(CODYCO_BUILD_ISIR_MODULES "Enable compilation of ISIR controllers" FALSE)
 option(CODYCO_USES_MEX_WHOLEBODYMODEL "Enable to compile the matlab mex inteface for iWholeBodyModel" FALSE)
+# option(CODYCO_DISABLE_RPATH "Disable installation with RPATH" FALSE) ##TODO: how to control all the RPATH variables of sub-projects?
+# mark_as_advanced(CODYCO_DISABLE_RPATH)
+option(USE_SYSTEM_TINYXML "Use system TinyXML instead of superbuild one" FALSE)
 
 #options for testing
 option(CODYCO_TRAVIS_CI "Set if build is done with Travis-CI flags" FALSE)
 
-#options for using torque control on a real iCub using JTC module 
-#do not set to true unless you know what are you doing
-option(CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE_CONTROL "Set if iCub WBI implementation uses external torque control. False to use YARP Torque Control." FALSE)
-
-
+# Optionally load a file named ProjectsTags
+# for overwriting the desired branch/tag/commit
+# of the included subprojects of the superbuild
+# Useful for having superbuild "branches"
+include(ProjectsTags OPTIONAL)
 
 # Bootstrap YCM
 include(YCMBootstrap)
@@ -54,8 +57,8 @@ if(CODYCO_USES_URDFDOM)
     message(STATUS "kdl_format_io is version: ${kdl_format_io_VERSION}")
 endif()
 
-find_or_build_package(YARP 2.3.60)
-find_or_build_package(ICUB)
+find_or_build_package(YARP 2.3.63.2)
+find_or_build_package(ICUB 1.1.15)
 find_or_build_package(yarpWholeBodyInterface)
 
 #build codyco-modules and codycoCommons library only if the use of Eigen 3.2 is enable

@@ -6,24 +6,34 @@ matrix:
       compiler: clang
       env: CODYCO_YARP_FROM_SUPERBUILD=True, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug"
     - os: linux
+      compiler: clang
+      env: CODYCO_YARP_FROM_SUPERBUILD=True, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Release"
+    - os: linux
       compiler: gcc
-      env: CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE=False, CODYCO_YARP_FROM_SUPERBUILD=False, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Release"
+      env: CODYCO_YARP_FROM_SUPERBUILD=True, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug"
+    - os: linux
+      compiler: gcc
+      env: CODYCO_YARP_FROM_SUPERBUILD=True, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Release"
     - os: osx
       compiler: gcc
-      env: CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE=False, CODYCO_YARP_FROM_SUPERBUILD=True, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug"
+      env: CODYCO_YARP_FROM_SUPERBUILD=True, TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug"
     - os: osx
       compiler: clang
-      env: CODYCO_YARP_FROM_SUPERBUILD=False, TRAVIS_CMAKE_GENERATOR="Xcode", TRAVIS_BUILD_TYPE="Release"
+      env: CODYCO_YARP_FROM_SUPERBUILD=True, TRAVIS_CMAKE_GENERATOR="Xcode", TRAVIS_BUILD_TYPE="Release"
   exclude:
-    - os: linux 
+    - os: linux
   allow_failures:
     - os: osx
+    - compiler: clang
 
 before_script:
   - sh .ci/travis-deps.sh
 
 script:
-  - sh .ci/travis-build.sh
+  - mkdir build
+  - cd build
+  - cmake -G"${TRAVIS_CMAKE_GENERATOR}" -DCODYCO_TRAVIS_CI:BOOL=ON -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} -DNON_INTERACTIVE_BUILD:BOOL=TRUE ..
+  - cmake --build . --config ${TRAVIS_BUILD_TYPE}
 
 notifications:
   email:

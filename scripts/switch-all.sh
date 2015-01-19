@@ -3,14 +3,30 @@ redColor=`tput setaf 1`
 greenColor=`tput setaf 2`
 resetColor=`tput sgr0`
 
-# Get path to this file
-TMP=$(readlink --canonicalize --no-newline $BASH_SOURCE)
-# Get the current working directory (without final slash)
-TMP=$(dirname $TMP)
-# cd ..
-TMP=$TMP/..
-# Get path. At this point we should be at CODYCO_SUPERBUILD_ROOT
-CODYCO_SUPERBUILD_ROOT=$(readlink --canonicalize --no-newline $TMP)
+unamestr=`uname`
+if [[ "$unamestr" == 'Darwin' ]]; then
+    #If MAC OS
+
+    # Get path to this file
+    TMP=$( cd $(dirname $BASH_SOURCE) ; pwd -P )
+    # Get the current working directory (without final slash)
+    TMP=$(dirname $TMP)
+    # cd ..
+    TMP=$TMP/..
+
+    # Get path. At this point we should be at CODYCO_SUPERBUILD_ROOT
+    CODYCO_SUPERBUILD_ROOT=$(cd $(dirname $TMP) ; pwd -P )
+else
+    # Get path to this file
+    TMP=$(readlink --canonicalize --no-newline $BASH_SOURCE)
+    # Get the current working directory (without final slash)
+    TMP=$(dirname $TMP)
+    # cd ..
+    TMP=$TMP/..
+
+    # Get path. At this point we should be at CODYCO_SUPERBUILD_ROOT
+    CODYCO_SUPERBUILD_ROOT=$(readlink --canonicalize --no-newline $TMP)
+fi
 
 # Or ...
 # CODYCO_SUPERBUILD_ROOT=$(readlink --canonicalize --no-newline $(dirname $(readlink --canonicalize --no-newline $BASH_SOURCE))/..)
@@ -64,4 +80,7 @@ done
 
 cd ${CODYCO_SUPERBUILD_ROOT}
 cd build
-make update-all
+if (( $(make update-all) == 2 )); then
+    echo "${redColor}Error: There were errors during compilation ${resetColor}"
+fi
+
