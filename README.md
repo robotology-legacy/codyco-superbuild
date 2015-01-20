@@ -7,8 +7,6 @@ The CoDyCo project is a four-years long project that started in March 2013. At t
 
 More info at http://codyco.eu/
 
-**The CoDyCo software is currently under migration from version 0.1 (contained in the `master` branch) to version 0.2 (in the `new_wbi_ID` branch). Please check that you are executing the superbuild from the branch that you are interested in.**
-
 Code documentation automatically generated: http://wiki.icub.org/codyco/dox/html/index.html
 
 This is a meta repository (so-called "superbuild") that uses [YCM](https://github.com/robotology/ycm) to compile CoDyCo software. 
