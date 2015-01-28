@@ -94,7 +94,7 @@ For a given link \f$l\f$ from \f$\mathbf{q}\f$ it is possible to compute its pos
 \f[
 {}^w \mathbf{T}_l = {}^w \mathbf{T}_l(\mathbf{q}),
 \f]
-if in this case \f$ {}^w \mathbf{T}_l \f$ stand for an homogeneou 4x4 matrix representing the rototranslation between frame \f$l\f$ and frame \f$w\f$.
+if in this case \f$ {}^w \mathbf{T}_l \f$ stand for an homogeneous 4x4 matrix representing the rototranslation between frame \f$l\f$ and frame \f$w\f$.
 This function is called **forward kinematics**.
 
 #### Velocity
