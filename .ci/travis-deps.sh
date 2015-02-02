@@ -30,8 +30,8 @@ if [ "$TRAVIS_OS_NAME" = linux -o -z "$TRAVIS_OS_NAME" ]; then
     sudo make install
     cd ../..
 elif [ "$TRAVIS_OS_NAME" = osx ]; then
-    brew update
-    brew tap homebrew/versions
+    brew update &> /dev/null
+    # brew tap homebrew/versions #useful only if we need a particular version.
     brew install eigen boost ace pkg-config gtk+ jpeg gtkmm sqlite readline gsl libglademm tinyxml
     brew install yarp --HEAD
 fi
