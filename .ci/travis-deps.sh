@@ -30,8 +30,11 @@ if [ "$TRAVIS_OS_NAME" = linux -o -z "$TRAVIS_OS_NAME" ]; then
     sudo make install
     cd ../..
 elif [ "$TRAVIS_OS_NAME" = osx ]; then
-    brew update
-    brew tap homebrew/versions
-    brew install eigen boost ace pkg-config gtk+ jpeg gtkmm sqlite readline gsl libglademm tinyxml
+    gem install xcpretty
+    brew update &> /dev/null
+    brew tap homebrew/x11
+    source .ci/brew_install_or_upgrade_formula.sh    
+    # brew tap homebrew/versions #useful only if we need a particular version.
+    brewInstallFormulas eigen boost ace pkg-config gtk+ jpeg gtkmm sqlite readline gsl libglademm tinyxml
     brew install yarp --HEAD
 fi
