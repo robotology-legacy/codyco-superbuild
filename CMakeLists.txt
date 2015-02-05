@@ -6,6 +6,7 @@ project(codyco-superbuild NONE)
 enable_language(C)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+message ("CMAKE_MODULEPATH is: " ${CMAKE_MODULE_PATH})
 
 set(CODYCO-SUPERBUILD_MAJOR_VERSION 0)
 set(CODYCO-SUPERBUILD_MINOR_VERSION 1)
@@ -21,6 +22,7 @@ set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake p
 
 #options to build specific software or use a reduced set of dependencies
 option(CODYCO_USES_WBI_TOOLBOX "Whole Body Interface Toolbox - Simulink library" FALSE)
+option(CODYCO_USES_WBI_TOOLBOX_CONTROLLERS "Controllers and Simulink models created/used with the WBI-Toolbox" FALSE)
 option(CODYCO_USES_URDFDOM "Enable support for URDF input in iDynTree" TRUE)
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
 option(CODYCO_USES_EIGEN_320 "Enable compilation of software that depends on Eigen 3.2.0 (if false just depend on Eigen 3.0.5)" TRUE)
@@ -61,7 +63,7 @@ find_or_build_package(YARP 2.3.63.2)
 find_or_build_package(ICUB 1.1.15)
 find_or_build_package(yarpWholeBodyInterface)
 
-#build codyco-modules and codycoCommons library only if the use of Eigen 3.2 is enable
+#build codyco-modules and codycoCommons library only if the use of Eigen 3.2 is enabled
 find_or_build_package(codyco-modules)
 
 #codyco isir modules
@@ -75,6 +77,11 @@ find_or_build_package(comStepper)
 #WBI-Toolbox
 if( ${CODYCO_USES_WBI_TOOLBOX} )
     find_or_build_package(WBIToolbox)
+endif()
+
+#WBI-Toolbox-controllers
+if( ${CODYCO_USES_WBI_TOOLBOX_CONTROLLERS} )
+    find_or_build_package(WBIToolboxControllers)
 endif()
 
 #mex wholeBodyModel interface
