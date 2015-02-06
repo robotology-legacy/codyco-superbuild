@@ -9,7 +9,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 message ("CMAKE_MODULEPATH is: " ${CMAKE_MODULE_PATH})
 
 set(CODYCO-SUPERBUILD_MAJOR_VERSION 0)
-set(CODYCO-SUPERBUILD_MINOR_VERSION 1)
+set(CODYCO-SUPERBUILD_MINOR_VERSION 2)
 set(CODYCO-SUPERBUILD_PATCH_VERSION 0)
 set(CODYCO-SUPERBUILD_VERSION ${CODYCO-SUPERBUILD_MAJOR_VERSION}.${CODYCO-SUPERBUILD_MINOR_VERSION}.${CODYCO-SUPERBUILD_PATCH_VERSION})
 
@@ -60,7 +60,7 @@ if(CODYCO_USES_URDFDOM)
 endif()
 
 find_or_build_package(YARP 2.3.63.2)
-find_or_build_package(ICUB 1.1.15)
+find_or_build_package(ICUB)
 find_or_build_package(yarpWholeBodyInterface)
 
 #build codyco-modules and codycoCommons library only if the use of Eigen 3.2 is enabled
