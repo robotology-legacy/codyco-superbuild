@@ -3,7 +3,7 @@ set -e
 
 #if generator is Xcode
 if [ "${TRAVIS_CMAKE_GENERATOR}" = Xcode ]; then
-    function xcbuild { set -o pipefail && xcodebuild "$@" | xcpretty -c; }
+    xcbuild() { set -o pipefail && xcodebuild "$@" | xcpretty -c; }
     export -f xcbuild
     
     xcbuild -configuration ${TRAVIS_BUILD_TYPE}
