@@ -54,11 +54,6 @@ if(CODYCO_USES_EIGEN_320)
     find_package(Eigen3 3.2)
 endif()
 
-if(CODYCO_USES_URDFDOM)
-    find_or_build_package(kdl_format_io)
-    message(STATUS "kdl_format_io is version: ${kdl_format_io_VERSION}")
-endif()
-
 find_or_build_package(YARP 2.3.63.2)
 find_or_build_package(ICUB)
 find_or_build_package(yarpWholeBodyInterface)

@@ -12,9 +12,8 @@ find_or_build_package(ICUB QUIET)
 # Therefore we disable the package registry using
 # NO_CMAKE_PACKAGE_REGISTRY
 find_or_build_package(orocos_kdl QUIET NO_CMAKE_PACKAGE_REGISTRY)
-find_or_build_package(kdl_codyco QUIET NO_CMAKE_PACKAGE_REGISTRY)
-find_or_build_package(kdl_format_io QUIET NO_CMAKE_PACKAGE_REGISTRY)
-
+find_or_build_package(urdfdom_headers QUIET)
+find_or_build_package(urdfdom QUIET)
 
 ycm_ep_helper(iDynTree TYPE GIT
               STYLE GITHUB
@@ -25,5 +24,5 @@ ycm_ep_helper(iDynTree TYPE GIT
               DEPENDS YARP
                       ICUB
                       orocos_kdl
-                      kdl_codyco
-                      kdl_format_io)
+                      urdfdom_headers
+                      urdfdom)

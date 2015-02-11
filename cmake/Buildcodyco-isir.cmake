@@ -42,9 +42,6 @@ ycm_ep_helper(codyco-isir TYPE GIT
               DEPENDS YARP
                       ICUB
                       modHelp
-                      orocos_kdl
-                      kdl_codyco
-                      kdl_format_io
                       iDynTree
                       wholeBodyInterface
                       yarpWholeBodyInterface)
