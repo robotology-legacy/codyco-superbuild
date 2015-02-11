@@ -18,7 +18,7 @@ find_or_build_package(urdfdom QUIET)
 ycm_ep_helper(iDynTree TYPE GIT
               STYLE GITHUB
               REPOSITORY robotology-playground/iDynTree.git
-              TAG development
+              TAG master
               COMPONENT libraries
               CMAKE_CACHE_ARGS -DIDYNTREE_ENABLE_URDF:BOOL=ON
               DEPENDS YARP
