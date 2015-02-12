@@ -17,16 +17,20 @@ if [ "$TRAVIS_OS_NAME" = linux -o -z "$TRAVIS_OS_NAME" ]; then
         #sudo apt-get --force-yes install icub
     #fi
     sudo apt-get install cmake
-    #eigen 3.2 support
-    hg clone https://bitbucket.org/eigen/eigen/
-    cd eigen
-    hg checkout 3.2.0
-    mkdir build
-    cd build
-    cmake ..
-    make
-    sudo make install
-    cd ../..
+    if [ "k$CODYCO_WITH_OLD_EIGEN" = "ktrue" ]; then
+        sudo apt-get install libeigen3-dev
+    else
+        #eigen 3.2 support
+        hg clone https://bitbucket.org/eigen/eigen/
+        cd eigen
+        hg checkout 3.2.0
+        mkdir build
+        cd build
+        cmake ..
+        make
+        sudo make install
+        cd ../..
+    fi
 elif [ "$TRAVIS_OS_NAME" = osx ]; then
     gem install xcpretty
     brew update &> /dev/null
