@@ -6,7 +6,6 @@ project(codyco-superbuild NONE)
 enable_language(C)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
-message ("CMAKE_MODULEPATH is: " ${CMAKE_MODULE_PATH})
 
 set(CODYCO-SUPERBUILD_MAJOR_VERSION 0)
 set(CODYCO-SUPERBUILD_MINOR_VERSION 2)
