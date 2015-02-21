@@ -134,8 +134,8 @@ To use this binaries and libraries, you should update the `PATH` and `DYLD_LIBRA
 An easy way is to add this lines to the '.bashrc` file in your home directory:
 ```
 CODYCO_SUPERBUILD_ROOT=/directory/where/you/downloaded/codyco-superbuild
-export PATH=$CODYCO_SUPERBUILD_ROOT/build/install/bin:$PATH
-export DYLD_LIBRARY_PATH=$CODYCO_SUPERBUILD_ROOT/build/install/lib:$DYLD_LIBRARY_PATH
+export PATH=$PATH:$CODYCO_SUPERBUILD_ROOT/build/install/bin
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CODYCO_SUPERBUILD_ROOT/build/install/lib
 export YARP_DATA_DIRS=$YARP_DATA_DIRS:$CODYCO_SUPERBUILD_ROOT/build/install/share/codyco
 ```
 To use the updated `.bashrc` in your terminal you should run the following command:
