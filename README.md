@@ -129,19 +129,31 @@ xcodebuild -configuration Release
 ###Configure your environment
 Currently the YCM superbuild does not support building a global install target, so all binaries are installed in `codyco-superbuild/build/install/bin` and all libraries in `codyco-superbuild/build/install/lib`.
 
-To use this binaries and libraries, you should update the `PATH` and `DYLD_LIBRARY_PATH` environment variables.
+To use this binaries you should update the `PATH` environment variables.
 
-An easy way is to add this lines to the '.bashrc` file in your home directory:
-```
+An easy way is to add these lines to the `.bashrc` or `.bash_profile` file in your home directory:
+```bash
 CODYCO_SUPERBUILD_ROOT=/directory/where/you/downloaded/codyco-superbuild
 export PATH=$PATH:$CODYCO_SUPERBUILD_ROOT/build/install/bin
-export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CODYCO_SUPERBUILD_ROOT/build/install/lib
 export YARP_DATA_DIRS=$YARP_DATA_DIRS:$CODYCO_SUPERBUILD_ROOT/build/install/share/codyco
 ```
+
+Most of the modules in the codyco-superbuild are correctly configured to automatically find the libraries.
+If you create a new application or library that need to be linked to codyco-superbuild libraries (or if you are having issues with the dynamic loader) add also the following line to your `.bashrc` or `.bash_profile`.
+
+```bash
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$CODYCO_SUPERBUILD_ROOT/build/install/lib
+```
+
 To use the updated `.bashrc` in your terminal you should run the following command:
 ```bash
 user@host:~$ source ~/.bashrc
 ```
+or for the `.bash_profile` file
+```bash
+user@host:~$ source ~/.bash_profile
+```
+or simply open a new terminal.
 
 ##Linux 
 ###System Dependencies 
