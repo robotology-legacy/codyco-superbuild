@@ -12,17 +12,42 @@ Code documentation automatically generated: http://wiki.icub.org/codyco/dox/html
 This is a meta repository (so-called "superbuild") that uses [YCM](https://github.com/robotology/ycm) to compile CoDyCo software. 
 A YCM Superbuild is a CMake project whose only goal is to download and build several other projects. You can read more about the superbuild concept in [YCM documentation](http://robotology.github.io/ycm/gh-pages/master/manual/ycm-superbuild.7.html).
 
-codyco-superbuild will download and build the following projects:
+Superbuild structure
+====================
+
+codyco-superbuild will download and build a number of projects, divided in components.
+For each project, the repository will be downloaded in the `component/project` subdirectory
+of the superbuild root. The build directory for a given project will be instead the `component/project` subdirectory
+of the superbuild build directory. 
+
+external
+--------
+The `external` component contains software not developed inside the CoDyCo consortium, but that is a dependency of CoDyCo software. 
+
+libraries
+---------
+The `libraries` component contains librares developed by the CoDyCo consortium, that could be used also by external software. 
+
+The projects downloaded in the `libraries` component are:
+
 * `codyco-commons`: A collection of functions and utilities used in the other projects [Project page](https://github.com/robotology-playground/codyco-commons)
 * `idyntree`: YARP-based Floating Base Robot Dynamics Library [Project Page](https://github.com/robotology-playground/idyntree)
 * `paramHelp`: Library for simplifying the management of the parameters of YARP modules [Project page](https://github.com/robotology-playground/paramHelp)
 * `wholebodyinterface`: C++ Interfaces to sensor measurements, state estimations, kinematic/dynamic model and actuators for a floating base robot [Project Page](https://github.com/robotology-playground/wholebodyinterface)
 * `yarp-wholebodyinterface`: Implementation of the wholeBodyInterface for YARP robots [Project Page](https://github.com/robotology-playground/yarp-wholebodyinterface)
+
+`main`
+----
+The `main` component contains executable software developed by the CoDyCo consortium, for example YARP modules, 
+Simulink models or Lua scripts. 
+
+The projects downloaded in the `main` component are:
+
 * `WBI-Toolbox`: Simulink Toolbox for rapid prototyping of Whole Body Robot Controllers [Project Page](https://github.com/robotology-playground/WBI-Toolbox)
 * `codyco-modules`: YARP modules and controllers developed within the European Project CoDyCo [project Page](https://github.com/robotology/codyco-modules)
 
 Update
-------
+======
 For updating the codyco-superbuild repository it is possible to just fetch the last changes using the usual 
 git command:
 ~~~
@@ -35,7 +60,7 @@ make update-all
 ~~~
 
 Installation
-------------
+============
 **The [`gazebo-yarp-plugins`](https://github.com/robotology/gazebo_yarp_plugins), that are usually used for testing CoDyCo software simulating the iCub in Gazebo, are not installed by the `codyco-superbuild`. If you want to simulate the iCub in Gazebo you have to follow the instruction in [gazebo-yarp-plugins README](https://github.com/robotology/gazebo_yarp_plugins).**
 
 
