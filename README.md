@@ -20,11 +20,11 @@ For each project, the repository will be downloaded in the `component/project` s
 of the superbuild root. The build directory for a given project will be instead the `component/project` subdirectory
 of the superbuild build directory. 
 
-external
+`external`
 --------
 The `external` component contains software not developed inside the CoDyCo consortium, but that is a dependency of CoDyCo software. 
 
-libraries
+`libraries`
 ---------
 The `libraries` component contains librares developed by the CoDyCo consortium, that could be used also by external software. 
 
