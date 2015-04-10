@@ -184,7 +184,7 @@ or simply open a new terminal.
 ###System Dependencies 
 On Debian based systems (as Ubuntu) you can install CMake and Eigen (and other dependencies necessary for the codyco-superbuild) using `apt-get`:
 ```
-sudo apt-get install libeigen3-dev cmake cmake-curses-gui libboost-system-dev libboost-thread-dev libtinyxml-dev libace-dev libgtkmm-2.4-dev libglademm-2.4-dev libgsl0-dev libcv-dev libhighgui-dev libcvaux-dev libode-dev liblua5.1-dev lua5.1 
+sudo apt-get install libeigen3-dev cmake cmake-curses-gui libboost-system-dev libboost-thread-dev libtinyxml-dev libace-dev libgtkmm-2.4-dev libglademm-2.4-dev libgsl0-dev libcv-dev libhighgui-dev libcvaux-dev libode-dev liblua5.1-dev lua5.1 swig
 ```
 The packages provided in the official distro repositories work out of the box for **Ubuntu 14.04** (`trusty`), **Ubuntu 13.10** (`saucy`) and **Debian 8** (`jessie`).
 For older distros the included CMake and Eigen are too old, and is necessary to find a way to install them from an alternative
@@ -200,9 +200,9 @@ the codyco-superbuild only supports YARP and ICUB installed from sources.
 
 ##### Optional dependency: Lua 
 For replicating the demonstrations of the validation scenarios, you need some additional dependency related to the Lua language for coordinating the different software components.
-For installing the Lua language and the related libraries you can use apt-get (this should have been already installed):
+For installing the Lua language and the related libraries you can use apt-get (this should have been already installed if you properly followed the previous steps):
 ```
-sudo apt-get install liblua5.1-dev lua5.1 
+sudo apt-get install swig liblua5.1-dev lua5.1 
 ```
 After installing the Lua language, you should install the [rFSM](https://github.com/kmarkus/rFSM) and enable the [yarp-lua](http://wiki.icub.org/yarpdoc/yarp_swig.html) bindings and the [portmonitor carrier](http://wiki.icub.org/yarpdoc/portmonitor.html) in YARP compilation. 
 
