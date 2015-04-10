@@ -214,7 +214,7 @@ make sure to enable `CREATE_LUA` and `ENABLE_yarpcar_portmonitor_carrier`. Then 
 
 After that, make sure that `Lua` can find the yarp bindings by adding the 
 ~~~
-export LUA_CPATH=";;;$YARP_DIR/lib/lua?.so"
+export LUA_CPATH=";;;$YARP_DIR/lib/lua/?.so"
 ~~~
 to your `.bashrc` file, where `$YARP_DIR` is the build or installation directory of YARP. 
 
