@@ -33,7 +33,7 @@ elseif()
     set(CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED} -DCODYCO_ICUBWBI_USE_EXTERNAL_TORQUE_CONTROL:BOOL=OFF)
 endif()
 
-ycm_ep_helper(codyco-isir TYPE GIT
+ycm_ep_helper(ocra-wbi-plugins TYPE GIT
               STYLE GITHUB
               REPOSITORY ocra-recipes/ocra-wbi-plugins.git
               TAG master
