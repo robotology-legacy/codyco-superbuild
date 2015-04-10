@@ -63,7 +63,7 @@ find_or_build_package(codyco-modules)
 
 #codyco isir modules
 if( ${CODYCO_BUILD_ISIR_MODULES} )
-    find_or_build_package(codyco-isir)
+    find_or_build_package(ocra-wbi-plugins)
 endif()
 
 #additional modules
