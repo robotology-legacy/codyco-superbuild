@@ -35,7 +35,7 @@ endif()
 
 ycm_ep_helper(codyco-isir TYPE GIT
               STYLE GITHUB
-              REPOSITORY robotology-playground/codyco-isir.git
+              REPOSITORY ocra-recipes/ocra-wbi-plugins.git
               TAG master
               COMPONENT main
               CMAKE_CACHE_ARGS ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED}
