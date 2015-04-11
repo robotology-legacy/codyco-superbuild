@@ -44,7 +44,8 @@ Simulink models or Lua scripts.
 The projects downloaded in the `main` component are:
 
 * `WBI-Toolbox`: Simulink Toolbox for rapid prototyping of Whole Body Robot Controllers [Project Page](https://github.com/robotology-playground/WBI-Toolbox)
-* `codyco-modules`: YARP modules and controllers developed within the European Project CoDyCo [project Page](https://github.com/robotology/codyco-modules)
+* `codyco-modules`: YARP modules and controllers developed within the European Project CoDyCo [Project Page](https://github.com/robotology/codyco-modules)
+* `ocra-wbi-plugins`: Interface between the whole-body controller libraries developed at ISIR and and WBI [Project Page](https://github.com/ocra-recipes/ocra-wbi-plugins). Depends on the `ocra-core` libraries which can be found [here](https://github.com/ocra-recipes/ocra-core). 
 
 Update
 ======
@@ -63,7 +64,6 @@ Installation
 ============
 **The [`gazebo-yarp-plugins`](https://github.com/robotology/gazebo_yarp_plugins), that are usually used for testing CoDyCo software simulating the iCub in Gazebo, are not installed by the `codyco-superbuild`. If you want to simulate the iCub in Gazebo you have to follow the instruction in [gazebo-yarp-plugins README](https://github.com/robotology/gazebo_yarp_plugins).**
 
-
 We provide different instructions on how to install codyco-superbuild, depending on your operating system:
 * [**Windows**](#windows): use the superbuild with Microsoft Visual Studio
 * [**OS X**](#os-x): use the superbuild with Xcode or GNU make
@@ -78,7 +78,7 @@ To install CMake you can use the official installer available at http://www.cmak
 
 ####Eigen
 You can install Eigen from source code available from the [Eigen official website](http://eigen.tuxfamily.org).
-You can simply extract the Eigen source code in a directory, and then define the `EIGEN3_ROOT` environment variable to the path of the directory that contains the file `signature_of_eigen3_matrix_library` (it should be the first directory contained in the compressed file.  
+You can simply extract the Eigen source code in a directory, and then define the `EIGEN3_ROOT` environment variable to the path of the directory that contains the file `signature_of_eigen3_matrix_library` (it should be the first directory contained in the compressed file.
 
 ####Boost 
 The easy way to install Boost on Windows is to use the [Boost binaries installers](http://sourceforge.net/projects/boost/files/boost-binaries/1.55.0/). Pay attention to 
@@ -264,3 +264,11 @@ If may also be necessary to updates the cache of the dynamic linker:
 ```bash
 user@host:~$ sudo ldconfig
 ```
+
+##A Note On `ocra-wbi-plugins`
+If you plan on using the `ocra-wbi-plugins` a.k.a `ISIR_MODULES` then you need to use an earlier version of Eigen (<= 3.0.5). The [`ocra-core` instructions](https://github.com/ocra-recipes/ocra-core) provide information on how to use earlier versions of Eigen and set up your environement. Additionally you must configure the superbuild CMake flags to the following:
+```
+CODYCO_BUILD_ISIR_MODULES : ON
+CODYCO_USES_EIGEN_320 : OFF
+```
+This has only been tested in Ubuntu 12.04 but should be expanded to other OS's in the future.
