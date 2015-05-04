@@ -20,7 +20,9 @@ set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake p
 #Compilation options
 
 #options to build specific software or use a reduced set of dependencies
-option(CODYCO_USES_MATLAB "Enable compilation of software that depends on Matlab" FALSE)
+option(CODYCO_USES_MATLAB "Enable compilation of software that depend on Matlab" FALSE)
+option(CODYCO_USES_LUA "Enable compilation of software that depend on Lua" FALSE)
+option(CODYCO_USES_PYTHON "Enable compilation of software that depend on Python" FALSE)
 option(CODYCO_USES_WBI_TOOLBOX "Whole Body Interface Toolbox - Simulink library" FALSE)
 option(CODYCO_USES_WBI_TOOLBOX_CONTROLLERS "Controllers and Simulink models created/used with the WBI-Toolbox" FALSE)
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
