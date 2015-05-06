@@ -34,14 +34,14 @@ if(MSVC)
     else()
         set(ADDRESS_MODEL "address-model=32")
     endif()
-	set(Boost_VARIANT "debug" CACHE STRING "Possible values: debug, release")
+	set(Boost_VARIANT "release" CACHE STRING "Possible values: debug, release")
 
 else()
     set(LAYOUT "tagged")
     set(BUILD_TOOLSET "")
     set(EXT "sh")
     set(ADDRESS_MODEL "") # for linux??
-	set(Boost_VARIANT "debug,release" CACHE STRING "Possible values: debug, release")
+	set(Boost_VARIANT "release" CACHE STRING "Possible values: debug, release")
 
 endif()
 
@@ -50,15 +50,18 @@ endif()
 # so we automatically extract boost dependency from boostdep,
 # and we generated the BoostDependencies.cmake file with the 
 # generateBoostDependencies.py script 
-include(BoostDependencies.cmake)
+include(BoostDependencies)
 
 # Expand dependencies 
 # Note: we should not worry about indirected dependencies because
 #       those dependencies are already expanded by the generateBoostDependencies.cmake scritp
 set(BOOST_BUILD_COMPONENTS_WITH_DEPS "")
+message(STATUS "BOOST_BUILD_COMPONENTS :" ${BOOST_BUILD_COMPONENTS})
 foreach(_comp ${BOOST_BUILD_COMPONENTS})
+    message(STATUS "Considering component " ${_comp})
     list(APPEND BOOST_BUILD_COMPONENTS_WITH_DEPS ${_comp})
     foreach(_comp_dep ${${_comp}_BOOST_COMPONENTS_DEPENDS})
+	    message(STATUS "Adding dependency " ${_comp_dep})
         list(APPEND BOOST_BUILD_COMPONENTS_WITH_DEPS ${_comp_dep})
     endforeach()
 endforeach()
@@ -77,7 +80,7 @@ set(COMPONENTS_TO_COMPILE atomic
                           date_time
                           thread
                           exception
-                          math
+                          "math"
                           container)
 
 #Add the submodules that is necessary to pull 
@@ -134,7 +137,8 @@ ExternalProject_add(Boost
                     BUILD_COMMAND <SOURCE_DIR>/b2 ${BUILD_TOOLSET} ${MAKE_ARGS} ${ADDRESS_MODEL} 
                                                   variant=${Boost_VARIANT}
                                                   link=${BOOST_BUILDING_TYPE} 
-                                                  threading=multi 
+                                                  threading=multi
+												  pch=off
                                                   runtime-link=shared
                                                   -d0 
                                                   --layout=${LAYOUT}

@@ -4,13 +4,13 @@ import sys
 def convertToBoostRepos(input_string):
     # some libraries need to be renamed
     if( input_string == "numeric~odeint" ):
-        return "odeint"
+        return "numeric/odeint"
     if( input_string == "numeric~conversion" ):
-        return "conversion"
+        return "numeric/conversion"
     if( input_string == "numeric~ublas" ):
-        return "ublas"
+        return "numeric/ublas"
     if( input_string == "numeric~interval" ):
-        return "interval"
+        return "numeric/interval"
     # some strings are not libraries
     garbage_strings = [u'\u21e2', u'(unknown)']
     if( input_string in garbage_strings ):
