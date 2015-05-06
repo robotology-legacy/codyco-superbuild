@@ -1,4 +1,4 @@
-# Copyright (C) 2011-2013  Istituto Italiano di Tecnologia, Massachussets Institute of Techology
+# Copyright (C) 2011-2015  Istituto Italiano di Tecnologia, Massachussets Institute of Techology
 # Authors: Elena Ceseracciu  <elena.ceseracciu@iit.it>, 
 #          Matteo Santoro    <msantoro@mit.edu>,
 #          Silvio Traversaro <silvio.traversaro@iit.it>
@@ -47,153 +47,14 @@ endif()
 
 # Address components dependencies: unfortunatly boost build 
 # system does not address for now automatic dependency resolution
-# so we hardcode dependencies for the components we are interested in 
-# (I know, it is ugly. But it works. As soon as things evolve on the Boost
-#    side, we will promptly adapt. If you have any better idea please 
-#    ping me at silvio DOT traversaro AT iit DOT it ).
+# so we automatically extract boost dependency from boostdep,
+# and we generated the BoostDependencies.cmake file with the 
+# generateBoostDependencies.py script 
+include(BoostDependencies.cmake)
 
-# smart_ptr dependencies
-set(smart_ptr_BOOST_COMPONENTS_DEPENDS throw_exception
-                                       predef)
-
-# iterator dependencies
-set(iterator_BOOST_COMPONENTS_DEPENDS static_assert)
-
-# range dependencies
-set(range_BOOST_COMPONENTS_DEPENDS iterator
-                                   concept_check)
-list(APPEND range_BOOST_COMPONENTS_DEPENDS 
-            ${iterator_BOOST_COMPONENTS_DEPENDS})
-
-# mpl dependencies
-set(mpl_BOOST_COMPONENTS_DEPENDS preprocessor)
-
-# chrono dependencies
-set(chrono_BOOST_COMPONENTS_DEPENDS ratio
-                                    typeof)
-                                    
-# detail dependencies
-set(detail_BOOST_COMPONENTS_DEPENDS integer)
-                                    
-# optional dependencies
-set(optional_BOOST_COMPONENTS_DEPENDS detail
-                                      utility) 
-foreach(_comp_dep ${optional_BOOST_COMPONENTS_DEPENDS})
-	list(APPEND optional_BOOST_COMPONENTS_DEPENDS 
-                    ${${_comp_dep}_BOOST_COMPONENTS_DEPENDS})
-endforeach()
-
-# format dependencies
-set(format_BOOST_COMPONENTS_DEPENDS optional
-                                    smart_ptr) 
-foreach(_comp_dep ${format_BOOST_COMPONENTS_DEPENDS})
-	list(APPEND format_BOOST_COMPONENTS_DEPENDS 
-                    ${${_comp_dep}_BOOST_COMPONENTS_DEPENDS})
-endforeach()
-
-# type_traits dependencies
-set(type_traits_BOOST_COMPONENTS_DEPENDS mpl)
-list(APPEND type_traits_BOOST_COMPONENTS_DEPENDS 
-            ${mpl_BOOST_COMPONENTS_DEPENDS})
-
-# math dependencies
-set(math_BOOST_COMPONENTS_DEPENDS format
-                                  fusion
-                                  type_traits
-                                  static_assert
-                                  assert
-                                  core
-                                  move
-                                  range
-                                  atomic)
-foreach(_comp_dep ${math_BOOST_COMPONENTS_DEPENDS})
-        message(STATUS "Adding dep "${_comp_deb})
-	list(APPEND math_BOOST_COMPONENTS_DEPENDS 
-                    ${${_comp_dep}_BOOST_COMPONENTS_DEPENDS})
-endforeach()
-
-# array dependencies
-set(array_BOOST_COMPONENTS_DEPENDS functional
-                                   core
-                                   assert
-                                   detail
-                                   throw_exception
-                                   config)
-foreach(_comp_dep ${array_BOOST_COMPONENTS_DEPENDS})
-        message(STATUS "Adding dep " ${_comp_deb})
-	list(APPEND array_BOOST_COMPONENTS_DEPENDS 
-                    ${${_comp_dep}_BOOST_COMPONENTS_DEPENDS})
-endforeach()
-
-
-# lexical_cast dependencies
-set(lexical_cast_BOOST_COMPONENTS_DEPENDS numeric
-                                          array
-                                          container
-                                          math)
-foreach(_comp_dep ${lexical_cast_BOOST_COMPONENTS_DEPENDS})
-        message(STATUS "Adding dep " ${_comp_deb})
-	list(APPEND lexical_cast_BOOST_COMPONENTS_DEPENDS 
-                    ${${_comp_dep}_BOOST_COMPONENTS_DEPENDS})
-endforeach()
-
-
-# date_time dependencies
-set(date_time_BOOST_COMPONENTS_DEPENDS lexical_cast
-                                       concept_check
-                                       tokenizer)
-foreach(_comp_dep ${date_time_BOOST_COMPONENTS_DEPENDS})
-        message(STATUS "Adding dep " ${_comp_deb})
-	list(APPEND date_time_BOOST_COMPONENTS_DEPENDS 
-                    ${${_comp_dep}_BOOST_COMPONENTS_DEPENDS})
-endforeach()
-
-
-
-
-# thread dependencies
-set(thread_BOOST_COMPONENTS_DEPENDS config
-                                    atomic
-                                    chrono
-                                    move
-                                    tuple
-                                    bind
-                                    date_time
-                                    integer
-                                    exception
-                                    function
-				    algorithm)
-foreach(_comp_dep ${thread_BOOST_COMPONENTS_DEPENDS})
-        message(STATUS "Adding dep " ${_comp_deb})
-	list(APPEND thread_BOOST_COMPONENTS_DEPENDS 
-                    ${${_comp_dep}_BOOST_COMPONENTS_DEPENDS})
-endforeach()
-
-
-# system dependencies
-set(system_BOOST_COMPONENTS_DEPENDS core
-                                    config
-                                    assert
-                                    utility
-                                    predef)
-
-# filesystem dependencies
-set(filesystem_BOOST_COMPONENTS_DEPENDS system
-                                        type_traits
-                                        detail
-                                        range
-                                        smart_ptr
-                                        io
-                                        functional)
-foreach(_comp_dep ${filesystem_BOOST_COMPONENTS_DEPENDS})
-        message(STATUS "Adding dep " ${_comp_deb})
-	list(APPEND filesystem_BOOST_COMPONENTS_DEPENDS 
-                    ${${_comp_dep}_BOOST_COMPONENTS_DEPENDS})
-endforeach()
-
-
-
-# Expand dependencies (NOTE: it does not address recursive dependencies)
+# Expand dependencies 
+# Note: we should not worry about indirected dependencies because
+#       those dependencies are already expanded by the generateBoostDependencies.cmake scritp
 set(BOOST_BUILD_COMPONENTS_WITH_DEPS "")
 foreach(_comp ${BOOST_BUILD_COMPONENTS})
     list(APPEND BOOST_BUILD_COMPONENTS_WITH_DEPS ${_comp})
