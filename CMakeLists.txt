@@ -8,7 +8,7 @@ enable_language(C)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 set(CODYCO-SUPERBUILD_MAJOR_VERSION 0)
-set(CODYCO-SUPERBUILD_MINOR_VERSION 1)
+set(CODYCO-SUPERBUILD_MINOR_VERSION 2)
 set(CODYCO-SUPERBUILD_PATCH_VERSION 0)
 set(CODYCO-SUPERBUILD_VERSION ${CODYCO-SUPERBUILD_MAJOR_VERSION}.${CODYCO-SUPERBUILD_MINOR_VERSION}.${CODYCO-SUPERBUILD_PATCH_VERSION})
 
@@ -19,22 +19,30 @@ set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake p
 
 #Compilation options
 
-#options to build specific software or use a reduced set of dependencies 
+#options to build specific software or use a reduced set of dependencies
+option(CODYCO_USES_MATLAB "Enable compilation of software that depend on Matlab" FALSE)
+option(CODYCO_USES_LUA "Enable compilation of software that depend on Lua" FALSE)
+option(CODYCO_USES_PYTHON "Enable compilation of software that depend on Python" FALSE)
 option(CODYCO_USES_WBI_TOOLBOX "Whole Body Interface Toolbox - Simulink library" FALSE)
-option(CODYCO_USES_URDFDOM "Enable support for URDF input in iDynTree" TRUE)
+option(CODYCO_USES_WBI_TOOLBOX_CONTROLLERS "Controllers and Simulink models created/used with the WBI-Toolbox" FALSE)
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
 option(CODYCO_USES_EIGEN_320 "Enable compilation of software that depends on Eigen 3.2.0 (if false just depend on Eigen 3.0.5)" TRUE)
 option(CODYCO_BUILD_ISIR_MODULES "Enable compilation of ISIR controllers" FALSE)
+option(CODYCO_BUILD_QPOASES "Enable compilation of qpOASES" TRUE)
 option(CODYCO_USES_MEX_WHOLEBODYMODEL "Enable to compile the matlab mex inteface for iWholeBodyModel" FALSE)
+# option(CODYCO_DISABLE_RPATH "Disable installation with RPATH" FALSE) ##TODO: how to control all the RPATH variables of sub-projects?
+# mark_as_advanced(CODYCO_DISABLE_RPATH)
+option(USE_SYSTEM_TINYXML "Use system TinyXML instead of superbuild one" FALSE)
 
 #options for testing
+option(CODYCO_COMPILE_TESTS "Compile tests using the robot testing framework" FALSE)
 option(CODYCO_TRAVIS_CI "Set if build is done with Travis-CI flags" FALSE)
 
-#options for using torque control on a real iCub using JTC module 
-#do not set to true unless you know what are you doing
-option(CODYCO_ICUBWBI_USE_EXTERNAL_TORQUE_CONTROL "Set if iCub WBI implementation uses external torque control. False to use YARP Torque Control." FALSE)
-
-
+# Optionally load a file named ProjectsTags
+# for overwriting the desired branch/tag/commit
+# of the included subprojects of the superbuild
+# Useful for having superbuild "branches"
+include(ProjectsTags OPTIONAL)
 
 #Set CMake policies
 if(NOT CMAKE_VERSION VERSION_LESS 3.0)
@@ -55,28 +63,37 @@ include(YCMEPHelper)
 # this is not possible in FindBoost.cmake . For this 
 # reason we first search for Boost and only if we can't
 # find it in the system we call find_or_build_package
-# with the required components. 
-find_package(Boost)
-if(NOT ${Boost_FOUND})
-    # This Boost dependencies are required by urdfdom
-    find_or_build_package(Boost COMPONENTS smart_ptr algorithm lexical_cast)
+# with the required components.
+if(MSVC) 
+	find_package(Boost)
+	if(NOT ${Boost_FOUND})
+		# install Boost from superbuild only on Windows 
+		# This Boost dependencies are required by urdfdom
+		find_or_build_package(Boost COMPONENTS smart_ptr algorithm lexical_cast)
+	endif()
+
+	find_package(Eigen3)
+	if(NOT ${Eigen3_FOUND} )
+		# install Eigen from superbuild only on Windows 
+		find_or_build_package(Eigen3)
+	endif()
+	
 endif()
 
 if(CODYCO_USES_EIGEN_320)
-    #find_package(Eigen3 3.2 REQUIRED)
-    find_or_build_package(Eigen3 3.2)
+    find_package(Eigen3 3.2 REQUIRED)
 endif()
 
-find_or_build_package(YARP 2.3.60)
+find_or_build_package(YARP 2.3.63.2)
 find_or_build_package(ICUB)
 find_or_build_package(yarpWholeBodyInterface)
 
-#build codyco-modules and codycoCommons library only if the use of Eigen 3.2 is enable
+#build codyco-modules and codycoCommons library only if the use of Eigen 3.2 is enabled
 find_or_build_package(codyco-modules)
 
 #codyco isir modules
 if( ${CODYCO_BUILD_ISIR_MODULES} )
-    find_or_build_package(codyco-isir)
+    find_or_build_package(ocra-wbi-plugins)
 endif()
 
 #additional modules
@@ -87,6 +104,11 @@ if( ${CODYCO_USES_WBI_TOOLBOX} )
     find_or_build_package(WBIToolbox)
 endif()
 
+#WBI-Toolbox-controllers
+if( ${CODYCO_USES_WBI_TOOLBOX_CONTROLLERS} )
+    find_or_build_package(WBIToolboxControllers)
+endif()
+
 #mex wholeBodyModel interface
 if( ${CODYCO_USES_MEX_WHOLEBODYMODEL} )
    find_or_build_package(mexWholeBodyModel)
@@ -95,6 +117,17 @@ endif()
 #icub-model-generator
 if(${CODYCO_BUILD_ICUB_MODEL_GENERATOR})
     find_or_build_package(icub-model-generator)
+endif()
+
+#qpOASES
+if(${CODYCO_BUILD_QPOASES})
+    find_or_build_package(qpOASES)
+endif()
+
+# adding test related subprojces
+if(${CODYCO_COMPILE_TESTS})
+    find_or_build_package(RTF)
+    find_or_build_package(icub-tests)
 endif()
 
 #Documentation

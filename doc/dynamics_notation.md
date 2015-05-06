@@ -79,22 +79,22 @@ To fully specify the position of the free floating robot with respect to the wor
 
 The pose of this **floating base** with respect to the world reference frame is indicated with \f${}^wT_b\f$. As \f${}^wT_b\f$ is an element of special Euclidean group \f$SE(3)\f$ a appropriate choice of the parametrization has to be done. Depending on the chosen parametrization, the dimension of \f$\mathbf{q}_b\f$ can vary. (Reference to jain, mujoco, kheddar)
 
-By abuse of notation, we define \f$\mathbf{q}\f$ as the vector obtained by stacking \f$v{}^wT_b\f$ and \f$\mathbf{q}_f\f$:
+By abuse of notation, we define \f$\mathbf{q}\f$ as the vector obtained by stacking \f$ {}^wT_b \f$ and \f$ \mathbf{q}_j \f$:
 \f[
 \mathbf{q} = \begin{bmatrix} {}^wT_b\ \\ \mathbf{q}_j \end{bmatrix} \in \mathbb{R}^{n_{dof}+m}
 \f]
 
-Where $m$ is the dimension of the used parametrization of \f$SE(3)\f$.
+Where \f$m \f$ is the dimension of the used parametrization of \f$SE(3)\f$.
 
 While in papers and reports is convenient to manipulate \f$\mathbf{q}\f$ as a
-vector, in software is it often more convenient to use high level objects to represent \f$\mathbf{q}\f$ or \f${}^wT_b\\f$, that permit to abstract the particular representation used to express \f${}^wT_b\\f$.
+vector, in software is it often more convenient to use high level objects to represent \f$\mathbf{q}\f$ or \f${}^wT_b \f$, that permit to abstract the particular representation used to express \f${}^wT_b \f$.
 A good example of such high level object is the KDL::Frame provided by the KDL library. The wbi::Frame class of the wholeBodyInterface is just a local fork of KDL::Frame.
 
 For a given link \f$l\f$ from \f$\mathbf{q}\f$ it is possible to compute its pose with respect to the world reference frame:
 \f[
 {}^w \mathbf{T}_l = {}^w \mathbf{T}_l(\mathbf{q}),
 \f]
-if in this case \f$ {}^w \mathbf{T}_l \f$ stand for an homogeneou 4x4 matrix representing the rototranslation between frame \f$l\f$ and frame \f$w\f$.
+if in this case \f$ {}^w \mathbf{T}_l \f$ stand for an homogeneous 4x4 matrix representing the rototranslation between frame \f$l\f$ and frame \f$w\f$.
 This function is called **forward kinematics**.
 
 #### Velocity
