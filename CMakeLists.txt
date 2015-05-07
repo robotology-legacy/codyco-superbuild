@@ -78,10 +78,10 @@ if(MSVC)
 		find_or_build_package(Eigen3)
 	endif()
 	
-endif()
-
-if(CODYCO_USES_EIGEN_320)
-    find_or_build_package(Eigen3 3.2 REQUIRED)
+else()
+    if(CODYCO_USES_EIGEN_320)
+    	find_package(Eigen3 3.2 REQUIRED)
+    endif()
 endif()
 
 find_or_build_package(YARP 2.3.63.2)
