@@ -54,8 +54,8 @@ include(BoostDependencies)
 
 # Expand dependencies 
 # Note: we should not worry about indirected dependencies because
-#       those dependencies are already expanded by the generateBoostDependencies.cmake scritp
-set(BOOST_BUILD_COMPONENTS_WITH_DEPS "")
+#       those dependencies are already expanded by the generateBoostDependencies.cmake script
+set(BOOST_BUILD_COMPONENTS_WITH_DEPS "config" "wave")
 message(STATUS "BOOST_BUILD_COMPONENTS :" ${BOOST_BUILD_COMPONENTS})
 foreach(_comp ${BOOST_BUILD_COMPONENTS})
     message(STATUS "Considering component " ${_comp})
@@ -92,9 +92,7 @@ set(COMPONENTS_TO_COMPILE atomic
 # libs/config is added by default because it contains the version.hpp
 # file used by FindBoost.cmake for checking Boost version
 set(COMPONENTS_SUBMODULES tools/build
-                          tools/inspect
-                          libs/wave
-                          libs/config)
+                          tools/inspect)
 
 set(COMPONENTS_COMPILE_OPTIONS "")
 
@@ -130,6 +128,7 @@ ExternalProject_add(Boost
                     GIT_REPOSITORY "https://github.com/boostorg/boost"
                     GIT_TAG "master"
                     GIT_SUBMODULES ${COMPONENTS_SUBMODULES}
+					GIT_DEPTH 1
                     BUILD_IN_SOURCE 1
                     SOURCE_DIR  ${CMAKE_SOURCE_DIR}/external/boost
                     INSTALL_DIR ${CMAKE_BINARY_DIR}/install

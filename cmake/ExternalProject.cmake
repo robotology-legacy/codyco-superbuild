@@ -33,6 +33,7 @@
 #    [GIT_REPOSITORY url]        # URL of git repo
 #    [GIT_TAG tag]               # Git branch name, commit id or tag
 #    [GIT_SUBMODULES modules...] # Git submodules that shall be updated, all if empty
+#    [GIT_DEPTH      depth ]     # If present perform a shallow clone of desired depth
 #    [HG_REPOSITORY url]         # URL of mercurial repo
 #    [HG_TAG tag]                # Mercurial branch name, commit id or tag
 #    [URL /.../src.tgz]          # Full path or URL of source
@@ -357,6 +358,168 @@ define_property(DIRECTORY PROPERTY "EP_SCM_DISCONNECTED" INHERITED
 
 
 
+function(_ep_write_gitclone_script_with_depth script_filename source_dir git_EXECUTABLE git_repository git_tag git_submodules src_name work_dir gitclone_infofile gitclone_stampfile source_dir_persistent gitclone_depthstring)
+  file(WRITE ${script_filename}
+"cmake_minimum_required(VERSION ${CMAKE_MINIMUM_REQUIRED_VERSION})
+
+if(\"${git_tag}\" STREQUAL \"\")
+  message(FATAL_ERROR \"Tag for git checkout should not be empty.\")
+endif()
+
+set(run 0)
+
+if(\"${gitclone_infofile}\" IS_NEWER_THAN \"${gitclone_stampfile}\")
+  set(run 1)
+endif()
+
+if(NOT run)
+  message(STATUS \"Avoiding repeated git clone, stamp file is up to date: '${gitclone_stampfile}'\")
+  return()
+endif()
+
+if(EXISTS \"${source_dir}\" AND ${source_dir_persistent})
+  if(NOT IS_DIRECTORY \"${source_dir}\")
+    # FIXME Perhaps support symbolic links?
+    message(FATAL_ERROR \"\\\"${source_dir}\\\" exists and is not a git repository. Remove it and try again\")
+  elseif(NOT IS_DIRECTORY \"${source_dir}/.git\")
+    file(GLOB files \"${source_dir}/*\")
+    list(LENGTH files nfiles)
+    if(nfiles)
+      message(FATAL_ERROR \"\\\"${source_dir}\\\" folder exists and is not a git repository. Remove it and try again\")
+    endif()
+  else()
+    # Already initialized git repository: no need to clone again
+    execute_process(
+      COMMAND \"${git_EXECUTABLE}\" config --local --get remote.origin.url
+      WORKING_DIRECTORY \"${work_dir}/${src_name}\"
+      OUTPUT_VARIABLE origin_url
+      RESULT_VARIABLE error_code
+      OUTPUT_STRIP_TRAILING_WHITESPACE
+      )
+    if(error_code)
+      message(FATAL_ERROR \"Failed to get origin remote url in: '${work_dir}/${src_name}'\")
+    endif()
+    if(\"\${origin_url}\" STREQUAL \"${git_repository}\")
+      message(STATUS \"Avoiding repeated git clone, repository already exists\")
+      return()
+    else()
+      string(TIMESTAMP now \"%Y%m%d%H%M%S\")
+      message(WARNING \"Repository URL is different. Renaming origin remote to origin.\${now}\")
+      execute_process(
+        COMMAND \"${git_EXECUTABLE}\" remote rename origin origin.\${now}
+        WORKING_DIRECTORY \"${work_dir}/${src_name}\"
+        RESULT_VARIABLE error_code
+        )
+      if(error_code)
+        message(FATAL_ERROR \"Failed to rename remote in: '${work_dir}/${src_name}'\")
+      endif()
+
+      execute_process(
+        COMMAND \"${git_EXECUTABLE}\" remote add origin \"${git_repository}\"
+        WORKING_DIRECTORY \"${work_dir}/${src_name}\"
+        RESULT_VARIABLE error_code
+        )
+      if(error_code)
+        message(FATAL_ERROR \"Failed to add origin remote in: '${work_dir}/${src_name}'\")
+      endif()
+
+      # try the clone 3 times incase there is an odd git fetch issue
+      set(error_code 1)
+      set(number_of_tries 0)
+      while(error_code AND number_of_tries LESS 3)
+        execute_process(
+          COMMAND \"${git_EXECUTABLE}\" fetch origin
+          WORKING_DIRECTORY \"${work_dir}/${src_name}\"
+          RESULT_VARIABLE error_code
+          )
+        math(EXPR number_of_tries \"\${number_of_tries} + 1\")
+      endwhile()
+      if(number_of_tries GREATER 1)
+        message(STATUS \"Had to git fetch more than once:
+                \${number_of_tries} times.\")
+      endif()
+      if(error_code)
+        message(FATAL_ERROR \"Failed to fetch in: '${work_dir}/${src_name}'\")
+      endif()
+    endif()
+  endif()
+endif()
+
+# Now perform the clone if still required
+if(NOT IS_DIRECTORY \"${source_dir}/.git\")
+  execute_process(
+    COMMAND \${CMAKE_COMMAND} -E remove_directory \"${source_dir}\"
+    RESULT_VARIABLE error_code
+    )
+  if(error_code)
+    message(FATAL_ERROR \"Failed to remove directory: '${source_dir}'\")
+  endif()
+
+  # try the clone 3 times incase there is an odd git clone issue
+  set(error_code 1)
+  set(number_of_tries 0)
+  while(error_code AND number_of_tries LESS 3)
+    execute_process(
+      COMMAND \"${git_EXECUTABLE}\" clone ${gitclone_depthstring} \"${git_repository}\" \"${src_name}\"
+      WORKING_DIRECTORY \"${work_dir}\"
+      RESULT_VARIABLE error_code
+      )
+    math(EXPR number_of_tries \"\${number_of_tries} + 1\")
+  endwhile()
+  if(number_of_tries GREATER 1)
+    message(STATUS \"Had to git clone more than once:
+            \${number_of_tries} times.\")
+  endif()
+  if(error_code)
+    message(FATAL_ERROR \"Failed to clone repository: '${git_repository}'\")
+  endif()
+endif()
+
+execute_process(
+  COMMAND \"${git_EXECUTABLE}\" checkout ${git_tag}
+  WORKING_DIRECTORY \"${work_dir}/${src_name}\"
+  RESULT_VARIABLE error_code
+  )
+if(error_code)
+  message(FATAL_ERROR \"Failed to checkout tag: '${git_tag}'\")
+endif()
+
+execute_process(
+  COMMAND \"${git_EXECUTABLE}\" submodule init ${git_submodules}
+  WORKING_DIRECTORY \"${work_dir}/${src_name}\"
+  RESULT_VARIABLE error_code
+  )
+if(error_code)
+  message(FATAL_ERROR \"Failed to init submodules in: '${work_dir}/${src_name}'\")
+endif()
+
+execute_process(
+  COMMAND \"${git_EXECUTABLE}\" submodule update --recursive ${git_submodules}
+  WORKING_DIRECTORY \"${work_dir}/${src_name}\"
+  RESULT_VARIABLE error_code
+  )
+if(error_code)
+  message(FATAL_ERROR \"Failed to update submodules in: '${work_dir}/${src_name}'\")
+endif()
+
+# Complete success, update the script-last-run stamp file:
+#
+execute_process(
+  COMMAND \${CMAKE_COMMAND} -E copy
+    \"${gitclone_infofile}\"
+    \"${gitclone_stampfile}\"
+  WORKING_DIRECTORY \"${work_dir}/${src_name}\"
+  RESULT_VARIABLE error_code
+  )
+if(error_code)
+  message(FATAL_ERROR \"Failed to copy script-last-run stamp file: '${gitclone_stampfile}'\")
+endif()
+
+"
+)
+
+endfunction()
+
 function(_ep_write_gitclone_script script_filename source_dir git_EXECUTABLE git_repository git_tag git_submodules src_name work_dir gitclone_infofile gitclone_stampfile source_dir_persistent)
   file(WRITE ${script_filename}
 "cmake_minimum_required(VERSION ${CMAKE_MINIMUM_REQUIRED_VERSION})
@@ -459,7 +622,7 @@ if(NOT IS_DIRECTORY \"${source_dir}/.git\")
   set(number_of_tries 0)
   while(error_code AND number_of_tries LESS 3)
     execute_process(
-      COMMAND \"${git_EXECUTABLE}\" clone --depth 1 \"${git_repository}\" \"${src_name}\"
+      COMMAND \"${git_EXECUTABLE}\" clone \"${gitclone_depthstring}\" \"${git_repository}\" \"${src_name}\"
       WORKING_DIRECTORY \"${work_dir}\"
       RESULT_VARIABLE error_code
       )
@@ -1696,15 +1859,31 @@ function(_ep_add_download_command name)
 
     get_filename_component(src_name "${source_dir}" NAME)
     get_filename_component(work_dir "${source_dir}" PATH)
+	
+	# If the user set the GIT_DEPTH option, we will pass the 
+	# --depth option to git 
+	get_property(git_depth TARGET ${name} PROPERTY _EP_GIT_DEPTH)
+    if(NOT git_depth)
+      set(gitclone_depthstring "")
+	else()
+	  set(gitclone_depthstring "--depth ${git_depth}")
+    endif()
 
     # Since git clone doesn't succeed if the non-empty source_dir exists,
     # create a cmake script to invoke as download command.
     # The script will delete the source directory and then call git clone.
     #
+	if(NOT git_depth)
     _ep_write_gitclone_script(${tmp_dir}/${name}-gitclone.cmake ${source_dir}
       ${GIT_EXECUTABLE} ${git_repository} ${git_tag} "${git_submodules}" ${src_name} ${work_dir}
       ${stamp_dir}/${name}-gitinfo.txt ${stamp_dir}/${name}-gitclone-lastrun.txt
       ${source_dir_persistent})
+	else()
+	    _ep_write_gitclone_script_with_depth(${tmp_dir}/${name}-gitclone.cmake ${source_dir}
+      ${GIT_EXECUTABLE} ${git_repository} ${git_tag} "${git_submodules}" ${src_name} ${work_dir}
+      ${stamp_dir}/${name}-gitinfo.txt ${stamp_dir}/${name}-gitclone-lastrun.txt
+      ${source_dir_persistent} ${gitclone_depthstring})
+	endif()
     set(comment "Performing download step (git clone) for '${name}'")
     set(cmd ${CMAKE_COMMAND} -P ${tmp_dir}/${name}-gitclone.cmake)
     list(APPEND depends ${stamp_dir}/${name}-gitinfo.txt)
