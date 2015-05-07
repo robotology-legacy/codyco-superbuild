@@ -1,4 +1,5 @@
 version: 1.0.{build}
+os: unstable
 
 branches:
   except:
@@ -14,6 +15,8 @@ environment:
   OpenCV_DIR:        c:/Program Files (x86)/robotology/opencv-git-snapshot-26-09-12
   YARP_DIR:          c:/Program Files (x86)/robotology/yarp-2.3.63
   ICUB_DIR:          c:/Program Files (x86)/robotology/icub-1.1.15
+  BOOST_ROOT:        C:\Libraries\boost
+  BOOST_LIBRARYDIR:  C:\Libraries\boost\lib32-msvc-11.0
   
 
 install:
