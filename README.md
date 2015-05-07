@@ -96,9 +96,6 @@ installed on your system, you can use them for compiling codyco-superbuild by de
 `BOOST_DIR`, `BOOST_LIBRARYDIR` and `BOOST_INCLUDEDIR` enviroment variables. 
 
 If you don't have Boost libraries installed in your system, don't worry! The superbuild will threat Boost as any other dependency, by downloading and compiling automatically only the necessary Boost components. 
-In that case you should just add the appropriate enviroment variables to the system:
-`BOOST_ROOT=${CODYCO_SUPERBUILD_DIR}/external/boost`
-Where `${CODYCO_SUPERBUILD_DIR}` is the directory where you downloaded the superbuild. 
 
 ####YARP & iCub
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
@@ -109,9 +106,12 @@ If you didn't already configured your git, you have to set your name and email t
 git config --global user.name FirstName LastName
 git config --global user.email user@email.domain 
 ```
-After that you can clone the superbuild repository as any other git repository, and generate the Visual Studio solution
-using the CMake gui. Then you open the generated solution with Visual Studio and build the target `all`. 
+After that you can clone the superbuild repository as any other git repository, and generate the Visual Studio solution using the CMake gui. Then you open the generated solution with Visual Studio and build the target `all`. 
 Visual Studio will then download, build and install in a local directory all the CoDyCo software and its dependencies.
+If you prefer to work from the command line, you can also compile the `all` target using the following command (if you are in the `codyco-superbuild/build` directory:
+~~~
+cmake --build . 
+~~~
 
 ###Configure your environment
 Currently the YCM superbuild does not support building a global install target, so all binaries are installed in `codyco-superbuild/build/install/bin` and all libraries in `codyco-superbuild/build/install/lib`.
