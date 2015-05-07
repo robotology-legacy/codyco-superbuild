@@ -1,8 +1,8 @@
 CoDyCo Project Superbuild
 ---------------
-| Linux/OS X | 
-|:----------:|
-| [![Build Status](https://travis-ci.org/robotology/codyco-superbuild.png?branch=master)](https://travis-ci.org/robotology/codyco-superbuild) | 
+| Linux/OS X | Windows |
+|:----------:|:------------:|
+| [![Build Status](https://travis-ci.org/robotology/codyco-superbuild.png?branch=master)](https://travis-ci.org/robotology/codyco-superbuild) | [![Build status](https://ci.appveyor.com/api/projects/status/qldqe8tq0w7siueb/branch/master?svg=true)](https://ci.appveyor.com/project/traversaro/codyco-superbuild/branch/master) |
 The CoDyCo project is a four-years long project that started in March 2013. At the end of each year a scenario will be used to validate on the iCub the theoretical advances of the project.
 
 More info at http://codyco.eu/
