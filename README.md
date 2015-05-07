@@ -59,6 +59,11 @@ the codyco-superbuild, you have to execute in your build system the appropriate 
 ~~~
 make update-all
 ~~~
+on Linux or
+~~~
+cmake --build . --target UPDATE_ALL
+~~~
+on Windows. 
 
 Installation
 ============
@@ -75,17 +80,25 @@ We provide different instructions on how to install codyco-superbuild, depending
 
 ####CMake
 To install CMake you can use the official installer available at http://www.cmake.org/cmake/resources/software.html .
+It is recommended to install the latest version of CMake. 
 
 ####Eigen
+Eigen can be automaically installed with the codyco-superbuild, so you don't have to install it manually. 
+
+If you want to install Eigen manually, or you have already installed Eigen please check the following section.
+#### Manual installation
 You can install Eigen from source code available from the [Eigen official website](http://eigen.tuxfamily.org).
-You can simply extract the Eigen source code in a directory, and then define the `EIGEN3_ROOT` environment variable to the path of the directory that contains the file `signature_of_eigen3_matrix_library` (it should be the first directory contained in the compressed file.
+You can simply extract the Eigen source code in a directory, and then define the `EIGEN3_ROOT` environment variable to the path of the directory that contains the file `signature_of_eigen3_matrix_library` (it should be the first directory contained in the compressed file).
 
 ####Boost 
 Some software of codyco-superbuild requires Boost. If you have already a copy of the Boost libraries 
 installed on your system, you can use them for compiling codyco-superbuild by defining the appropriate
 `BOOST_DIR`, `BOOST_LIBRARYDIR` and `BOOST_INCLUDEDIR` enviroment variables. 
 
-If you don't have Boost libraries installed in your system, don't worry! The superbuild will threat Boost as any other dependency, by downloading and compiling automatically only the necessary Boost components.
+If you don't have Boost libraries installed in your system, don't worry! The superbuild will threat Boost as any other dependency, by downloading and compiling automatically only the necessary Boost components. 
+In that case you should just add the appropriate enviroment variables to the system:
+`BOOST_ROOT=${CODYCO_SUPERBUILD_DIR}/external/boost`
+Where `${CODYCO_SUPERBUILD_DIR}` is the directory where you downloaded the superbuild. 
 
 ####YARP & iCub
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
