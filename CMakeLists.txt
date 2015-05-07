@@ -44,17 +44,44 @@ option(CODYCO_TRAVIS_CI "Set if build is done with Travis-CI flags" FALSE)
 # Useful for having superbuild "branches"
 include(ProjectsTags OPTIONAL)
 
+#Set CMake policies
+if(NOT CMAKE_VERSION VERSION_LESS 3.0)
+    cmake_policy(SET CMP0045 OLD)
+endif()
+
 # Bootstrap YCM
 include(YCMBootstrap)
 
 include(FindOrBuildPackage)
 include(YCMEPHelper)
 
-# Required system dependencies
-find_package(Boost REQUIRED system thread)
+# Require Boost here to simplify debug for now
+# (BuildBoost.cmake requires CMake 3.0, but the 
+#  theory is that you need it only on Windows)
+# Note that while is possible to specify header-only
+# Boost libraries as components in BuildBoost.cmake,
+# this is not possible in FindBoost.cmake . For this 
+# reason we first search for Boost and only if we can't
+# find it in the system we call find_or_build_package
+# with the required components.
+if(MSVC) 
+	find_package(Boost)
+	if(NOT ${Boost_FOUND})
+		# install Boost from superbuild only on Windows 
+		# This Boost dependencies are required by urdfdom
+		find_or_build_package(Boost COMPONENTS smart_ptr algorithm lexical_cast function)
+	endif()
 
-if(CODYCO_USES_EIGEN_320)
-    find_package(Eigen3 3.2)
+	find_package(Eigen3)
+	if(NOT ${Eigen3_FOUND} )
+		# install Eigen from superbuild only on Windows 
+		find_or_build_package(Eigen3)
+	endif()
+	
+else()
+    if(CODYCO_USES_EIGEN_320)
+    	find_package(Eigen3 3.2 REQUIRED)
+    endif()
 endif()
 
 find_or_build_package(YARP 2.3.63.2)
