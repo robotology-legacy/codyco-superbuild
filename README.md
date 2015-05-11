@@ -77,10 +77,36 @@ We provide different instructions on how to install codyco-superbuild, depending
 ##Windows
 
 ###System Dependencies 
+Most of the CoDyCo software is developed using the C/C++ language. For this reason, you should have Visual Studio installed on your computer to build it. You will also need some additional software, as listed afterwards. 
+Some of this software can be easily installed using [Chocolatey](https://chocolatey.org), a tool to simplify software installation on Windows. 
+
+####Git 
+Most of the CoDyCo software is hosted on Git repositories, so you will need Git to download them. 
+You can download the Git installer at http://msysgit.github.io/ . 
+##### Chocolatey 
+If you have installed Chocolatey, you can install Git with the following command:
+~~~
+choco install git
+~~~
+
+####Mercurial
+Some software required by the `codyco-superbuild` (namely the Eigen library) are hosted in Mercurial repositories, so you will need Mercurial to automatically download them. 
+You can download the Mercurial installer at http://mercurial.selenic.com/wiki/Download . 
+##### Chocolatey 
+If you have installed Chocolatey, you can install Monotone with the following command:
+~~~
+choco install hg
+~~~
 
 ####CMake
 To install CMake you can use the official installer available at http://www.cmake.org/cmake/resources/software.html .
 It is recommended to install the latest version of CMake. 
+##### Chocolatey 
+If you have installed Chocolatey, you can install CMake with the following command:
+~~~
+choco install cmake 
+~~~
+
 
 ####Eigen
 Eigen can be automaically installed with the codyco-superbuild, so you don't have to install it manually. 
