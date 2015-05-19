@@ -622,7 +622,7 @@ if(NOT IS_DIRECTORY \"${source_dir}/.git\")
   set(number_of_tries 0)
   while(error_code AND number_of_tries LESS 3)
     execute_process(
-      COMMAND \"${git_EXECUTABLE}\" clone \"${gitclone_depthstring}\" \"${git_repository}\" \"${src_name}\"
+      COMMAND \"${git_EXECUTABLE}\" clone \"${git_repository}\" \"${src_name}\"
       WORKING_DIRECTORY \"${work_dir}\"
       RESULT_VARIABLE error_code
       )
