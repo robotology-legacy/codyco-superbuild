@@ -72,11 +72,7 @@ if(MSVC)
 		find_or_build_package(Boost COMPONENTS smart_ptr algorithm lexical_cast function)
 	endif()
 
-	find_package(Eigen3)
-	if(NOT ${Eigen3_FOUND} )
-		# install Eigen from superbuild only on Windows 
-		find_or_build_package(Eigen3)
-	endif()
+	find_or_build_package(Eigen3)
 	
 else()
     if(CODYCO_USES_EIGEN_320)
