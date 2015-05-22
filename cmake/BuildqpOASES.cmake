@@ -25,4 +25,5 @@ ycm_ep_helper(qpOASES TYPE GIT
               STYLE GITHUB
               REPOSITORY robotology-playground/qpOASES.git
               TAG master
-              COMPONENT external)
+              COMPONENT external
+              CMAKE_ARGS -DQPOASES_BUILD_BINDINGS_MATLAB:BOOL=${CODYCO_USES_MATLAB})
