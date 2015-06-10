@@ -51,30 +51,15 @@ if(NOT CMAKE_VERSION VERSION_LESS 3.0)
 endif()
 
 # Bootstrap YCM
+set(YCM_TAG v0.1.1)
 include(YCMBootstrap)
 
 include(FindOrBuildPackage)
 include(YCMEPHelper)
 
-# Require Boost here to simplify debug for now
-# (BuildBoost.cmake requires CMake 3.0, but the 
-#  theory is that you need it only on Windows)
-# Note that while is possible to specify header-only
-# Boost libraries as components in BuildBoost.cmake,
-# this is not possible in FindBoost.cmake . For this 
-# reason we first search for Boost and only if we can't
-# find it in the system we call find_or_build_package
-# with the required components.
-if(MSVC) 
-	find_package(Boost)
-	if(NOT ${Boost_FOUND})
-		# install Boost from superbuild only on Windows 
-		# This Boost dependencies are required by urdfdom
-		find_or_build_package(Boost COMPONENTS smart_ptr algorithm lexical_cast function)
-	endif()
 
-	find_or_build_package(Eigen3)
-	
+if(MSVC) 
+    find_or_build_package(Eigen3)	
 else()
     if(CODYCO_USES_EIGEN_320)
     	find_package(Eigen3 3.2 REQUIRED)
