@@ -47,7 +47,7 @@ list(APPEND _cmake_cmd "-DOROCOSKDL_ENABLE_RPATH:BOOL=ON")
 ycm_ep_helper(orocos_kdl TYPE GIT
                          STYLE GITHUB
                          REPOSITORY traversaro/orocos_kinematics_dynamics.git
-                         TAG working_find_eigen
+                         TAG workingFindEigen
                          COMPONENT external
                          CMAKE_CACHE_ARGS -DOROCOSKDL_ENABLE_RPATH:BOOL=ON #this is ignored because of $_cmake_cmd
                          CONFIGURE_COMMAND ${_cmake_cmd})

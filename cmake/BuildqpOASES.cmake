@@ -1,12 +1,12 @@
 #.rst:
-# BuildTinyXML
-# ------------
+# BuildqpOASES
+# --------
 #
-# TinyXML
+# qpOASES
 
 #=============================================================================
-# Copyright 2013-2014 iCub Facility, Istituto Italiano di Tecnologia
-# Authors: Daniele E. Domenichelli <daniele.domenichelli@iit.it>
+# Copyright 2014 iCub Facility, Istituto Italiano di Tecnologia
+#   Authors: Daniele E. Domenichelli <daniele.domenichelli@iit.it>
 #
 # Distributed under the OSI-approved BSD License (the "License");
 # see accompanying file Copyright.txt for details.
@@ -16,10 +16,14 @@
 # See the License for more information.
 #=============================================================================
 # (To distribute this file outside of YCM, substitute the full
-# License text for the above reference.)
+#  License text for the above reference.)
 
+# qpOASES
 include(YCMEPHelper)
 
-ycm_ep_helper(TinyXML TYPE GIT
-                      STYLE GITHUB
-                      REPOSITORY robotology-dependencies/tinyxml.git)
+ycm_ep_helper(qpOASES TYPE GIT
+              STYLE GITHUB
+              REPOSITORY robotology-playground/qpOASES.git
+              TAG master
+              COMPONENT external
+              CMAKE_ARGS -DQPOASES_BUILD_BINDINGS_MATLAB:BOOL=${CODYCO_USES_MATLAB})
