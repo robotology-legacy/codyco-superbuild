@@ -17,6 +17,10 @@ if (${CODYCO_USES_EIGEN_320})
 	find_or_build_package(codycoCommons QUIET)
 endif()
 
+if (${CODYCO_USES_OROCOS_BFL_BERDY})
+	find_or_build_package(orocosBFLBerdy QUIET)
+endif()
+
 set(CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED "")
 if(${CODYCO_USES_URDFDOM})
     set(CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED} -DCODYCO_USES_URDFDOM:BOOL=ON)
@@ -43,6 +47,13 @@ elseif()
     set(CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED} -DCODYCO_USES_EIGEN_320:BOOL=OFF)
 endif()
 
+if(${CODYCO_USES_OROCOS_BFL_BERDY})
+    set(CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED} -DCODYCO_USES_OROCOS_BFL_BERDY:BOOL=ON)
+    set(CODYCO_OROCOS_BFL_BERDY_DEPENDENCY orocosBFLBerdy)
+elseif()
+    set(CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED} -DCODYCO_USES_OROCOS_BFL_BERDY:BOOL=OFF)
+endif()
+
 ycm_ep_helper(codyco-modules TYPE GIT
               STYLE GITHUB
               REPOSITORY robotology/codyco-modules.git
@@ -57,4 +68,5 @@ ycm_ep_helper(codyco-modules TYPE GIT
                       yarpWholeBodyInterface
                       sensorsInterfaces
                       InSituFTCalibration
-                      ${CODYCO_COMMONS_DEPENDENCY})
+                      ${CODYCO_COMMONS_DEPENDENCY}
+                      ${CODYCO_OROCOS_BFL_BERDY_DEPENDENCY})
