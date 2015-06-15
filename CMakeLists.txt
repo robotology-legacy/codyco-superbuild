@@ -26,6 +26,8 @@ option(CODYCO_USES_LUA "Enable compilation of software that depend on Lua" FALSE
 option(CODYCO_USES_PYTHON "Enable compilation of software that depend on Python" FALSE)
 option(CODYCO_USES_WBI_TOOLBOX "Whole Body Interface Toolbox - Simulink library" FALSE)
 option(CODYCO_USES_WBI_TOOLBOX_CONTROLLERS "Controllers and Simulink models created/used with the WBI-Toolbox" FALSE)
+option(CODYCO_USES_OROCOS_BFL_BERDY "Forked Orocos Bayesian Filtering Library" FALSE)
+option(CODYCO_USES_URDFDOM "Enable support for URDF input in iDynTree" TRUE)
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
 option(CODYCO_USES_EIGEN_320 "Enable compilation of software that depends on Eigen 3.2.0 (if false just depend on Eigen 3.0.5)" TRUE)
 option(CODYCO_BUILD_ISIR_MODULES "Enable compilation of ISIR controllers" FALSE)
@@ -95,6 +97,11 @@ endif()
 #WBI-Toolbox-controllers
 if( ${CODYCO_USES_WBI_TOOLBOX_CONTROLLERS} )
     find_or_build_package(WBIToolboxControllers)
+endif()
+
+#Orocos BFL-BERDY
+if (${CODYCO_USES_OROCOS_BFL_BERDY})
+    find_or_build_package(orocosBFLBerdy)
 endif()
 
 #mex wholeBodyModel interface
