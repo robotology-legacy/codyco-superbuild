@@ -35,6 +35,7 @@ The projects downloaded in the `libraries` component are:
 * `paramHelp`: Library for simplifying the management of the parameters of YARP modules [Project page](https://github.com/robotology-playground/paramHelp)
 * `wholebodyinterface`: C++ Interfaces to sensor measurements, state estimations, kinematic/dynamic model and actuators for a floating base robot [Project Page](https://github.com/robotology-playground/wholebodyinterface)
 * `yarp-wholebodyinterface`: Implementation of the wholeBodyInterface for YARP robots [Project Page](https://github.com/robotology-playground/yarp-wholebodyinterface)
+* `orocosBFLBerdy`: Fork of the Bayesian Filtering Library [Orocos-BFL](http://www.orocos.org/bfl). *Early stage. Currently used and tested only for the quaternionEKF module and basic Kalman Filtering*
 
 ###`main`
 
