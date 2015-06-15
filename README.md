@@ -261,7 +261,10 @@ and point the `LUA_PATH` enviromental variable to the `rFSM` directory, by addin
 ~~~
 export LUA_PATH=";;;/path/where/you/installed/rfsm/?.lua"
 ~~~
-
+##### orocos-bfl-berdy
+When enabling the flag `CODYCO_USES_OROCOS_BFL_BERDY`, the library [Orocos-BFL-BERDY](https://github.com/jeljaik/orocos-bfl-berdy) is compiled and modules such as `quaternionEKF` enabled in `codyco-modules`. If you want to use the latter, besides Orocos-BFL-BERDY you will also need to set the environmental variable `PKG_CONFIG_PATH` as:
+`export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$CODYCO_SUPERBUILD_ROOT/build/install/lib/pkgconfig/`
+And as an additional dependency of `codyco-superbuild` you will also have: `libboost-iostreams-dev`.
 
 ###Superbuild
 If you didn't already configured your git, you have to set your name and email to sign your commits:
