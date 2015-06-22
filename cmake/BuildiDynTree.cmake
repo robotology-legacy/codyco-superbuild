@@ -21,7 +21,7 @@ ycm_ep_helper(iDynTree TYPE GIT
               TAG master
               COMPONENT libraries
               CMAKE_CACHE_ARGS -DIDYNTREE_ENABLE_URDF:BOOL=ON
-#             CMAKE_ARGS -DIDYNTREE_USES_MATLAB:BOOL=${CODYCO_USES_MATLAB}
+              CMAKE_ARGS -DIDYNTREE_USES_MATLAB:BOOL=${IDYNTREE_USES_MATLAB}
               DEPENDS YARP
                       ICUB
                       orocos_kdl
