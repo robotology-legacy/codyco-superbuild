@@ -21,6 +21,7 @@ set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake p
 
 #options to build specific software or use a reduced set of dependencies
 option(CODYCO_USES_MATLAB "Enable compilation of software that depend on Matlab" FALSE)
+option(CODYCO_USES_SEMANTICS "Enable the semantic checks at run-time on geometric relation in modules like iDynTree library" FALSE)
 option(CODYCO_MATLAB_DEPENDENCIES_CUSTOM "Enables the custom selection of some Matlab dependencies" FALSE)
 option(CODYCO_USES_LUA "Enable compilation of software that depend on Lua" FALSE)
 option(CODYCO_USES_PYTHON "Enable compilation of software that depend on Python" FALSE)
@@ -83,6 +84,7 @@ endif()
 #additional modules
 find_or_build_package(comStepper)
 
+#
 #Set WBI-Toolbox and mexWholeBodyModel variables depending on CODYCO_USES_MATLAB
 if(NOT ${CODYCO_MATLAB_DEPENDENCIES_CUSTOM})
     set(CODYCO_USES_WBI_TOOLBOX ${CODYCO_USES_MATLAB} CACHE BOOL "Whole Body Interface Toolbox - Simulink library" FORCE)

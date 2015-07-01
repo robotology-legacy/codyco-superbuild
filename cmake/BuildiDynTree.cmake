@@ -25,11 +25,11 @@ ycm_ep_helper(iDynTree TYPE GIT
               TAG master
               COMPONENT libraries
               CMAKE_CACHE_ARGS -DIDYNTREE_ENABLE_URDF:BOOL=ON
-              CMAKE_ARGS -DIDYNTREE_USES_MATLAB:BOOL=${CODYCO_USES_MATLAB}
+              CMAKE_ARGS -DIDYNTREE_USES_MATLAB:BOOL=${CODYCO_USES_MATLAB} -DIDYNTREE_USES_SEMANTICS:BOOL=${CODYCO_USES_SEMANTICS}
               DEPENDS YARP
                       ICUB
                       orocos_kdl
-					  TinyXML)
+					            TinyXML)
 else()
 
 ycm_ep_helper(iDynTree TYPE GIT
@@ -38,11 +38,11 @@ ycm_ep_helper(iDynTree TYPE GIT
               TAG master
               COMPONENT libraries
               CMAKE_CACHE_ARGS -DIDYNTREE_ENABLE_URDF:BOOL=ON
-              CMAKE_ARGS -DIDYNTREE_USES_MATLAB:BOOL=${CODYCO_USES_MATLAB}
+              CMAKE_ARGS -DIDYNTREE_USES_MATLAB:BOOL=${CODYCO_USES_MATLAB} -DIDYNTREE_USES_SEMANTICS:BOOL=${CODYCO_USES_SEMANTICS}
               DEPENDS YARP
                       ICUB
                       orocos_kdl
                       urdfdom_headers
                       urdfdom
-					  TinyXML)
+					            TinyXML)
 endif()
