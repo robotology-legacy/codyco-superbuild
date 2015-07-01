@@ -36,7 +36,6 @@ option(CODYCO_USES_MEX_WHOLEBODYMODEL "Enable to compile the matlab mex inteface
 # option(CODYCO_DISABLE_RPATH "Disable installation with RPATH" FALSE) ##TODO: how to control all the RPATH variables of sub-projects?
 # mark_as_advanced(CODYCO_DISABLE_RPATH)
 option(USE_SYSTEM_TINYXML "Use system TinyXML instead of superbuild one" FALSE)
-option(IDYNTREE_USES_MATLAB "Compile iDynTree Matlab bindings" FALSE)
 
 #options for testing
 option(CODYCO_COMPILE_TESTS "Compile tests using the robot testing framework" FALSE)
