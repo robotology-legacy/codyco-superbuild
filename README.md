@@ -64,7 +64,11 @@ on Linux or
 ~~~
 cmake --build . --target UPDATE_ALL
 ~~~
-on Windows. 
+on Windows or
+~~~
+cmake --build . --target ALL_UPDATE
+~~~
+on Mac OS X
 
 Installation
 ============
@@ -75,6 +79,7 @@ We provide different instructions on how to install codyco-superbuild, depending
 * [**OS X**](#os-x): use the superbuild with Xcode or GNU make
 * [**Linux**](#linux): use the superbuild with make 
 
+Complete documentation on [YCM documentation](http://robotology.github.io/ycm/gh-pages/master/manual/ycm-superbuild.7.html)
 ##Windows
 
 ###System Dependencies 
