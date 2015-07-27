@@ -38,6 +38,16 @@ option(CODYCO_USES_MEX_WHOLEBODYMODEL "Enable to compile the matlab mex inteface
 option(USE_SYSTEM_TINYXML "Use system TinyXML instead of superbuild one" FALSE)
 option(IDYNTREE_USES_MATLAB "Compile iDynTree Matlab bindings" FALSE)
 
+#set default build type to "Release" in single-config generators
+if(NOT CMAKE_CONFIGURATION_TYPES)
+    if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE "Release" CACHE STRING
+        "Choose the type of build, recommanded options are: Debug or Release" FORCE)
+    endif()
+    set(CODYCO_BUILD_TYPES "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
+    set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS ${CODYCO_BUILD_TYPES})
+endif()
+
 #options for testing
 option(CODYCO_COMPILE_TESTS "Compile tests using the robot testing framework" FALSE)
 option(CODYCO_TRAVIS_CI "Set if build is done with Travis-CI flags" FALSE)
