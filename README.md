@@ -31,7 +31,7 @@ The `libraries` component contains librares developed by the CoDyCo consortium, 
 The projects downloaded in the `libraries` component are:
 
 * `codyco-commons`: A collection of functions and utilities used in the other projects [Project page](https://github.com/robotology-playground/codyco-commons)
-* `idyntree`: YARP-based Floating Base Robot Dynamics Library [Project Page](https://github.com/robotology-playground/idyntree)
+* `idyntree`: YARP-based Floating Base Robot Dynamics Library [Project Page](https://github.com/robotology/idyntree)
 * `paramHelp`: Library for simplifying the management of the parameters of YARP modules [Project page](https://github.com/robotology-playground/paramHelp)
 * `wholebodyinterface`: C++ Interfaces to sensor measurements, state estimations, kinematic/dynamic model and actuators for a floating base robot [Project Page](https://github.com/robotology-playground/wholebodyinterface)
 * `yarp-wholebodyinterface`: Implementation of the wholeBodyInterface for YARP robots [Project Page](https://github.com/robotology-playground/yarp-wholebodyinterface)
@@ -175,7 +175,7 @@ git config --global user.email user@email.domain
 ```
 Finally it is possible to install CoDyCo software using the YCM superbuild:
 ```bash
-git clone https://github.com/robotology-playground/codyco-superbuild.git
+git clone https://github.com/robotology/codyco-superbuild.git
 cd codyco-superbuild
 mkdir build
 cd build
@@ -283,7 +283,7 @@ git config --global user.email user@email.domain
 ```
 Finally it is possible to install CoDyCo software using the YCM superbuild:
 ```bash
-git clone https://github.com/robotology-playground/codyco-superbuild.git
+git clone https://github.com/robotology/codyco-superbuild.git
 cd codyco-superbuild
 mkdir build
 cd build
