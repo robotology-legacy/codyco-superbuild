@@ -40,6 +40,7 @@ if(DOXYGEN_FOUND)
             add_dependencies(dox ${_proj}) # documentation does not have an update target
         elseif(_proj STREQUAL "iDynTree")
             set(DOX_EXTRA_DIR "${DOX_EXTRA_DIR} ${CMAKE_SOURCE_DIR}/${_component}/${_proj}/")
+            add_dependencies(dox ${_proj}-update)
         else()
             set(DOX_EXTRA_DIR "${DOX_EXTRA_DIR} ${CMAKE_SOURCE_DIR}/${_component}/${_proj}/doc")
             set(DOX_EXTRA_DIR "${DOX_EXTRA_DIR} ${CMAKE_SOURCE_DIR}/${_component}/${_proj}/src")
