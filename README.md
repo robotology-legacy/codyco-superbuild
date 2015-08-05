@@ -150,11 +150,11 @@ Currently the YCM superbuild does not support building a global install target, 
 
 To use this binaries and libraries, you should update the necessary environment variables.
 
-Set the environment variable CODYCO\_SUPERBUILD\_DIR so that it points to the  directory where you clone the codyco-superbuild repository.
+Set the environment variable `CODYCO_SUPERBUILD_ROOT` so that it points to the  directory where you clone the codyco-superbuild repository.
 
-Append $CODYCO\_SUPERBUILD\_DIR/build/install/bin to your PATH
+Append `$CODYCO_SUPERBUILD_ROOT/build/install/bin` to your PATH
 
-Append $CODYCO\_SUPERBUILD\_ROOT/build/install/share/codyco to your [YARP\_DATA\_DIRS](http://wiki.icub.org/yarpdoc/yarp_data_dirs.html) environment variable.
+Append `$CODYCO_SUPERBUILD_ROOT/build/install/share/codyco` to your [YARP\_DATA\_DIRS](http://wiki.icub.org/yarpdoc/yarp_data_dirs.html) environment variable.
 
 
 ##OS X
