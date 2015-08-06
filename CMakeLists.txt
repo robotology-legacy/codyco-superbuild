@@ -137,4 +137,4 @@ set_package_properties(Doxygen PROPERTIES TYPE RUNTIME)
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 # some yarp requirements during compilation
-set(YARP_DATA_DIRS ${PROJECT_SOURCE_DIR}/build/install/share/codyco)
+set(ENV{YARP_DATA_DIRS} "${PROJECT_SOURCE_DIR}/build/install/share/codyco")
