@@ -315,3 +315,9 @@ CODYCO_BUILD_ISIR_MODULES : ON
 CODYCO_USES_EIGEN_320 : OFF
 ```
 This has only been tested in Ubuntu 12.04 but should be expanded to other OS's in the future.
+
+# "Stage" fork
+
+This fork is used for some changes in order to test the application of ISIR modules at [iCub model] (https://github.com/robotology-playground/icub-gazebo) on Gazebo. We are mainly interested on the task management and sequence execution analysis which can be found on  `$CODYCO_SUPERBUILD_ROOT/main/ocra-wbi-plugins/libs/taskSequences`.
+
+All changes are commited to the `stage` branch. 
