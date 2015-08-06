@@ -21,7 +21,7 @@ endif()
 if( MSVC )
 ycm_ep_helper(iDynTree TYPE GIT
               STYLE GITHUB
-              REPOSITORY robotology/idyntree.git
+              REPOSITORY robotology-playground/iDynTree.git
               TAG master
               COMPONENT libraries
               CMAKE_CACHE_ARGS -DIDYNTREE_ENABLE_URDF:BOOL=ON
@@ -34,7 +34,7 @@ else()
 
 ycm_ep_helper(iDynTree TYPE GIT
               STYLE GITHUB
-              REPOSITORY robotology/idyntree.git
+              REPOSITORY robotology-playground/iDynTree.git
               TAG master
               COMPONENT libraries
               CMAKE_CACHE_ARGS -DIDYNTREE_ENABLE_URDF:BOOL=ON

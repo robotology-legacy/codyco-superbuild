@@ -31,7 +31,7 @@ The `libraries` component contains librares developed by the CoDyCo consortium, 
 The projects downloaded in the `libraries` component are:
 
 * `codyco-commons`: A collection of functions and utilities used in the other projects [Project page](https://github.com/robotology-playground/codyco-commons)
-* `idyntree`: YARP-based Floating Base Robot Dynamics Library [Project Page](https://github.com/robotology/idyntree)
+* `idyntree`: YARP-based Floating Base Robot Dynamics Library [Project Page](https://github.com/robotology-playground/idyntree)
 * `paramHelp`: Library for simplifying the management of the parameters of YARP modules [Project page](https://github.com/robotology-playground/paramHelp)
 * `wholebodyinterface`: C++ Interfaces to sensor measurements, state estimations, kinematic/dynamic model and actuators for a floating base robot [Project Page](https://github.com/robotology-playground/wholebodyinterface)
 * `yarp-wholebodyinterface`: Implementation of the wholeBodyInterface for YARP robots [Project Page](https://github.com/robotology-playground/yarp-wholebodyinterface)
@@ -150,11 +150,11 @@ Currently the YCM superbuild does not support building a global install target, 
 
 To use this binaries and libraries, you should update the necessary environment variables.
 
-Set the environment variable `CODYCO_SUPERBUILD_ROOT` so that it points to the  directory where you clone the codyco-superbuild repository.
+Set the environment variable CODYCO\_SUPERBUILD\_DIR so that it points to the  directory where you clone the codyco-superbuild repository.
 
-Append `$CODYCO_SUPERBUILD_ROOT/build/install/bin` to your PATH
+Append $CODYCO\_SUPERBUILD\_DIR/build/install/bin to your PATH
 
-Append `$CODYCO_SUPERBUILD_ROOT/build/install/share/codyco` to your [YARP\_DATA\_DIRS](http://wiki.icub.org/yarpdoc/yarp_data_dirs.html) environment variable.
+Append $CODYCO\_SUPERBUILD\_ROOT/build/install/share/codyco to your [YARP\_DATA\_DIRS](http://wiki.icub.org/yarpdoc/yarp_data_dirs.html) environment variable.
 
 
 ##OS X
@@ -175,7 +175,7 @@ git config --global user.email user@email.domain
 ```
 Finally it is possible to install CoDyCo software using the YCM superbuild:
 ```bash
-git clone https://github.com/robotology/codyco-superbuild.git
+git clone https://github.com/robotology-playground/codyco-superbuild.git
 cd codyco-superbuild
 mkdir build
 cd build
@@ -229,10 +229,7 @@ sudo apt-get install libeigen3-dev cmake cmake-curses-gui libboost-system-dev li
 The packages provided in the official distro repositories work out of the box for **Ubuntu 14.04** (`trusty`), **Ubuntu 13.10** (`saucy`) and **Debian 8** (`jessie`).
 For older distros the included CMake and Eigen are too old, and is necessary to find a way to install them from an alternative
 source:
-* In **Debian 7** (`wheezy`) it is sufficient to [enable the `wheezy-backports` repository](http://backports.debian.org/Instructions/) and install the recent versions of CMake and Eigen provided in it: 
-~~~
-sudo apt-get -t wheezy-backports install cmake libeigen3-dev 
-~~~
+* In **Debian 7** (`wheezy`) it is sufficient to [enable the `wheezy-backports` repository](http://backports.debian.org/Instructions/) to get recent versions of CMake and Eigen.
 * In **Ubuntu 12.04** (`precise`) a [PPA is available to easily install CMake 2.8.12](https://launchpad.net/~robotology/+archive/ubuntu/ppa). To install a recent version of Eigen the easiest solution is [to get Eigen from source](http://eigen.tuxfamily.org/index.php?title=Main_Page#Download).
 
 If for some reason you are bound to use Eigen 3.0.5 (for example for XDE compatibility) you can just set to off the `CODYCO_USES_EIGEN_320` CMake variable. In this way you will compile just the software that is compatible with Eigen 3.0.5 .  
@@ -283,7 +280,7 @@ git config --global user.email user@email.domain
 ```
 Finally it is possible to install CoDyCo software using the YCM superbuild:
 ```bash
-git clone https://github.com/robotology/codyco-superbuild.git
+git clone https://github.com/robotology-playground/codyco-superbuild.git
 cd codyco-superbuild
 mkdir build
 cd build
