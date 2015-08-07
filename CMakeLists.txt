@@ -29,25 +29,14 @@ option(CODYCO_USES_WBI_TOOLBOX_CONTROLLERS "Controllers and Simulink models crea
 option(CODYCO_USES_OROCOS_BFL_BERDY "Forked Orocos Bayesian Filtering Library" FALSE)
 option(CODYCO_USES_URDFDOM "Enable support for URDF input in iDynTree" TRUE)
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
-option(CODYCO_USES_EIGEN_320 "Enable compilation of software that depends on Eigen 3.2.0 (if false just depend on Eigen 3.0.5)" TRUE)
-option(CODYCO_BUILD_ISIR_MODULES "Enable compilation of ISIR controllers" FALSE)
+option(CODYCO_USES_EIGEN_320 "Enable compilation of software that depends on Eigen 3.2.0 (if false just depend on Eigen 3.0.5)" FALSE)
+option(CODYCO_BUILD_ISIR_MODULES "Enable compilation of ISIR controllers" TRUE)
 option(CODYCO_BUILD_QPOASES "Enable compilation of qpOASES" TRUE)
 option(CODYCO_USES_MEX_WHOLEBODYMODEL "Enable to compile the matlab mex inteface for iWholeBodyModel" FALSE)
 # option(CODYCO_DISABLE_RPATH "Disable installation with RPATH" FALSE) ##TODO: how to control all the RPATH variables of sub-projects?
 # mark_as_advanced(CODYCO_DISABLE_RPATH)
-
-
+option(USE_SYSTEM_TINYXML "Use system TinyXML instead of superbuild one" FALSE)
 option(IDYNTREE_USES_MATLAB "Compile iDynTree Matlab bindings" FALSE)
-
-#set default build type to "Release" in single-config generators
-if(NOT CMAKE_CONFIGURATION_TYPES)
-    if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE "Release" CACHE STRING
-        "Choose the type of build, recommanded options are: Debug or Release" FORCE)
-    endif()
-    set(CODYCO_BUILD_TYPES "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
-    set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS ${CODYCO_BUILD_TYPES})
-endif()
 
 #options for testing
 option(CODYCO_COMPILE_TESTS "Compile tests using the robot testing framework" FALSE)
@@ -146,3 +135,6 @@ set_package_properties(PkgConfig PROPERTIES TYPE RUNTIME)
 set_package_properties(Doxygen PROPERTIES TYPE RUNTIME)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+
+# some yarp requirements during compilation
+set(ENV{YARP_DATA_DIRS} "${PROJECT_SOURCE_DIR}/build/install/share/codyco")

@@ -35,8 +35,8 @@ endif()
 
 ycm_ep_helper(ocra-wbi-plugins TYPE GIT
               STYLE GITHUB
-              REPOSITORY ocra-recipes/ocra-wbi-plugins.git
-              TAG master
+              REPOSITORY alexandrelheinen/ocra-wbi-plugins.git
+              TAG stage
               COMPONENT main
               CMAKE_CACHE_ARGS ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED}
               DEPENDS YARP
