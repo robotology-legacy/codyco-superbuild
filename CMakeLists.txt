@@ -29,8 +29,8 @@ option(CODYCO_USES_WBI_TOOLBOX_CONTROLLERS "Controllers and Simulink models crea
 option(CODYCO_USES_OROCOS_BFL_BERDY "Forked Orocos Bayesian Filtering Library" FALSE)
 option(CODYCO_USES_URDFDOM "Enable support for URDF input in iDynTree" TRUE)
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
-option(CODYCO_USES_EIGEN_320 "Enable compilation of software that depends on Eigen 3.2.0 (if false just depend on Eigen 3.0.5)" TRUE)
-option(CODYCO_BUILD_ISIR_MODULES "Enable compilation of ISIR controllers" FALSE)
+option(CODYCO_USES_EIGEN_320 "Enable compilation of software that depends on Eigen 3.2.0 (if false just depend on Eigen 3.0.5)" FALSE)
+option(CODYCO_BUILD_ISIR_MODULES "Enable compilation of ISIR controllers" TRUE)
 option(CODYCO_BUILD_QPOASES "Enable compilation of qpOASES" TRUE)
 option(CODYCO_USES_MEX_WHOLEBODYMODEL "Enable to compile the matlab mex inteface for iWholeBodyModel" FALSE)
 # option(CODYCO_DISABLE_RPATH "Disable installation with RPATH" FALSE) ##TODO: how to control all the RPATH variables of sub-projects?
@@ -72,8 +72,8 @@ include(FindOrBuildPackage)
 include(YCMEPHelper)
 
 
-if(MSVC) 
-    find_or_build_package(Eigen3)	
+if(MSVC)
+    find_or_build_package(Eigen3)
 else()
     if(CODYCO_USES_EIGEN_320)
     	find_package(Eigen3 3.2 REQUIRED)
