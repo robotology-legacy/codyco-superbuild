@@ -10,7 +10,7 @@ find_or_build_package(motorFrictionIdentificationLib QUIET)
 
 ycm_ep_helper(yarpWholeBodyInterface TYPE GIT
               STYLE GITHUB
-              REPOSITORY robotology-playground/yarp-wholebodyinterface.git
+              REPOSITORY robotology/yarp-wholebodyinterface.git
               TAG master
               COMPONENT libraries
               DEPENDS YARP
