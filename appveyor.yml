@@ -43,7 +43,7 @@ build_script:
   - cd c:\dev\codyco-superbuild
   - md build
   - cd build
-  - cmake -G"Visual Studio 11" -DNON_INTERACTIVE_BUILD:BOOL=TRUE ..
+  - cmake -G"Visual Studio 11" -DNON_INTERACTIVE_BUILD:BOOL=TRUE -DYCM_BOOTSTRAP_VERBOSE:BOOL=TRUE ..
   - msbuild /m /p:Configuration=Release /p:Platform="Win32" codyco-superbuild.sln
 
 notifications:
