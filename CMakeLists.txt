@@ -92,9 +92,6 @@ if( ${CODYCO_BUILD_ISIR_MODULES} )
     find_or_build_package(ocra-wbi-plugins)
 endif()
 
-#additional modules
-find_or_build_package(comStepper)
-
 #Set WBI-Toolbox and mexWholeBodyModel variables depending on CODYCO_USES_MATLAB
 if(NOT ${CODYCO_MATLAB_DEPENDENCIES_CUSTOM})
     set(CODYCO_USES_WBI_TOOLBOX ${CODYCO_USES_MATLAB} CACHE BOOL "Whole Body Interface Toolbox - Simulink library" FORCE)
