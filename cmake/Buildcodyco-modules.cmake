@@ -9,9 +9,10 @@ find_or_build_package(iDynTree QUIET)
 find_or_build_package(paramHelp QUIET)
 find_or_build_package(wholeBodyInterface QUIET NO_CMAKE_PACKAGE_REGISTRY)
 find_or_build_package(yarpWholeBodyInterface QUIET)
+
 #find_or_build_package(modHelp QUIET)
-find_or_build_package(sensorsInterfaces QUIET)
-find_or_build_package(InSituFTCalibration QUIET)
+#find_or_build_package(sensorsInterfaces QUIET)
+#find_or_build_package(InSituFTCalibration QUIET)
 
 if (${CODYCO_USES_EIGEN_320})
 	find_or_build_package(codycoCommons QUIET)
