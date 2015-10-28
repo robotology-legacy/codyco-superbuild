@@ -65,7 +65,7 @@ if(NOT CMAKE_VERSION VERSION_LESS 3.0)
 endif()
 
 # Bootstrap YCM
-set(YCM_TAG 671740c84a98023c4554dcc12318ac1c513171e7)
+set(YCM_TAG aae056b0f51d106fe746b964966ca816faa925ab)
 include(YCMBootstrap)
 
 include(FindOrBuildPackage)
