@@ -35,5 +35,6 @@ ycm_ep_helper(WBIToolbox TYPE GIT
               DEPENDS YARP
                       ICUB
                       iDynTree
+                      codycoCommons
                       wholeBodyInterface
                       yarpWholeBodyInterface)
