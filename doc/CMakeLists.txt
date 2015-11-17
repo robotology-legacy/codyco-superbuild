@@ -39,8 +39,10 @@ if(DOXYGEN_FOUND)
             set(DOX_EXTRA_DIR "${DOX_EXTRA_DIR} ${CMAKE_SOURCE_DIR}/${_component}/${_proj}")
             add_dependencies(dox ${_proj}) # documentation does not have an update target
         elseif(_proj STREQUAL "iDynTree")
-            set(DOX_EXTRA_DIR "${DOX_EXTRA_DIR} ${CMAKE_SOURCE_DIR}/${_component}/${_proj}/")
             add_dependencies(dox ${_proj}-update)
+            add_custom_target(${_proj}-dox COMMAND ${CMAKE_COMMAND} -DIDYNTREE_DOXYGEN_INSTALL_DIR="${CMAKE_CURRENT_BINARY_DIR}/html/idyntree" ../libraries/${_proj}
+                                          COMMAND ${CMAKE_COMMAND} --build ../libraries/${_proj} --target dox)
+            add_dependencies(${_proj}-dox ${_proj}-update)
         else()
             set(DOX_EXTRA_DIR "${DOX_EXTRA_DIR} ${CMAKE_SOURCE_DIR}/${_component}/${_proj}/doc")
             set(DOX_EXTRA_DIR "${DOX_EXTRA_DIR} ${CMAKE_SOURCE_DIR}/${_component}/${_proj}/src")
