@@ -13,6 +13,7 @@ Reference material:
   - The <a href="http://www.codyco.eu/">CoDyCo project website</a>.
   - CoDyCo superbuild installation guide on the <a href="https://github.com/robotology/codyco-superbuild#installation">repository README</a>.
   - \ref dynamics_notation .
+  - iDynTree (the library for dynamics algorithms developed in the CoDyCo project) documentation can be found at <a href="http://wiki.icub.org/codyco/dox/html/idyntree/html/">http://wiki.icub.org/codyco/dox/html/idyntree/html/</a>
 
 This documentation is developed by scanning all source code
 in the libraries and main components of the superbuild.
