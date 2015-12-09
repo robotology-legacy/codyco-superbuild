@@ -93,6 +93,7 @@ endif()
 
 #Set WBI-Toolbox and mexWholeBodyModel variables depending on CODYCO_USES_MATLAB
 if(NOT ${CODYCO_MATLAB_DEPENDENCIES_CUSTOM})
+    set(CODYCO_USES_WB_TOOLBOX ${CODYCO_USES_MATLAB} CACHE BOOL "Whole Body Toolbox - Simulink library" FORCE)
     set(CODYCO_USES_WBI_TOOLBOX ${CODYCO_USES_MATLAB} CACHE BOOL "Whole Body Interface Toolbox - Simulink library" FORCE)
     set(CODYCO_USES_MEX_WHOLEBODYMODEL ${CODYCO_USES_MATLAB} CACHE BOOL "Enable to compile the matlab mex inteface for iWholeBodyModel" FORCE)
 endif()
