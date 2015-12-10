@@ -25,6 +25,8 @@ option(CODYCO_MATLAB_DEPENDENCIES_CUSTOM "Enables the custom selection of some M
 option(CODYCO_USES_LUA "Enable compilation of software that depend on Lua" FALSE)
 option(CODYCO_USES_PYTHON "Enable compilation of software that depend on Python" FALSE)
 option(CODYCO_USES_WBI_TOOLBOX "Whole Body Interface Toolbox - Simulink library" FALSE)
+option(CODYCO_USES_WB_TOOLBOX "EXPERIMENTAL - Whole Body Control Toolbox - Simulink library" FALSE)
+mark_as_advanced(CODYCO_USES_WB_TOOLBOX)
 option(CODYCO_USES_WBI_TOOLBOX_CONTROLLERS "Controllers and Simulink models created/used with the WBI-Toolbox" FALSE)
 option(CODYCO_USES_OROCOS_BFL_BERDY "Forked Orocos Bayesian Filtering Library" FALSE)
 option(CODYCO_USES_URDFDOM "Enable support for URDF input in iDynTree" TRUE)
@@ -33,9 +35,6 @@ option(CODYCO_USES_EIGEN_320 "Enable compilation of software that depends on Eig
 option(CODYCO_BUILD_ISIR_MODULES "Enable compilation of ISIR controllers" FALSE)
 option(CODYCO_BUILD_QPOASES "Enable compilation of qpOASES" TRUE)
 option(CODYCO_USES_MEX_WHOLEBODYMODEL "Enable to compile the matlab mex inteface for iWholeBodyModel" FALSE)
-# option(CODYCO_DISABLE_RPATH "Disable installation with RPATH" FALSE) ##TODO: how to control all the RPATH variables of sub-projects?
-# mark_as_advanced(CODYCO_DISABLE_RPATH)
-
 
 option(IDYNTREE_USES_MATLAB "Compile iDynTree Matlab bindings" FALSE)
 
@@ -94,17 +93,23 @@ endif()
 
 #Set WBI-Toolbox and mexWholeBodyModel variables depending on CODYCO_USES_MATLAB
 if(NOT ${CODYCO_MATLAB_DEPENDENCIES_CUSTOM})
+    set(CODYCO_USES_WB_TOOLBOX ${CODYCO_USES_MATLAB} CACHE BOOL "Whole Body Toolbox - Simulink library" FORCE)
     set(CODYCO_USES_WBI_TOOLBOX ${CODYCO_USES_MATLAB} CACHE BOOL "Whole Body Interface Toolbox - Simulink library" FORCE)
     set(CODYCO_USES_MEX_WHOLEBODYMODEL ${CODYCO_USES_MATLAB} CACHE BOOL "Enable to compile the matlab mex inteface for iWholeBodyModel" FORCE)
 endif()
 
+#WB-Toolbox
+if (${CODYCO_USES_WB_TOOLBOX})
+    find_or_build_package(WBToolbox)
+endif()
+
 #WBI-Toolbox
-if( ${CODYCO_USES_WBI_TOOLBOX} )
+if (${CODYCO_USES_WBI_TOOLBOX})
     find_or_build_package(WBIToolbox)
 endif()
 
 #WBI-Toolbox-controllers
-if( ${CODYCO_USES_WBI_TOOLBOX_CONTROLLERS} )
+if (${CODYCO_USES_WBI_TOOLBOX_CONTROLLERS})
     find_or_build_package(WBIToolboxControllers)
 endif()
 
@@ -114,22 +119,22 @@ if (${CODYCO_USES_OROCOS_BFL_BERDY})
 endif()
 
 #mex wholeBodyModel interface
-if( ${CODYCO_USES_MEX_WHOLEBODYMODEL} )
+if (${CODYCO_USES_MEX_WHOLEBODYMODEL})
    find_or_build_package(mexWholeBodyModel)
 endif()
 
 #icub-model-generator
-if(${CODYCO_BUILD_ICUB_MODEL_GENERATOR})
+if (${CODYCO_BUILD_ICUB_MODEL_GENERATOR})
     find_or_build_package(icub-model-generator)
 endif()
 
 #qpOASES
-if(${CODYCO_BUILD_QPOASES})
+if (${CODYCO_BUILD_QPOASES})
     find_or_build_package(qpOASES)
 endif()
 
 # adding test related subprojces
-if(${CODYCO_COMPILE_TESTS})
+if (${CODYCO_COMPILE_TESTS})
     find_or_build_package(RTF)
     find_or_build_package(icub-tests)
 endif()
