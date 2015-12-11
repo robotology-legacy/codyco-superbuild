@@ -25,7 +25,7 @@ endif()
 
 ycm_ep_helper(WBToolbox TYPE GIT
               STYLE GITHUB
-              REPOSITORY robotology-playground/WB-Toolbox.git
+              REPOSITORY robotology/WB-Toolbox.git
               TAG master
               COMPONENT main
               CMAKE_CACHE_ARGS ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED}
