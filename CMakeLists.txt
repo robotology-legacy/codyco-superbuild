@@ -5,6 +5,13 @@ project(codyco-superbuild NONE)
 ## by CMake to describe packages (in Config*.cmake files)
 enable_language(C)
 
+# Disable in source build
+if("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
+   message(FATAL_ERROR "In-source builds of codyco-superbuild are not allowed. "
+                       "Please remove CMakeCache.txt and the CMakeFiles/ directory, then build out-of-source. "
+                       "If you really want to do an in-source build, feel free to comment out this error.")
+endif("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
+
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 set(CODYCO-SUPERBUILD_MAJOR_VERSION 0)
