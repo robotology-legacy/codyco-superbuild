@@ -46,7 +46,7 @@ The projects downloaded in the `main` component are:
 
 * `WBI-Toolbox`: Simulink Toolbox for rapid prototyping of Whole Body Robot Controllers [Project Page](https://github.com/robotology-playground/WBI-Toolbox)
 * `codyco-modules`: YARP modules and controllers developed within the European Project CoDyCo [Project Page](https://github.com/robotology/codyco-modules)
-* `ocra-wbi-plugins`: Interface between the whole-body controller libraries developed at ISIR and and WBI [Project Page](https://github.com/ocra-recipes/ocra-wbi-plugins). Depends on the [`ocra-recipes`](https://github.com/ocra-recipes/ocra-core) libraries. To compile these libraries and modules, enable the option: `CODYCO_BUILD_OCRA_MODULES : ON`.
+* `ocra-wbi-plugins`: Interface between the whole-body controller libraries developed at ISIR and and WBI [Project Page](https://github.com/ocra-recipes/ocra-wbi-plugins). Depends on the [`ocra-recipes`](https://github.com/ocra-recipes/ocra-recipes) libraries. To compile these libraries and modules, enable the option: `CODYCO_BUILD_OCRA_MODULES : ON`.
 
 Update
 ======
