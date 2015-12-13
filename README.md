@@ -1,15 +1,15 @@
 CoDyCo Project Superbuild
 ---------------
-| Linux/OS X | 
+| Linux/OS X |
 |:----------:|
-| [![Build Status](https://travis-ci.org/robotology/codyco-superbuild.png?branch=master)](https://travis-ci.org/robotology/codyco-superbuild) | 
+| [![Build Status](https://travis-ci.org/robotology/codyco-superbuild.png?branch=master)](https://travis-ci.org/robotology/codyco-superbuild) |
 The CoDyCo project is a four-years long project that started in March 2013. At the end of each year a scenario will be used to validate on the iCub the theoretical advances of the project.
 
 More info at http://codyco.eu/
 
 Code documentation automatically generated: http://wiki.icub.org/codyco/dox/html/index.html
 
-This is a meta repository (so-called "superbuild") that uses [YCM](https://github.com/robotology/ycm) to compile CoDyCo software. 
+This is a meta repository (so-called "superbuild") that uses [YCM](https://github.com/robotology/ycm) to compile CoDyCo software.
 A YCM Superbuild is a CMake project whose only goal is to download and build several other projects. You can read more about the superbuild concept in [YCM documentation](http://robotology.github.io/ycm/gh-pages/master/manual/ycm-superbuild.7.html).
 
 Superbuild structure
@@ -18,15 +18,15 @@ Superbuild structure
 codyco-superbuild will download and build a number of projects, divided in components.
 For each project, the repository will be downloaded in the `component/project` subdirectory
 of the superbuild root. The build directory for a given project will be instead the `component/project` subdirectory
-of the superbuild build directory. 
+of the superbuild build directory.
 
 ###`external`
 
-The `external` component contains software not developed inside the CoDyCo consortium, but that is a dependency of CoDyCo software. 
+The `external` component contains software not developed inside the CoDyCo consortium, but that is a dependency of CoDyCo software.
 
 ###`libraries`
 
-The `libraries` component contains librares developed by the CoDyCo consortium, that could be used also by external software. 
+The `libraries` component contains librares developed by the CoDyCo consortium, that could be used also by external software.
 
 The projects downloaded in the `libraries` component are:
 
@@ -39,18 +39,18 @@ The projects downloaded in the `libraries` component are:
 
 ###`main`
 
-The `main` component contains executable software developed by the CoDyCo consortium, for example YARP modules, 
-Simulink models or Lua scripts. 
+The `main` component contains executable software developed by the CoDyCo consortium, for example YARP modules,
+Simulink models or Lua scripts.
 
 The projects downloaded in the `main` component are:
 
 * `WBI-Toolbox`: Simulink Toolbox for rapid prototyping of Whole Body Robot Controllers [Project Page](https://github.com/robotology-playground/WBI-Toolbox)
 * `codyco-modules`: YARP modules and controllers developed within the European Project CoDyCo [Project Page](https://github.com/robotology/codyco-modules)
-* `ocra-wbi-plugins`: Interface between the whole-body controller libraries developed at ISIR and and WBI [Project Page](https://github.com/ocra-recipes/ocra-wbi-plugins). Depends on the `ocra-core` libraries which can be found [here](https://github.com/ocra-recipes/ocra-core). 
+* `ocra-wbi-plugins`: Interface between the whole-body controller libraries developed at ISIR and and WBI [Project Page](https://github.com/ocra-recipes/ocra-wbi-plugins). Depends on the [`ocra-recipes`](https://github.com/ocra-recipes/ocra-core) libraries. To compile these libraries and modules, enable the option: `CODYCO_BUILD_OCRA_MODULES : ON`.
 
 Update
 ======
-For updating the codyco-superbuild repository it is possible to just fetch the last changes using the usual 
+For updating the codyco-superbuild repository it is possible to just fetch the last changes using the usual
 git command:
 ~~~
 git pull
@@ -77,28 +77,28 @@ Installation
 We provide different instructions on how to install codyco-superbuild, depending on your operating system:
 * [**Windows**](#windows): use the superbuild with Microsoft Visual Studio
 * [**OS X**](#os-x): use the superbuild with Xcode or GNU make
-* [**Linux**](#linux): use the superbuild with make 
+* [**Linux**](#linux): use the superbuild with make
 
 Complete documentation on [YCM documentation](http://robotology.github.io/ycm/gh-pages/master/manual/ycm-superbuild.7.html)
 ##Windows
 
-###System Dependencies 
-Most of the CoDyCo software is developed using the C/C++ language. For this reason, you should have Visual Studio installed on your computer to build it. You will also need some additional software, as listed afterwards. 
-Some of this software can be easily installed using [Chocolatey](https://chocolatey.org), a tool to simplify software installation on Windows. 
+###System Dependencies
+Most of the CoDyCo software is developed using the C/C++ language. For this reason, you should have Visual Studio installed on your computer to build it. You will also need some additional software, as listed afterwards.
+Some of this software can be easily installed using [Chocolatey](https://chocolatey.org), a tool to simplify software installation on Windows.
 
-####Git 
-Most of the CoDyCo software is hosted on Git repositories, so you will need Git to download them. 
-You can download the Git installer at http://msysgit.github.io/ . 
-##### Chocolatey 
+####Git
+Most of the CoDyCo software is hosted on Git repositories, so you will need Git to download them.
+You can download the Git installer at http://msysgit.github.io/ .
+##### Chocolatey
 If you have installed Chocolatey, you can install Git with the following command:
 ~~~
 choco install git
 ~~~
 
 ####Mercurial
-Some software required by the `codyco-superbuild` (namely the Eigen library) are hosted in Mercurial repositories, so you will need Mercurial to automatically download them. 
-You can download the Mercurial installer at http://mercurial.selenic.com/wiki/Download . 
-##### Chocolatey 
+Some software required by the `codyco-superbuild` (namely the Eigen library) are hosted in Mercurial repositories, so you will need Mercurial to automatically download them.
+You can download the Mercurial installer at http://mercurial.selenic.com/wiki/Download .
+##### Chocolatey
 If you have installed Chocolatey, you can install Monotone with the following command:
 ~~~
 choco install hg
@@ -106,28 +106,28 @@ choco install hg
 
 ####CMake
 To install CMake you can use the official installer available at http://www.cmake.org/cmake/resources/software.html .
-It is recommended to install the latest version of CMake. 
-##### Chocolatey 
+It is recommended to install the latest version of CMake.
+##### Chocolatey
 If you have installed Chocolatey, you can install CMake with the following command:
 ~~~
-choco install cmake 
+choco install cmake
 ~~~
 
 
 ####Eigen
-Eigen can be automaically installed with the codyco-superbuild, so you don't have to install it manually. 
+Eigen can be automaically installed with the codyco-superbuild, so you don't have to install it manually.
 
 If you want to install Eigen manually, or you have already installed Eigen please check the following section.
 #### Manual installation
 You can install Eigen from source code available from the [Eigen official website](http://eigen.tuxfamily.org).
 You can simply extract the Eigen source code in a directory, and then define the `EIGEN3_ROOT` environment variable to the path of the directory that contains the file `signature_of_eigen3_matrix_library` (it should be the first directory contained in the compressed file).
 
-####Boost 
-Some software of codyco-superbuild requires Boost. If you have already a copy of the Boost libraries 
+####Boost
+Some software of codyco-superbuild requires Boost. If you have already a copy of the Boost libraries
 installed on your system, you can use them for compiling codyco-superbuild by defining the appropriate
-`BOOST_DIR`, `BOOST_LIBRARYDIR` and `BOOST_INCLUDEDIR` enviroment variables. 
+`BOOST_DIR`, `BOOST_LIBRARYDIR` and `BOOST_INCLUDEDIR` enviroment variables.
 
-If you don't have Boost libraries installed in your system, don't worry! The superbuild will threat Boost as any other dependency, by downloading and compiling automatically only the necessary Boost components. 
+If you don't have Boost libraries installed in your system, don't worry! The superbuild will threat Boost as any other dependency, by downloading and compiling automatically only the necessary Boost components.
 
 ####YARP & iCub
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
@@ -136,13 +136,13 @@ For installing the latest version of YARP and ICUB software, please refer to [th
 If you didn't already configured your git, you have to set your name and email to sign your commits:
 ```
 git config --global user.name FirstName LastName
-git config --global user.email user@email.domain 
+git config --global user.email user@email.domain
 ```
-After that you can clone the superbuild repository as any other git repository, and generate the Visual Studio solution using the CMake gui. Then you open the generated solution with Visual Studio and build the target `all`. 
+After that you can clone the superbuild repository as any other git repository, and generate the Visual Studio solution using the CMake gui. Then you open the generated solution with Visual Studio and build the target `all`.
 Visual Studio will then download, build and install in a local directory all the CoDyCo software and its dependencies.
 If you prefer to work from the command line, you can also compile the `all` target using the following command (if you are in the `codyco-superbuild/build` directory:
 ~~~
-cmake --build . 
+cmake --build .
 ~~~
 
 ###Configure your environment
@@ -159,7 +159,7 @@ Append `$CODYCO_SUPERBUILD_ROOT/build/install/share/codyco` to your [YARP\_DATA\
 
 ##OS X
 
-###System Dependencies 
+###System Dependencies
 To install Eigen and CMake, it is possible to use [Homebrew](http://brew.sh/):
 ```
 brew install eigen cmake boost tinyxml
@@ -171,7 +171,7 @@ For installing the latest version of YARP and ICUB software, please refer to [th
 If you didn't already configured your git, you have to set your name and email to sign your commits:
 ```
 git config --global user.name FirstName LastName
-git config --global user.email user@email.domain 
+git config --global user.email user@email.domain
 ```
 Finally it is possible to install CoDyCo software using the YCM superbuild:
 ```bash
@@ -220,8 +220,8 @@ user@host:~$ source ~/.bash_profile
 ```
 or simply open a new terminal.
 
-##Linux 
-###System Dependencies 
+##Linux
+###System Dependencies
 On Debian based systems (as Ubuntu) you can install CMake and Eigen (and other dependencies necessary for the codyco-superbuild) using `apt-get`:
 ```
 sudo apt-get install libeigen3-dev cmake cmake-curses-gui libboost-system-dev libboost-thread-dev libtinyxml-dev libace-dev libgtkmm-2.4-dev libglademm-2.4-dev libgsl0-dev libcv-dev libhighgui-dev libcvaux-dev libode-dev liblua5.1-dev lua5.1 swig
@@ -229,37 +229,37 @@ sudo apt-get install libeigen3-dev cmake cmake-curses-gui libboost-system-dev li
 The packages provided in the official distro repositories work out of the box for **Ubuntu 14.04** (`trusty`), **Ubuntu 13.10** (`saucy`) and **Debian 8** (`jessie`).
 For older distros the included CMake and Eigen are too old, and is necessary to find a way to install them from an alternative
 source:
-* In **Debian 7** (`wheezy`) it is sufficient to [enable the `wheezy-backports` repository](http://backports.debian.org/Instructions/) and install the recent versions of CMake and Eigen provided in it: 
+* In **Debian 7** (`wheezy`) it is sufficient to [enable the `wheezy-backports` repository](http://backports.debian.org/Instructions/) and install the recent versions of CMake and Eigen provided in it:
 ~~~
-sudo apt-get -t wheezy-backports install cmake libeigen3-dev 
+sudo apt-get -t wheezy-backports install cmake libeigen3-dev
 ~~~
 * In **Ubuntu 12.04** (`precise`) a [PPA is available to easily install CMake 2.8.12](https://launchpad.net/~robotology/+archive/ubuntu/ppa). To install a recent version of Eigen the easiest solution is [to get Eigen from source](http://eigen.tuxfamily.org/index.php?title=Main_Page#Download).
 
 If for some reason you are bound to use Eigen 3.0.5 (for example for XDE compatibility) you can just set to off the `CODYCO_USES_EIGEN_320` CMake variable. In this way you will compile just the software that is compatible with Eigen 3.0.5 .  
 
 #### YARP and iCub software
-For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/Linux:Installation_from_sources). Please note that at the moment 
+For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/Linux:Installation_from_sources). Please note that at the moment
 the codyco-superbuild only supports YARP and ICUB installed from sources.
 
-##### Optional dependency: Lua 
+##### Optional dependency: Lua
 For replicating the demonstrations of the validation scenarios, you need some additional dependency related to the Lua language for coordinating the different software components.
 For installing the Lua language and the related libraries you can use apt-get (this should have been already installed if you properly followed the previous steps):
 ```
-sudo apt-get install swig liblua5.1-dev lua5.1 
+sudo apt-get install swig liblua5.1-dev lua5.1
 ```
-After installing the Lua language, you should install the [rFSM](https://github.com/kmarkus/rFSM) and enable the [yarp-lua](http://wiki.icub.org/yarpdoc/yarp_swig.html) bindings and the [portmonitor carrier](http://wiki.icub.org/yarpdoc/portmonitor.html) in YARP compilation. 
+After installing the Lua language, you should install the [rFSM](https://github.com/kmarkus/rFSM) and enable the [yarp-lua](http://wiki.icub.org/yarpdoc/yarp_swig.html) bindings and the [portmonitor carrier](http://wiki.icub.org/yarpdoc/portmonitor.html) in YARP compilation.
 
-###### portmonitor carrier 
-To use the portmonitor carrier, make sure that while configuring the YARP CMake (`ccmake ..`) 
-you enabled the `YARP_COMPILE_BINDINGS` and the `CREATE_OPTIONAL_CARRIERS` options. 
-After that, press `c` and you should get some additional options related to bindings and carriers, 
+###### portmonitor carrier
+To use the portmonitor carrier, make sure that while configuring the YARP CMake (`ccmake ..`)
+you enabled the `YARP_COMPILE_BINDINGS` and the `CREATE_OPTIONAL_CARRIERS` options.
+After that, press `c` and you should get some additional options related to bindings and carriers,
 make sure to enable `CREATE_LUA` and `ENABLE_yarpcar_portmonitor_carrier`. Then compile YARP as usual.
 
-After that, make sure that `Lua` can find the yarp bindings by adding the 
+After that, make sure that `Lua` can find the yarp bindings by adding the
 ~~~
 export LUA_CPATH=";;;$YARP_DIR/lib/lua/?.so"
 ~~~
-to your `.bashrc` file, where `$YARP_DIR` is the build or installation directory of YARP. 
+to your `.bashrc` file, where `$YARP_DIR` is the build or installation directory of YARP.
 
 ###### rFSM
 For installing rFSM, you can simply download it:
@@ -279,7 +279,7 @@ And as an additional dependency of `codyco-superbuild` you will also have: `libb
 If you didn't already configured your git, you have to set your name and email to sign your commits:
 ```
 git config --global user.name FirstName LastName
-git config --global user.email user@email.domain 
+git config --global user.email user@email.domain
 ```
 Finally it is possible to install CoDyCo software using the YCM superbuild:
 ```bash
@@ -310,11 +310,3 @@ If may also be necessary to updates the cache of the dynamic linker:
 ```bash
 user@host:~$ sudo ldconfig
 ```
-
-##A Note On `ocra-wbi-plugins`
-If you plan on using the `ocra-wbi-plugins` a.k.a `ISIR_MODULES` then you need to use an earlier version of Eigen (<= 3.0.5). The [`ocra-core` instructions](https://github.com/ocra-recipes/ocra-core) provide information on how to use earlier versions of Eigen and set up your environement. Additionally you must configure the superbuild CMake flags to the following:
-```
-CODYCO_BUILD_ISIR_MODULES : ON
-CODYCO_USES_EIGEN_320 : OFF
-```
-This has only been tested in Ubuntu 12.04 but should be expanded to other OS's in the future.
