@@ -36,6 +36,8 @@ The projects downloaded in the `libraries` component are:
 * `wholebodyinterface`: C++ Interfaces to sensor measurements, state estimations, kinematic/dynamic model and actuators for a floating base robot [Project Page](https://github.com/robotology-playground/wholebodyinterface)
 * `yarp-wholebodyinterface`: Implementation of the wholeBodyInterface for YARP robots [Project Page](https://github.com/robotology-playground/yarp-wholebodyinterface)
 * `orocosBFLBerdy`: Fork of the Bayesian Filtering Library [Orocos-BFL](http://www.orocos.org/bfl). *Early stage. Currently used and tested only for the quaternionEKF module and basic Kalman Filtering*
+* `EigenLgsm`: Lie group solid mechanics header library for Eigen. [Project page](https://github.com/ocra-recipes/eigen_lgsm)
+* `ocra-recipes`: Optimization based Control for Robotics Applications. A set of libraries designed to efficiently formulate robot control problems as a convex optimization problems. [Project page](https://github.com/ocra-recipes/ocra-recipes)
 
 ###`main`
 
@@ -46,7 +48,7 @@ The projects downloaded in the `main` component are:
 
 * `WBI-Toolbox`: Simulink Toolbox for rapid prototyping of Whole Body Robot Controllers [Project Page](https://github.com/robotology-playground/WBI-Toolbox)
 * `codyco-modules`: YARP modules and controllers developed within the European Project CoDyCo [Project Page](https://github.com/robotology/codyco-modules)
-* `ocra-wbi-plugins`: Interface between the whole-body controller libraries developed at ISIR and and WBI [Project Page](https://github.com/ocra-recipes/ocra-wbi-plugins). Depends on the [`ocra-recipes`](https://github.com/ocra-recipes/ocra-recipes) libraries. To compile these libraries and modules, enable the option: `CODYCO_BUILD_OCRA_MODULES : ON`.
+* `ocra-wbi-plugins`: Interface between the whole-body controller libraries (`ocra-recipes`) developed at ISIR and and WBI [Project Page](https://github.com/ocra-recipes/ocra-wbi-plugins). To compile these libraries and modules, enable the option: `CODYCO_BUILD_OCRA_MODULES : ON`.
 
 Update
 ======
@@ -224,7 +226,7 @@ or simply open a new terminal.
 ###System Dependencies
 On Debian based systems (as Ubuntu) you can install CMake and Eigen (and other dependencies necessary for the codyco-superbuild) using `apt-get`:
 ```
-sudo apt-get install libeigen3-dev cmake cmake-curses-gui libboost-system-dev libboost-thread-dev libtinyxml-dev libace-dev libgtkmm-2.4-dev libglademm-2.4-dev libgsl0-dev libcv-dev libhighgui-dev libcvaux-dev libode-dev liblua5.1-dev lua5.1 swig
+sudo apt-get install libeigen3-dev cmake cmake-curses-gui libboost-system-dev libboost-filesystem-dev libboost-thread-dev libtinyxml-dev libace-dev libgtkmm-2.4-dev libglademm-2.4-dev libgsl0-dev libcv-dev libhighgui-dev libcvaux-dev libode-dev liblua5.1-dev lua5.1 swig
 ```
 The packages provided in the official distro repositories work out of the box for **Ubuntu 14.04** (`trusty`), **Ubuntu 13.10** (`saucy`) and **Debian 8** (`jessie`).
 For older distros the included CMake and Eigen are too old, and is necessary to find a way to install them from an alternative
