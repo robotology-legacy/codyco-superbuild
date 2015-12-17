@@ -29,7 +29,7 @@ ycm_ep_helper(iDynTree TYPE GIT
               DEPENDS YARP
                       ICUB
                       orocos_kdl
-					  TinyXML)
+                      TinyXML)
 else()
 
 ycm_ep_helper(iDynTree TYPE GIT
@@ -44,5 +44,5 @@ ycm_ep_helper(iDynTree TYPE GIT
                       orocos_kdl
                       urdfdom_headers
                       urdfdom
-					  TinyXML)
+		      TinyXML)
 endif()
