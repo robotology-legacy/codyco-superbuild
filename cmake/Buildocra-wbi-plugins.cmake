@@ -5,7 +5,7 @@ include(FindOrBuildPackage)
 find_or_build_package(YARP QUIET)
 find_or_build_package(ICUB QUIET)
 find_or_build_package(yarpWholeBodyInterface QUIET)
-find_or_build_package(modHelp QUIET)
+
 
 
 set(CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED "")
@@ -33,6 +33,22 @@ elseif()
     set(CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED} -DCODYCO_ICUBWBI_USE_EXTERNAL_TORQUE_CONTROL:BOOL=OFF)
 endif()
 
+ycm_ep_helper(EigenLgsm TYPE GIT
+              STYLE GITHUB
+              REPOSITORY ocra-recipes/eigen_lgsm.git
+              TAG master
+              COMPONENT libraries
+              CMAKE_CACHE_ARGS ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED})
+
+ycm_ep_helper(ocra-recipes TYPE GIT
+              STYLE GITHUB
+              REPOSITORY ocra-recipes/ocra-recipes.git
+              TAG master
+              COMPONENT libraries
+              CMAKE_CACHE_ARGS ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED}
+              DEPENDS YARP
+                      EigenLgsm)
+
 ycm_ep_helper(ocra-wbi-plugins TYPE GIT
               STYLE GITHUB
               REPOSITORY ocra-recipes/ocra-wbi-plugins.git
@@ -41,7 +57,8 @@ ycm_ep_helper(ocra-wbi-plugins TYPE GIT
               CMAKE_CACHE_ARGS ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED}
               DEPENDS YARP
                       ICUB
-                      modHelp
                       iDynTree
                       wholeBodyInterface
-                      yarpWholeBodyInterface)
+                      yarpWholeBodyInterface
+                      ocra-recipes
+                      EigenLgsm)
