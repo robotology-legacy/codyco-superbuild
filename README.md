@@ -243,34 +243,6 @@ If for some reason you are bound to use Eigen 3.0.5 (for example for XDE compati
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/Linux:Installation_from_sources). Please note that at the moment
 the codyco-superbuild only supports YARP and ICUB installed from sources.
 
-##### Optional dependency: Lua
-For replicating the demonstrations of the validation scenarios, you need some additional dependency related to the Lua language for coordinating the different software components.
-For installing the Lua language and the related libraries you can use apt-get (this should have been already installed if you properly followed the previous steps):
-```
-sudo apt-get install swig liblua5.1-dev lua5.1
-```
-After installing the Lua language, you should install the [rFSM](https://github.com/kmarkus/rFSM) and enable the [yarp-lua](http://wiki.icub.org/yarpdoc/yarp_swig.html) bindings and the [portmonitor carrier](http://wiki.icub.org/yarpdoc/portmonitor.html) in YARP compilation.
-
-###### portmonitor carrier
-To use the portmonitor carrier, make sure that while configuring the YARP CMake (`ccmake ..`)
-you enabled the `YARP_COMPILE_BINDINGS` and the `CREATE_OPTIONAL_CARRIERS` options.
-After that, press `c` and you should get some additional options related to bindings and carriers,
-make sure to enable `CREATE_LUA` and `ENABLE_yarpcar_portmonitor_carrier`. Then compile YARP as usual.
-
-After that, make sure that `Lua` can find the yarp bindings by adding the
-~~~
-export LUA_CPATH=";;;$YARP_DIR/lib/lua/?.so"
-~~~
-to your `.bashrc` file, where `$YARP_DIR` is the build or installation directory of YARP.
-
-###### rFSM
-For installing rFSM, you can simply download it:
-~~~bash
-git clone https://github.com/kmarkus/rFSM
-~~~
-and point the `LUA_PATH` enviromental variable to the `rFSM` directory, by adding to your `.bashrc`:
-~~~
-export LUA_PATH=";;;/path/where/you/installed/rfsm/?.lua"
 ~~~
 ##### orocos-bfl-berdy
 When enabling the flag `CODYCO_USES_OROCOS_BFL_BERDY`, the library [Orocos-BFL-BERDY](https://github.com/jeljaik/orocos-bfl-berdy) is compiled and modules such as `quaternionEKF` enabled in `codyco-modules`. If you want to use the latter, besides Orocos-BFL-BERDY you will also need to set the environmental variable `PKG_CONFIG_PATH` as:
