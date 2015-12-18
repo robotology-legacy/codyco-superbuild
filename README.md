@@ -243,8 +243,9 @@ If for some reason you are bound to use Eigen 3.0.5 (for example for XDE compati
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/Linux:Installation_from_sources). Please note that at the moment
 the codyco-superbuild only supports YARP and ICUB installed from sources.
 
-~~~
 ##### orocos-bfl-berdy
+**If you don't know what orocos-bfl-berdy is, it is safe for you to skip this section**
+
 When enabling the flag `CODYCO_USES_OROCOS_BFL_BERDY`, the library [Orocos-BFL-BERDY](https://github.com/jeljaik/orocos-bfl-berdy) is compiled and modules such as `quaternionEKF` enabled in `codyco-modules`. If you want to use the latter, besides Orocos-BFL-BERDY you will also need to set the environmental variable `PKG_CONFIG_PATH` as:
 `export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$CODYCO_SUPERBUILD_ROOT/build/install/lib/pkgconfig/`
 And as an additional dependency of `codyco-superbuild` you will also have: `libboost-iostreams-dev`.
