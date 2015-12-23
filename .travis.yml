@@ -22,8 +22,6 @@ matrix:
       env: TRAVIS_CMAKE_GENERATOR="Xcode", TRAVIS_BUILD_TYPE="Release", CODYCO_WITH_OLD_EIGEN=false
   exclude:
     - os: linux
-  allow_failures:
-    - os: osx
 
 before_script:
   - sh .ci/travis-deps.sh
