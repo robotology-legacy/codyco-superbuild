@@ -68,6 +68,10 @@ include(ProjectsTags OPTIONAL)
 if(NOT CMAKE_VERSION VERSION_LESS 3.0)
     cmake_policy(SET CMP0045 OLD)
 endif()
+if(NOT CMAKE_VERSION VERSION_LESS 3.1)
+    cmake_policy(SET CMP0054 NEW)
+endif()
+
 
 # Bootstrap YCM
 set(YCM_TAG aae056b0f51d106fe746b964966ca816faa925ab)
