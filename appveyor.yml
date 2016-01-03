@@ -5,7 +5,7 @@ branches:
   except:
   - travis
 
-clone_folder: c:\dev\codyco-superbuild
+clone_folder: c:\my dev\codyco-superbuild
 
 environment:
   ACE_ROOT:          c:/Program Files (x86)/robotology/ace-6.1.1
@@ -49,7 +49,7 @@ install:
 build:
 
 build_script:
-  - cd c:\dev\codyco-superbuild
+  - cd c:\my dev\codyco-superbuild
   - md build
   - cd build
   - cmake -G"Visual Studio 12" -DNON_INTERACTIVE_BUILD:BOOL=TRUE -DYCM_BOOTSTRAP_VERBOSE:BOOL=TRUE ..
