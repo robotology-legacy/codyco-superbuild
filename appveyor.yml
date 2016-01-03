@@ -5,7 +5,7 @@ branches:
   except:
   - travis
 
-clone_folder: 'c:\my dev\codyco-superbuild'
+clone_folder: '\"c:\my dev\codyco-superbuild\"'
 
 environment:
   ACE_ROOT:          c:/Program Files (x86)/robotology/ace-6.1.1
