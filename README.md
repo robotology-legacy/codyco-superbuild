@@ -233,9 +233,9 @@ or simply open a new terminal.
 
 ##Linux
 ###System Dependencies
-On Debian based systems (as Ubuntu) you can install CMake and Eigen (and other dependencies necessary for the codyco-superbuild) using `apt-get`:
+On Debian based systems (as Ubuntu) you can install the C++ toolchain, Git, CMake and Eigen (and other dependencies necessary for the codyco-superbuild) using `apt-get`:
 ```
-sudo apt-get install libeigen3-dev cmake cmake-curses-gui libboost-system-dev libboost-filesystem-dev libboost-thread-dev libtinyxml-dev libace-dev libgtkmm-2.4-dev libglademm-2.4-dev libgsl0-dev libcv-dev libhighgui-dev libcvaux-dev libode-dev liblua5.1-dev lua5.1 swig
+sudo apt-get install libeigen3-dev build-essential cmake cmake-curses-gui libboost-system-dev libboost-filesystem-dev libboost-thread-dev libtinyxml-dev libace-dev libgtkmm-2.4-dev libglademm-2.4-dev libgsl0-dev libcv-dev libhighgui-dev libcvaux-dev libode-dev liblua5.1-dev lua5.1 git swig
 ```
 The packages provided in the official distro repositories work out of the box for **Ubuntu 14.04** (`trusty`), **Ubuntu 13.10** (`saucy`) and **Debian 8** (`jessie`).
 For older distros the included CMake and Eigen are too old, and is necessary to find a way to install them from an alternative
