@@ -84,8 +84,17 @@ We provide different instructions on how to install codyco-superbuild, depending
 Complete documentation on [YCM documentation](http://robotology.github.io/ycm/gh-pages/master/manual/ycm-superbuild.7.html)
 ##Windows
 
+### Disclaimer
+While the software developed in the CoDyCo project is [tested to be compatible with Windows](https://ci.appveyor.com/project/robotology/codyco-superbuild/branch/master), 
+the Gazebo simulator that we use as a simulation platform [does not support Windows](https://github.com/robotology/gazebo-yarp-plugins/issues/74). 
+For this reason if you plan to do use the CoDyCo software with the Gazebo simulator, 
+for the time being it is easier for you to use Linux or OS X. 
+
 ###System Dependencies
-Most of the CoDyCo software is developed using the C/C++ language. For this reason, you should have Visual Studio installed on your computer to build it. You will also need some additional software, as listed afterwards.
+Most of the CoDyCo software is developed using the C/C++ language. For this reason, you should have Visual Studio installed on your computer to build it. In particular we install some dependencies of our software we rely on the binary installers
+provided by [the official iCub software](http://wiki.icub.org/wiki/ICub_Software_Installation). As this binaries are still not available for Visual Studio 2015, we recommend to use Visual Studio 2013 to compile the CoDyCo software. 
+
+You will also need some additional software, as listed afterwards.
 Some of this software can be easily installed using [Chocolatey](https://chocolatey.org), a tool to simplify software installation on Windows.
 
 ####Git
