@@ -58,7 +58,8 @@ git command:
 git pull
 ~~~
 However, for running the equivalent of `git pull` on all the repositories managed by
-the codyco-superbuild, you have to execute in your build system the appropriate target, for example:
+the codyco-superbuild, you have to execute in your build system the appropriate target.
+To do this, make sure to be in the `build` directory of the `codyco-superbuild` and execute:
 ~~~
 make update-all
 ~~~
