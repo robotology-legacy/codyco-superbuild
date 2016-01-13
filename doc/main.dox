@@ -17,7 +17,8 @@ Reference material:
 
 This documentation is developed by scanning all source code
 in the libraries and main components of the superbuild.
-You can produce this documentation on your computer by running:
+If you have [Doxygen](http://www.stack.nl/~dimitri/doxygen/) installed on 
+your compute you can produce this documentation on your computer by running:
 
 \verbatim
   make dox
