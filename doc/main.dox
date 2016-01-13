@@ -9,14 +9,21 @@
 This is the documentation extracted from
 the software repository of the CoDyCo project.
 
-Reference material:
+## Reference material:
   - The <a href="http://www.codyco.eu/">CoDyCo project website</a>.
   - CoDyCo superbuild installation guide on the <a href="https://github.com/robotology/codyco-superbuild#installation">repository README</a>.
   - \ref dynamics_notation .
   - iDynTree (the library for dynamics algorithms developed in the CoDyCo project) documentation can be found at <a href="http://wiki.icub.org/codyco/dox/html/idyntree/html/">http://wiki.icub.org/codyco/dox/html/idyntree/html/</a>
 
+## Tutorials 
+  - [How to install the CoDyCo software](https://github.com/robotology/codyco-superbuild#installation) .
+  - [How to run the IIT balancing controller using the torqueBalancing YARP module](https://github.com/robotology/codyco-modules/blob/master/src/modules/torqueBalancing) .
+  - [How to run the IIT balancing controller using the torqueBalancing Simulink model](https://github.com/robotology-playground/WBI-Toolbox-controllers/tree/master/controllers/torqueBalancing) .
+
+## Modify and improve the documentation
 This documentation is developed by scanning all source code
 in the libraries and main components of the superbuild.
+
 If you have [Doxygen](http://www.stack.nl/~dimitri/doxygen/) installed on 
 your compute you can produce this documentation on your computer by running:
 
