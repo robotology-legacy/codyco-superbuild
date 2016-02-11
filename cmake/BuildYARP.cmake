@@ -57,7 +57,6 @@ ycm_ep_helper(YARP TYPE GIT
                                     -DENABLE_yarpmod_opencv_grabber:BOOL=OFF
                                     -DYARP_CLEAN_API:BOOL=ON
                                     -DYARP_COMPILE_TESTS:BOOL=OFF
-                                    -DCREATE_YARPBUILDER:BOOL=ON
                                     -DYARP_COMPILE_EXPERIMENTAL_WRAPPERS:BOOL=ON
                                     -DYARP_DOXYGEN_XML:BOOL=OFF
                                     -DYARP_DOXYGEN_TAGFILE:BOOL=OFF
