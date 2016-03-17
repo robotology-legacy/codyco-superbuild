@@ -22,6 +22,7 @@ Table of Contents
     * [OS X](#os-x)
     * [Windows](#windows)
   * [Update](#update)
+  * [MATLAB software](#matlab-software)
 
 Superbuild structure
 ====================
@@ -41,14 +42,14 @@ The `libraries` component contains librares developed by the CoDyCo consortium, 
 
 The projects downloaded in the `libraries` component are:
 
-* `codyco-commons`: A collection of functions and utilities used in the other projects [Project page](https://github.com/robotology-playground/codyco-commons)
-* `idyntree`: YARP-based Floating Base Robot Dynamics Library [Project Page](https://github.com/robotology/idyntree)
-* `paramHelp`: Library for simplifying the management of the parameters of YARP modules [Project page](https://github.com/robotology-playground/paramHelp)
-* `wholebodyinterface`: C++ Interfaces to sensor measurements, state estimations, kinematic/dynamic model and actuators for a floating base robot [Project Page](https://github.com/robotology-playground/wholebodyinterface)
-* `yarp-wholebodyinterface`: Implementation of the wholeBodyInterface for YARP robots [Project Page](https://github.com/robotology-playground/yarp-wholebodyinterface)
+* [`codyco-commons`](https://github.com/robotology-playground/codyco-commons) : A collection of functions and utilities used in the other projects 
+* [`idyntree`](https://github.com/robotology/idyntree) : YARP-based Floating Base Robot Dynamics Library
+* [`paramHelp`](https://github.com/robotology-playground/paramHelp) : Library for simplifying the management of the parameters of YARP modules
+* [`wholebodyinterface`](https://github.com/robotology-playground/wholebodyinterface) : C++ Interfaces to sensor measurements, state estimations, kinematic/dynamic model and actuators for a floating base robot 
+* [`yarp-wholebodyinterface`](https://github.com/robotology-playground/yarp-wholebodyinterface) : Implementation of the wholeBodyInterface for YARP robots 
 * `orocosBFLBerdy`: Fork of the Bayesian Filtering Library [Orocos-BFL](http://www.orocos.org/bfl). *Early stage. Currently used and tested only for the quaternionEKF module and basic Kalman Filtering*
-* `EigenLgsm`: Lie group solid mechanics header library for Eigen. [Project page](https://github.com/ocra-recipes/eigen_lgsm)
-* `ocra-recipes`: Optimization based Control for Robotics Applications. A set of libraries designed to efficiently formulate robot control problems as a convex optimization problems. [Project page](https://github.com/ocra-recipes/ocra-recipes)
+* [`EigenLgsm`](https://github.com/ocra-recipes/eigen_lgsm) : Lie group solid mechanics header library for Eigen. 
+* [`ocra-recipes`](https://github.com/ocra-recipes/ocra-recipes) : Optimization based Control for Robotics Applications. A set of libraries designed to efficiently formulate robot control problems as a convex optimization problems. 
 
 ###`main`
 
@@ -57,9 +58,9 @@ Simulink models or Lua scripts.
 
 The projects downloaded in the `main` component are:
 
-* `WBI-Toolbox`: Simulink Toolbox for rapid prototyping of Whole Body Robot Controllers [Project Page](https://github.com/robotology-playground/WBI-Toolbox)
-* `codyco-modules`: YARP modules and controllers developed within the European Project CoDyCo [Project Page](https://github.com/robotology/codyco-modules)
-* `ocra-wbi-plugins`: Interface between the whole-body controller libraries (`ocra-recipes`) developed at ISIR and and WBI [Project Page](https://github.com/ocra-recipes/ocra-wbi-plugins). To compile these libraries and modules, enable the option: `CODYCO_BUILD_OCRA_MODULES : ON`.
+* [`WB-Toolbox 2.0`](https://github.com/robotology/WB-Toolbox) : Simulink Toolbox for rapid prototyping of Whole Body Robot Controllers.
+* [`codyco-modules`](https://github.com/robotology/codyco-modules) : YARP modules and controllers developed within the European Project CoDyCo.
+* [`ocra-wbi-plugins`](https://github.com/ocra-recipes/ocra-wbi-plugins) : Interface between the whole-body controller libraries (`ocra-recipes`) developed at ISIR and WBI. To compile these libraries and modules, enable the option: `CODYCO_BUILD_OCRA_MODULES : ON`.
 
 Installation
 ============
@@ -280,8 +281,6 @@ Append `$CODYCO_SUPERBUILD_ROOT/build/install/bin` to your PATH
 
 Append `$CODYCO_SUPERBUILD_ROOT/build/install/share/codyco` to your [YARP\_DATA\_DIRS](http://wiki.icub.org/yarpdoc/yarp_data_dirs.html) environment variable.
 
-
-
 Update
 ======
 For updating the codyco-superbuild repository it is possible to just fetch the last changes using the usual
@@ -304,4 +303,34 @@ on Windows or
 cmake --build . --target ALL_UPDATE
 ~~~
 on Mac OS X
+
+MATLAB software
+===============
+
+Libraries
+--------
+If [MATLAB](mathworks.com/products/matlab/) is installed on your computer, the codyco-superbuild
+can install some libraries that depend on MATLAB, in particular:
+ * The MATLAB bindings of [iDynTree](https://github.com/robotology/idyntree).
+ * The [WB-Toolbox](https://github.com/robotology/WB-Toolbox) Simulink toolbox. 
+ 
+To use this software, you can simply enable its compilation using the `CODYCO_USES_MATLAB` CMake option. 
+Once this software has been compiled by the superbuild, you just need to add some directories of the codyco-superbuild install (typically `$CODYCO_SUPERBUILD_ROOT/build/install`) to [the MATLAB path](http://mathworks.com/help/matlab/matlab_env/add-folders-to-search-path-upon-startup-on-unix-or-macintosh.html).
+In particular you need to add to the MATLAB path the `$CODYCO_SUPERBUILD_ROOT/build/install/mex` directory and all the subdirectories `$CODYCO_SUPERBUILD_ROOT/build/install/share/WB-Toolbox`.
+
+As an example, you could add this line to your MATLAB script that uses the codyco-superbuild matlab software:
+~~~
+    addpath(['codyco_superbuild_install_folder'  /mex])
+    addpath(genpath(['codyco_superbuild_install_folder'  /share/WB-Toolbox]))
+~~~
+Anyway we strongly suggest that you add this directories to the MATLAB path in robust way, 
+for example by modifyng the `startup.m` or the `MATLABPATH` enviromental variable [as described in official MATLAB documentation](http://mathworks.com/help/matlab/matlab_env/add-folders-to-search-path-upon-startup-on-unix-or-macintosh.html)
+
+For more info on configuring MATLAB software with the codyco-superbuild, please check the [WB-Toolbox README](https://github.com/robotology/WB-Toolbox).
+
+Controllers
+-----------
+MATLAB controllers developed in the CoDyCo project are available in the [WBI-Toolbox-controllers](https://github.com/robotology-playground/WBI-Toolbox-controllers) repository. 
+Given that some users want to fully control this repository, it is not downloaded automically if you select the `CODYCO_USES_MATLAB` option. To download this repository as part of the superbuild, just enable the `CODYCO_USES_WBI_TOOLBOX_CONTROLLERS` CMake option. 
+
 
