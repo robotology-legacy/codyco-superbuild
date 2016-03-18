@@ -27,21 +27,17 @@ set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake p
 #Compilation options
 
 #options to build specific software or use a reduced set of dependencies
-option(CODYCO_USES_MATLAB "Enable compilation of software that depend on Matlab" FALSE)
-option(CODYCO_MATLAB_DEPENDENCIES_CUSTOM "Enables the custom selection of some Matlab dependencies" FALSE)
+option(CODYCO_USES_MATLAB "Enable compilation of software that depend on Matlab and Simulink" FALSE)
+option(CODYCO_USES_WBI_TOOLBOX "Legacy version of Whole Body Interface Toolbox 1.0 - Simulink library" FALSE)
+option(CODYCO_USES_WBI_TOOLBOX_CONTROLLERS "Controllers and Simulink models created/used with the WBI-Toolbox" FALSE)
+
 option(CODYCO_USES_LUA "Enable compilation of software that depend on Lua" FALSE)
 option(CODYCO_USES_PYTHON "Enable compilation of software that depend on Python" FALSE)
-option(CODYCO_USES_WBI_TOOLBOX "Whole Body Interface Toolbox - Simulink library" FALSE)
-option(CODYCO_USES_WB_TOOLBOX "Whole Body Control Toolbox - Simulink library" FALSE)
-option(CODYCO_USES_WBI_TOOLBOX_CONTROLLERS "Controllers and Simulink models created/used with the WBI-Toolbox" FALSE)
 option(CODYCO_USES_OROCOS_BFL_BERDY "Forked Orocos Bayesian Filtering Library" FALSE)
 option(CODYCO_USES_URDFDOM "Enable support for URDF input in iDynTree" TRUE)
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
 option(CODYCO_BUILD_OCRA_MODULES "Enable compilation of ISIR controllers" FALSE)
 option(CODYCO_BUILD_QPOASES "Enable compilation of qpOASES" TRUE)
-option(CODYCO_USES_MEX_WHOLEBODYMODEL "Enable to compile the matlab mex inteface for iWholeBodyModel" FALSE)
-
-option(IDYNTREE_USES_MATLAB "Compile iDynTree Matlab bindings" FALSE)
 
 #set default build type to "Release" in single-config generators
 if(NOT CMAKE_CONFIGURATION_TYPES)
@@ -98,15 +94,8 @@ if( ${CODYCO_BUILD_OCRA_MODULES} )
     find_or_build_package(ocra-wbi-plugins)
 endif()
 
-#Set WBI-Toolbox and mexWholeBodyModel variables depending on CODYCO_USES_MATLAB
-if(NOT ${CODYCO_MATLAB_DEPENDENCIES_CUSTOM})
-    set(CODYCO_USES_WB_TOOLBOX ${CODYCO_USES_MATLAB} CACHE BOOL "Whole Body Toolbox - Simulink library")
-    set(CODYCO_USES_WBI_TOOLBOX ${CODYCO_USES_MATLAB} CACHE BOOL "Whole Body Interface Toolbox - Simulink library")
-    set(CODYCO_USES_MEX_WHOLEBODYMODEL ${CODYCO_USES_MATLAB} CACHE BOOL "Enable to compile the matlab mex inteface for iWholeBodyModel")
-endif()
-
 #WB-Toolbox
-if (${CODYCO_USES_WB_TOOLBOX})
+if (${CODYCO_USES_MATLAB})
     find_or_build_package(WBToolbox)
 endif()
 
@@ -126,7 +115,7 @@ if (${CODYCO_USES_OROCOS_BFL_BERDY})
 endif()
 
 #mex wholeBodyModel interface
-if (${CODYCO_USES_MEX_WHOLEBODYMODEL})
+if (${CODYCO_USES_MATLAB})
    find_or_build_package(mexWholeBodyModel)
 endif()
 
