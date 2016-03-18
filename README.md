@@ -311,7 +311,8 @@ Libraries
 --------
 If [MATLAB](mathworks.com/products/matlab/) is installed on your computer, the codyco-superbuild
 can install some libraries that depend on MATLAB, in particular:
- * The MATLAB bindings of [iDynTree](https://github.com/robotology/idyntree).
+ * MATLAB bindings of the [iDynTree](https://github.com/robotology/idyntree) library.
+ * MATLAB bindings of the [qpOASES](https://github.com/robotology-dependencies/qpOASES) library.
  * The [WB-Toolbox](https://github.com/robotology/WB-Toolbox) Simulink toolbox. 
  
 To use this software, you can simply enable its compilation using the `CODYCO_USES_MATLAB` CMake option. 
