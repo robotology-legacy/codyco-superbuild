@@ -114,7 +114,7 @@ cd build
 ccmake ../
 make
 ```
-Note: You can configure the ccmake environment if you know you will use some module (put them in "ON"). For exemple you may need some tools presented here: #matlab-software.
+You can configure the ccmake environment if you know you will use some module (put them in "ON"). For example you may need some tools presented [here](https://github.com/robotology/codyco-superbuild#matlab-software).
 
 ###Configure your environment
 Currently the YCM superbuild does not support building a global install target, so all binaries are installed in `codyco-superbuild/build/install/bin` and all libraries in `codyco-superbuild/build/install/lib`.
