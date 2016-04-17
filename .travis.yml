@@ -1,27 +1,27 @@
+sudo: required
+dist: trusty
 language: cpp
 
 matrix:
   include:
     - os: linux
       compiler: clang
-      env: TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug", CODYCO_WITH_OLD_EIGEN=false
+      env: TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug"
     - os: linux
       compiler: clang
-      env: TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Release", CODYCO_WITH_OLD_EIGEN=false
+      env: TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Release"
     - os: linux
       compiler: gcc
-      env: TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug", CODYCO_WITH_OLD_EIGEN=false
+      env: TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug"
     - os: linux
       compiler: gcc
-      env: TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Release", CODYCO_WITH_OLD_EIGEN=true
+      env: TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Release"
     - os: osx
       compiler: gcc
-      env: TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug", CODYCO_WITH_OLD_EIGEN=false
+      env: TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug"
     - os: osx
       compiler: clang
-      env: TRAVIS_CMAKE_GENERATOR="Xcode", TRAVIS_BUILD_TYPE="Release", CODYCO_WITH_OLD_EIGEN=false
-  exclude:
-    - os: linux
+      env: TRAVIS_CMAKE_GENERATOR="Xcode", TRAVIS_BUILD_TYPE="Release"
 
 before_script:
   - sh .ci/travis-deps.sh
@@ -31,7 +31,6 @@ script:
   - mkdir build
   - cd build
   - cmake -G"${TRAVIS_CMAKE_GENERATOR}" -DCODYCO_BUILD_OCRA_MODULES:BOOL=ON -DCODYCO_TRAVIS_CI:BOOL=ON -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} -DNON_INTERACTIVE_BUILD:BOOL=TRUE ..
-  - if [ "k$CODYCO_WITH_OLD_EIGEN" = "ktrue" ]; then cmake -G"${TRAVIS_CMAKE_GENERATOR}" -DCODYCO_USES_EIGEN_320:BOOL=OFF -DCODYCO_TRAVIS_CI:BOOL=ON -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} -DNON_INTERACTIVE_BUILD:BOOL=TRUE . ; fi
   - sh ../.ci/travis-build.sh
 
 notifications:
