@@ -7,4 +7,5 @@ ycm_ep_helper(icub-tests TYPE GIT
                          REPOSITORY robotology/icub-tests.git
                          COMPONENT external
                          DEPENDS YARP
-                                 ICUB)
+                                 ICUB
+                                 RTF)
