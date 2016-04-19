@@ -13,6 +13,6 @@ elif [ "$TRAVIS_OS_NAME" = osx ]; then
     brew tap homebrew/x11
     source .ci/brew_install_or_upgrade_formula.sh
     # brew tap homebrew/versions #useful only if we need a particular version.
-    brewInstallFormulas eigen boost ace pkg-config gtk+ jpeg gtkmm swig sqlite readline gsl libglademm tinyxml
+    brewInstallFormulas eigen boost ace pkg-config gtk+ jpeg gtkmm swig sqlite readline gsl libglademm tinyxml lua
     brew install yarp --HEAD
 fi
