@@ -140,7 +140,7 @@ user@host:~$ sudo ldconfig
 ###System Dependencies
 To install Eigen and CMake, it is possible to use [Homebrew](http://brew.sh/):
 ```
-brew install eigen cmake boost tinyxml
+brew install eigen cmake boost tinyxml swig
 ```
 
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
