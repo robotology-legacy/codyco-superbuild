@@ -8,4 +8,6 @@ ycm_ep_helper(icub-tests TYPE GIT
                          COMPONENT external
                          DEPENDS YARP
                                  ICUB
-                                 RTF)
+                                 RTF
+                                 yarpWholeBodyInterface
+                         CMAKE_ARGS -DICUB_TESTS_USES_CODYCO:BOOL=ON)
