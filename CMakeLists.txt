@@ -84,10 +84,7 @@ endif()
 
 find_or_build_package(YARP 2.3.63.2)
 find_or_build_package(ICUB)
-
-if(${CODYCO_USES_KDL})
-    find_or_build_package(yarpWholeBodyInterface)
-endif()
+find_or_build_package(yarpWholeBodyInterface)
 
 find_or_build_package(codyco-modules)
 
