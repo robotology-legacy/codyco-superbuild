@@ -34,7 +34,7 @@ option(CODYCO_USES_WBI_TOOLBOX_CONTROLLERS "Controllers and Simulink models crea
 option(CODYCO_USES_LUA "Enable compilation of software that depend on Lua" FALSE)
 option(CODYCO_USES_PYTHON "Enable compilation of software that depend on Python" FALSE)
 option(CODYCO_USES_OROCOS_BFL_BERDY "Forked Orocos Bayesian Filtering Library" FALSE)
-option(CODYCO_USES_URDFDOM "Enable support for URDF input in iDynTree" TRUE)
+option(CODYCO_USES_KDL "Enable compilation of software that depends on KDL" TRUE)
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
 option(CODYCO_BUILD_OCRA_MODULES "Enable compilation of ISIR controllers" FALSE)
 option(CODYCO_BUILD_QPOASES "Enable compilation of qpOASES" TRUE)
@@ -84,23 +84,25 @@ endif()
 
 find_or_build_package(YARP 2.3.63.2)
 find_or_build_package(ICUB)
-find_or_build_package(yarpWholeBodyInterface)
 
-#build codyco-modules and codycoCommons library only if the use of Eigen 3.2 is enabled
+if(${CODYCO_USES_KDL})
+    find_or_build_package(yarpWholeBodyInterface)
+endif()
+
 find_or_build_package(codyco-modules)
 
 #codyco isir modules
-if( ${CODYCO_BUILD_OCRA_MODULES} )
+if(${CODYCO_USES_KDL} AND ${CODYCO_BUILD_OCRA_MODULES} )
     find_or_build_package(ocra-wbi-plugins)
 endif()
 
 #WB-Toolbox
-if (${CODYCO_USES_MATLAB})
+if (${CODYCO_USES_KDL} AND ${CODYCO_USES_MATLAB})
     find_or_build_package(WBToolbox)
 endif()
 
 #WBI-Toolbox
-if (${CODYCO_USES_WBI_TOOLBOX})
+if (${CODYCO_USES_KDL} AND ${CODYCO_USES_WBI_TOOLBOX})
     find_or_build_package(WBIToolbox)
 endif()
 
@@ -115,7 +117,7 @@ if (${CODYCO_USES_OROCOS_BFL_BERDY})
 endif()
 
 #mex wholeBodyModel interface
-if (${CODYCO_USES_MATLAB})
+if (${CODYCO_USES_KDL} AND ${CODYCO_USES_MATLAB})
    find_or_build_package(mexWholeBodyModel)
 endif()
 
