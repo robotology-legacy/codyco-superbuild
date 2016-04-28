@@ -8,9 +8,14 @@ find_or_build_package(ICUB QUIET)
 find_or_build_package(TinyXML QUIET)
 
 # iDynTree is being migrated to be indipendent from urdfdom/orocos_kdl and thus boost
-# Consequently, depending on the CODYCO_USES_KDL option it compile the part that depends 
+# Consequently, depending on the CODYCO_USES_KDL option it compile the part that depends
 # on Boost (kdl, model_io, etc) or not
 set(iDynTree_DEPENDS)
+
+list(APPEND iDynTree_DEPENDS YARP)
+list(APPEND iDynTree_DEPENDS ICUB)
+list(APPEND iDynTree_DEPENDS TinyXML)
+
 
 if(${CODYCO_USES_KDL})
     # orocos_kdl and package kdl_codyco use export(PACKAGE <pkg>) that
@@ -39,7 +44,4 @@ ycm_ep_helper(iDynTree TYPE GIT
               COMPONENT libraries
               CMAKE_ARGS -DIDYNTREE_USES_MATLAB:BOOL=${CODYCO_USES_MATLAB}
                          -DIDYNTREE_USES_KDL=${CODYCO_USES_KDL}
-              DEPENDS YARP
-                      ICUB
-                      TinyXML
-                      ${iDynTree_DEPENDS})
+              DEPENDS ${iDynTree_DEPENDS})
