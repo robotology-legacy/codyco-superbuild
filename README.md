@@ -9,7 +9,8 @@ More info at http://codyco.eu/
 
 Code documentation automatically generated: http://wiki.icub.org/codyco/dox/html/index.html
 
-This is a meta repository (so-called "superbuild") that uses [YCM](https://github.com/robotology/ycm) to compile CoDyCo software.
+This is a meta repository (so-called "superbuild") that uses [CMake](https://cmake.org/) and [YCM](https://github.com/robotology/ycm) to automatically download and compile CoDyCo software.
+[CMake](https://cmake.org/) is an open-source, cross-platform family of tools designed to build, test and package software. 
 A YCM Superbuild is a CMake project whose only goal is to download and build several other projects. You can read more about the superbuild concept in [YCM documentation](http://robotology.github.io/ycm/gh-pages/master/manual/ycm-superbuild.7.html).
 
 
