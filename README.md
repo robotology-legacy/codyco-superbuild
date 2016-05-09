@@ -295,15 +295,15 @@ To do this, make sure to be in the `build` directory of the `codyco-superbuild` 
 ~~~
 make update-all
 ~~~
-on Linux or
+using make on Linux or OS X or
 ~~~
 cmake --build . --target UPDATE_ALL
 ~~~
-on Windows or
+using Visual Studio on Windows or 
 ~~~
 cmake --build . --target ALL_UPDATE
 ~~~
-on Mac OS X
+usuing Xcode On OS X.
 
 MATLAB software
 ===============
