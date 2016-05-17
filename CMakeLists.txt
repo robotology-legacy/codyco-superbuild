@@ -50,7 +50,7 @@ option(CODYCO_USES_OROCOS_BFL_BERDY "Forked Orocos Bayesian Filtering Library" F
 option(CODYCO_USES_KDL "Enable compilation of software that depends on KDL" TRUE)
 
 # Compile OCRA software (disable in Windows)
-option(CODYCO_BUILD_OCRA_MODULES "Enable compilation of OCRA software” ${CODYCO_BUILD_OCRA_BY_DEFAULT})
+option(CODYCO_BUILD_OCRA_MODULES "Enable compilation of OCRA software" ${CODYCO_BUILD_OCRA_BY_DEFAULT})
 
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
 option(CODYCO_BUILD_QPOASES "Enable compilation of qpOASES" TRUE)
