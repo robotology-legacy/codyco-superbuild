@@ -69,7 +69,7 @@ endif()
 
 
 # Bootstrap YCM
-set(YCM_TAG aae056b0f51d106fe746b964966ca816faa925ab)
+set(YCM_TAG master)
 include(YCMBootstrap)
 
 include(FindOrBuildPackage)
