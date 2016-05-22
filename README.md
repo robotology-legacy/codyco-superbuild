@@ -15,8 +15,6 @@ This is a meta repository (so-called "superbuild") that uses [CMake](https://cma
 [CMake](https://cmake.org/) is an open-source, cross-platform family of tools designed to build, test and package software. 
 A YCM Superbuild is a CMake project whose only goal is to download and build several other projects. You can read more about the superbuild concept in [YCM documentation](http://robotology.github.io/ycm/gh-pages/master/manual/ycm-superbuild.7.html).
 
-
-
 Table of Contents
 =================
   * [Superbuild structure](#superbuild-structure)
@@ -339,5 +337,3 @@ Controllers
 -----------
 MATLAB controllers developed in the CoDyCo project are available in the [WBI-Toolbox-controllers](https://github.com/robotology-playground/WBI-Toolbox-controllers) repository. 
 Given that some users want to fully control this repository, it is not downloaded automically if you select the `CODYCO_USES_MATLAB` option. To download this repository as part of the superbuild, just enable the `CODYCO_USES_WBI_TOOLBOX_CONTROLLERS` CMake option. 
-
-
