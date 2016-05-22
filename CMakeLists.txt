@@ -26,18 +26,35 @@ set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake p
 
 #Compilation options
 
-#options to build specific software or use a reduced set of dependencies
+# Disable OCRA software on Windows
+if(${WIN32})
+    set(CODYCO_BUILD_OCRA_BY_DEFAULT FALSE)
+else()
+    set(CODYCO_BUILD_OCRA_BY_DEFAULT TRUE)
+endif()
+
+
+## options to build specific software or use a reduced set of dependencies
+
+# Matlab-dependent software 
 option(CODYCO_USES_MATLAB "Enable compilation of software that depend on Matlab and Simulink" FALSE)
 option(CODYCO_USES_WBI_TOOLBOX "Legacy version of Whole Body Interface Toolbox 1.0 - Simulink library" FALSE)
 option(CODYCO_USES_WBI_TOOLBOX_CONTROLLERS "Controllers and Simulink models created/used with the WBI-Toolbox" FALSE)
 
+# Support for scripting languages (Python, Lua)
 option(CODYCO_USES_LUA "Enable compilation of software that depend on Lua" FALSE)
 option(CODYCO_USES_PYTHON "Enable compilation of software that depend on Python" FALSE)
+
+# Compile software that depend on orocos projects 
 option(CODYCO_USES_OROCOS_BFL_BERDY "Forked Orocos Bayesian Filtering Library" FALSE)
 option(CODYCO_USES_KDL "Enable compilation of software that depends on KDL" TRUE)
+
+# Compile OCRA software (disable in Windows)
+option(CODYCO_BUILD_OCRA_MODULES "Enable compilation of OCRA software" ${CODYCO_BUILD_OCRA_BY_DEFAULT})
+
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
-option(CODYCO_BUILD_OCRA_MODULES "Enable compilation of ISIR controllers" FALSE)
 option(CODYCO_BUILD_QPOASES "Enable compilation of qpOASES" TRUE)
+
 
 #set default build type to "Release" in single-config generators
 if(NOT CMAKE_CONFIGURATION_TYPES)
