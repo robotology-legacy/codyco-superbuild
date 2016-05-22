@@ -5,7 +5,7 @@ include(FindOrBuildPackage)
 find_or_build_package(YARP QUIET)
 find_or_build_package(ICUB QUIET)
 find_or_build_package(yarpWholeBodyInterface QUIET)
-
+find_or_build_package(qpOASES QUIET)
 
 
 set(CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED "")
@@ -47,6 +47,7 @@ ycm_ep_helper(ocra-recipes TYPE GIT
               COMPONENT libraries
               CMAKE_CACHE_ARGS ${CODYCO_CMAKE_CACHE_ARGS_USER_DEFINED}
               DEPENDS YARP
+                      qpOASES
                       EigenLgsm)
 
 ycm_ep_helper(ocra-wbi-plugins TYPE GIT
