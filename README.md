@@ -209,7 +209,7 @@ for the time being it is easier for you to use Linux or OS X.
 
 ###System Dependencies
 Most of the CoDyCo software is developed using the C/C++ language. For this reason, you should have Visual Studio installed on your computer to build it. In particular we install some dependencies of our software we rely on the binary installers
-provided by [the official iCub software](http://wiki.icub.org/wiki/ICub_Software_Installation). As this binaries are still not available for Visual Studio 2015, we recommend to use Visual Studio 2013 to compile the CoDyCo software. 
+provided by [the official iCub software](http://wiki.icub.org/wiki/ICub_Software_Installation). As this binaries are still not available for Visual Studio 2015 (or 64 bit, at least for iCub), we recommend to use Visual Studio 2013 32bit to compile the CoDyCo software. 
 
 You will also need some additional software, as listed afterwards.
 Some of this software can be easily installed using [Chocolatey](https://chocolatey.org), a tool to simplify software installation on Windows.
