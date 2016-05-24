@@ -9,10 +9,7 @@ ycm_ep_helper(ICUB TYPE GIT
                    REPOSITORY robotology/icub-main.git
                    DEPENDS YARP
                    COMPONENT external
-                   CMAKE_CACHE_ARGS -DYARP_USE_GTK2:BOOL=ON
-                                    -DICUB_SHARED_LIBRARY:BOOL=OFF
-                                    -DICUB_USE_GLUT:BOOL=ON
+                   CMAKE_CACHE_ARGS -DICUB_SHARED_LIBRARY:BOOL=OFF
                                     -DENABLE_icubmod_cartesiancontrollerserver:BOOL=ON
                                     -DENABLE_icubmod_cartesiancontrollerclient:BOOL=ON
-                                    -DENABLE_icubmod_debug_InterfaceClient:BOOL=ON
                                     -DENABLE_icubmod_gazecontrollerclient:BOOL=ON)
