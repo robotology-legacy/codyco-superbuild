@@ -28,6 +28,8 @@ set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake p
 
 #options to build specific software or use a reduced set of dependencies
 option(CODYCO_USES_MATLAB "Enable compilation of software that depend on Matlab and Simulink" FALSE)
+option(CODYCO_NOT_USE_SIMULINK "Disable compilation of software that depend on Simulink" FALSE)
+mark_as_advanced(CODYCO_NOT_USE_SIMULINK)
 option(CODYCO_USES_WBI_TOOLBOX "Legacy version of Whole Body Interface Toolbox 1.0 - Simulink library" FALSE)
 option(CODYCO_USES_WBI_TOOLBOX_CONTROLLERS "Controllers and Simulink models created/used with the WBI-Toolbox" FALSE)
 
@@ -94,7 +96,7 @@ if(${CODYCO_USES_KDL} AND ${CODYCO_BUILD_OCRA_MODULES} )
 endif()
 
 #WB-Toolbox
-if (${CODYCO_USES_KDL} AND ${CODYCO_USES_MATLAB})
+if (${CODYCO_USES_KDL} AND ${CODYCO_USES_MATLAB} AND NOT ${CODYCO_NOT_USE_SIMULINK})
     find_or_build_package(WBToolbox)
 endif()
 
