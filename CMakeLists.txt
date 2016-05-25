@@ -41,6 +41,9 @@ option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-g
 option(CODYCO_BUILD_OCRA_MODULES "Enable compilation of ISIR controllers" FALSE)
 option(CODYCO_BUILD_QPOASES "Enable compilation of qpOASES" TRUE)
 
+# Enable packages that depend on the Gazebo simulator
+option(CODYCO_USES_GAZEBO "Enable compilation of software that depends on Gazebo" FALSE)
+
 #set default build type to "Release" in single-config generators
 if(NOT CMAKE_CONFIGURATION_TYPES)
     if(NOT CMAKE_BUILD_TYPE)
@@ -134,6 +137,12 @@ endif()
 if (${CODYCO_COMPILE_TESTS})
     find_or_build_package(RTF)
     find_or_build_package(icub-tests)
+endif()
+
+# Gazebo related projects
+if(${CODYCO_USES_GAZEBO})
+    find_or_build_package(GazeboYARPPlugins)
+    find_or_build_package(icub-gazebo)
 endif()
 
 #Documentation
