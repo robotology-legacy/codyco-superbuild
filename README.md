@@ -330,8 +330,8 @@ for example by modifyng the `startup.m` or the `MATLABPATH` enviromental variabl
 
 For more info on configuring MATLAB software with the codyco-superbuild, please check the [WB-Toolbox README](https://github.com/robotology/WB-Toolbox).
 
-**Note: the legacy WBI-Toolbox 1.0 (old version of WB-Toolbox) is still enabled by the `CODYCO_USES_WBI_TOOLBOX` flag, but is going to be removed from the codyco-superbuild on June 1st 2016.
-  Please update your Simulink controllers using the [the migration guide from WBI-Toolbox 1.0](doc/Migration.md).**
+**Note: the legacy WBI-Toolbox 1.0 (old version of WB-Toolbox) is still enabled by the `CODYCO_USES_WBI_TOOLBOX` flag, but is going to be removed from the `codyco-superbuild` on September 1st 2016.
+  Please update your Simulink controllers using the [the migration guide from WBI-Toolbox 1.0](https://github.com/robotology/WB-Toolbox/blob/master/doc/Migration.md). The [software for estimating motor and joint friction parameters](https://github.com/robotology-playground/torque-control-params-estimation) still depends on WBI-Toolbox 1.0. The removal of this last dependency is tracked in an [issue on that repo](https://github.com/robotology-playground/torque-control-params-estimation/issues/32).**
 
 Controllers
 -----------
