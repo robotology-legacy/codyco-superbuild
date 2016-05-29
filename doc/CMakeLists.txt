@@ -33,26 +33,33 @@ if(DOXYGEN_FOUND)
                 set(DOX_GENERATE_MAN NO)
                 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.${_proj}.in
                               ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.${_proj})
-                add_dependencies(${_proj}-dox ${_proj}-update)
+                if(TARGET ${proj}-update)
+                    add_dependencies(${_proj}-dox ${_proj}-update)
+                endif()
             endif()
         elseif(_component STREQUAL "documentation")
             set(DOX_EXTRA_DIR "${DOX_EXTRA_DIR} ${CMAKE_SOURCE_DIR}/${_component}/${_proj}")
             add_dependencies(dox ${_proj}) # documentation does not have an update target
         elseif(_proj STREQUAL "iDynTree")
-            add_dependencies(dox ${_proj}-update)
             add_custom_target(${_proj}-dox-create-dir COMMAND ${CMAKE_COMMAND} -E make_directory ../libraries/${_proj}-dox)
             add_custom_target(${_proj}-dox COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/html
                                            COMMAND ${CMAKE_COMMAND} -DIDYNTREE_ONLY_DOCS=ON -DIDYNTREE_DOXYGEN_INSTALL_DIR="${CMAKE_CURRENT_BINARY_DIR}/html/idyntree" ${CMAKE_SOURCE_DIR}/libraries/${_proj}
                                            COMMAND ${CMAKE_COMMAND} --build . --target dox
                                            WORKING_DIRECTORY ../libraries/${_proj}-dox)
-            add_dependencies(${_proj}-dox ${_proj}-update)
+            # If the proj is in DEVEL mode, -update does not exist 
+            if(TARGET ${proj}-update)
+                add_dependencies(dox ${_proj}-update)
+                add_dependencies(${_proj}-dox ${_proj}-update)
+            endif()
             add_dependencies(${_proj}-dox ${_proj}-dox-create-dir)
             add_dependencies(dox ${_proj}-dox)
         else()
             set(DOX_EXTRA_DIR "${DOX_EXTRA_DIR} ${CMAKE_SOURCE_DIR}/${_component}/${_proj}/doc")
             set(DOX_EXTRA_DIR "${DOX_EXTRA_DIR} ${CMAKE_SOURCE_DIR}/${_component}/${_proj}/src")
             set(DOX_EXTRA_DIR "${DOX_EXTRA_DIR} ${CMAKE_SOURCE_DIR}/${_component}/${_proj}/include")
-            add_dependencies(dox ${_proj}-update)
+            if(TARGET ${proj}-update)
+                add_dependencies(dox ${_proj}-update)
+            endif()
         endif()
     endforeach()
 

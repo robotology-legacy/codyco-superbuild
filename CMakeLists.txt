@@ -66,7 +66,8 @@ include(ProjectsTags OPTIONAL)
 
 #Set CMake policies
 if(NOT CMAKE_VERSION VERSION_LESS 3.0)
-    cmake_policy(SET CMP0045 OLD)
+    cmake_policy(SET CMP0045 NEW)
+    cmake_policy(SET CMP0046 NEW)
 endif()
 if(NOT CMAKE_VERSION VERSION_LESS 3.1)
     cmake_policy(SET CMP0054 NEW)
