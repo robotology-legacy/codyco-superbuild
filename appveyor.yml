@@ -27,8 +27,8 @@ install:
       
       do {
           try {
-            $dwntool.DownloadFile('https://github.com/robotology/yarp/releases/download/v2.3.64/yarp_2.3.65_v12_x86_1.exe','c:\dev\yarp.exe')
-            $dwntool.DownloadFile('https://github.com/robotology/icub-main/releases/download/v1.1.16/iCub_1.1.17_v12_x86_1.exe','c:\dev\icub.exe')
+            $dwntool.DownloadFile('https://github.com/robotology/yarp/releases/download/v2.3.65/yarp_2.3.65_v12_x86_1.exe','c:\dev\yarp.exe')
+            $dwntool.DownloadFile('https://github.com/robotology/icub-main/releases/download/v1.1.17/iCub_1.1.17_v12_x86_1.exe','c:\dev\icub.exe')
             $Stoploop = $true
           }
           catch {
