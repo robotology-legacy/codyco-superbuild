@@ -43,6 +43,11 @@ option(CODYCO_BUILD_QPOASES "Enable compilation of qpOASES" TRUE)
 
 # Enable packages that depend on the Gazebo simulator
 option(CODYCO_USES_GAZEBO "Enable compilation of software that depends on Gazebo" FALSE)
+# Users are confused by this option:
+# https://github.com/robotology/codyco-superbuild/issues/135
+# https://github.com/robotology/codyco-superbuild/issues/138
+# Mark as advanced until we fully support it 
+mark_as_advanced(CODYCO_USES_GAZEBO)
 
 #set default build type to "Release" in single-config generators
 if(NOT CMAKE_CONFIGURATION_TYPES)
