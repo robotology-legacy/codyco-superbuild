@@ -143,7 +143,7 @@ endif()
 # Gazebo related projects
 if(${CODYCO_USES_GAZEBO})
     find_or_build_package(GazeboYARPPlugins)
-    find_or_build_package(icub-gazebo)
+    #find_or_build_package(icub-gazebo)
 endif()
 
 #Documentation
