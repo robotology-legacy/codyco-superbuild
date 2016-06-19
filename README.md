@@ -1,6 +1,6 @@
 CoDyCo Project Superbuild
 ---------------
-| Linux/OS X | Windows |
+| Linux/macOS | Windows |
 |:----------:|:--------:|
 | [![Build Status](https://travis-ci.org/robotology/codyco-superbuild.png?branch=master)](https://travis-ci.org/robotology/codyco-superbuild) | [![Build status](https://ci.appveyor.com/api/projects/status/hurs7dtqsstsebpm/branch/master?svg=true)](https://ci.appveyor.com/project/robotology/codyco-superbuild/branch/master) | 
 
@@ -20,7 +20,7 @@ Table of Contents
   * [Superbuild structure](#superbuild-structure)
   * [Installation](#installation)
     * [Linux](#linux)
-    * [OS X](#os-x)
+    * [macOS](#macOS)
     * [Windows](#windows)
   * [Update](#update)
   * [MATLAB software](#matlab-software)
@@ -69,7 +69,7 @@ Installation
 
 We provide different instructions on how to install codyco-superbuild, depending on your operating system:
 * [**Windows**](#windows): use the superbuild with Microsoft Visual Studio
-* [**OS X**](#os-x): use the superbuild with Xcode or GNU make
+* [**macOS**](#macOS): use the superbuild with Xcode or GNU make
 * [**Linux**](#linux): use the superbuild with make
 
 Complete documentation on [YCM documentation](http://robotology.github.io/ycm/gh-pages/master/manual/ycm-superbuild.7.html)
@@ -136,7 +136,7 @@ If may also be necessary to updates the cache of the dynamic linker:
 user@host:~$ sudo ldconfig
 ```
 
-##OS X
+##macOS
 
 ###System Dependencies
 To install Eigen and CMake, it is possible to use [Homebrew](http://brew.sh/):
@@ -205,7 +205,7 @@ or simply open a new terminal.
 While the software developed in the CoDyCo project is [tested to be compatible with Windows](https://ci.appveyor.com/project/robotology/codyco-superbuild/branch/master), 
 the Gazebo simulator that we use as a simulation platform [does not support Windows](https://github.com/robotology/gazebo-yarp-plugins/issues/74). 
 For this reason if you plan to do use the CoDyCo software with the Gazebo simulator, 
-for the time being it is easier for you to use Linux or OS X. 
+for the time being it is easier for you to use Linux or macOS. 
 
 ###System Dependencies
 Most of the CoDyCo software is developed using the C/C++ language. For this reason, you should have Visual Studio installed on your computer to build it. In particular we install some dependencies of our software we rely on the binary installers
@@ -295,7 +295,7 @@ To do this, make sure to be in the `build` directory of the `codyco-superbuild` 
 ~~~
 make update-all
 ~~~
-using make on Linux or OS X or
+using make on Linux or macOS or
 ~~~
 cmake --build . --target UPDATE_ALL
 ~~~
@@ -303,7 +303,7 @@ using Visual Studio on Windows or
 ~~~
 cmake --build . --target ALL_UPDATE
 ~~~
-usuing Xcode On OS X.
+using Xcode on macOS.
 
 MATLAB software
 ===============
