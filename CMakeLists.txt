@@ -101,10 +101,10 @@ find_or_build_package(codyco-modules)
 
 #STARTUP MATLAB TOOLBOX
 if (${CODYCO_USES_MATLAB})
-# The following line is to properly configure the installation script of the MATLAB toolbox
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.startup_codyco_superbuild.m.in ${CMAKE_BINARY_DIR}/startup_codyco_superbuild.m)
-# Install configuration files
-install(FILES ${CMAKE_BINARY_DIR}/startup_codyco_superbuild.m DESTINATION ${CMAKE_BINARY_DIR})
+    # The following line is to properly configure the installation script of the MATLAB toolbox
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.startup_codyco_superbuild.m.in ${CMAKE_BINARY_DIR}/startup_codyco_superbuild.m)
+    # Install configuration files
+    install(FILES ${CMAKE_BINARY_DIR}/startup_codyco_superbuild.m DESTINATION ${CMAKE_BINARY_DIR})
 endif()
 
 #codyco isir modules
