@@ -30,6 +30,9 @@ set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake p
 option(CODYCO_USES_MATLAB "Enable compilation of software that depend on Matlab and Simulink" FALSE)
 option(CODYCO_NOT_USE_SIMULINK "Disable compilation of software that depend on Simulink" FALSE)
 mark_as_advanced(CODYCO_NOT_USE_SIMULINK)
+#temporary option, useful to disable compilation of yarp-matlab-bindings 
+option(CODYCO_NOT_USE_YARP_MATLAB_BINDINGS "Disable compilation of yarp-matlab-bindings" FALSE)
+mark_as_advanced(CODYCO_NOT_USE_YARP_MATLAB_BINDINGS)
 option(CODYCO_USES_WBI_TOOLBOX "Legacy version of Whole Body Interface Toolbox 1.0 - Simulink library" FALSE)
 option(CODYCO_USES_WBI_TOOLBOX_CONTROLLERS "Controllers and Simulink models created/used with the WBI-Toolbox" FALSE)
 
@@ -102,6 +105,11 @@ find_or_build_package(codyco-modules)
 #codyco isir modules
 if(${CODYCO_USES_KDL} AND ${CODYCO_BUILD_OCRA_MODULES} )
     find_or_build_package(ocra-wbi-plugins)
+endif()
+
+#yarp-matlab-bindings
+if(${CODYCO_USES_MATLAB} AND NOT ${CODYCO_NOT_USE_YARP_MATLAB_BINDINGS})
+    find_or_build_package(yarp-matlab-bindings)
 endif()
 
 #WB-Toolbox
