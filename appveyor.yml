@@ -1,5 +1,7 @@
 version: 1.0.{build}
-os: unstable
+
+os:
+  - Visual Studio 2013
 
 branches:
   except:
@@ -51,7 +53,7 @@ build_script:
   - cd c:\dev\codyco-superbuild
   - md build
   - cd build
-  - cmake -G"Visual Studio 12" -DNON_INTERACTIVE_BUILD:BOOL=TRUE -DYCM_BOOTSTRAP_VERBOSE:BOOL=TRUE ..
+  - cmake -G"Visual Studio 12" -DNON_INTERACTIVE_BUILD:BOOL=TRUE -DYCM_BOOTSTRAP_VERBOSE:BOOL=TRUE -DCODYCO_USES_KDL:BOOL=FALSE ..
   - msbuild /m /p:Configuration=Release /p:Platform="Win32" codyco-superbuild.sln
 
 notifications:
