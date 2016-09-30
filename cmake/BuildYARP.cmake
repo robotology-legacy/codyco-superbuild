@@ -65,4 +65,4 @@ ycm_ep_helper(YARP TYPE GIT
                                     -DYARP_DOXYGEN_TAGFILE:BOOL=OFF
                                     -DYARP_COMPILE_BINDINGS:BOOL=${YARP_COMPILE_BINDINGS}
                                     -DCREATE_PYTHON:BOOL=${CODYCO_USES_PYTHON}
-                                    -DCREATE_OCTAVE:BOOL=${CODYCO_USES_OCTAVE})
+                                    -DCREATE_OCTAVE:BOOL=OFF)
