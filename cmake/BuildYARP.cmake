@@ -26,6 +26,13 @@ if(COMMAND set_package_properties)
     set_package_properties(TinyXML PROPERTIES PURPOSE "Used by YARP")
 endif()
 
+if(CODYCO_USES_PYTHON OR CODYCO_USES_OCTAVE)
+    set(YARP_COMPILE_BINDINGS ON)
+else()
+    set(YARP_COMPILE_BINDINGS OFF)
+endif()
+
+
 ycm_ep_helper(YARP TYPE GIT
                    STYLE GITHUB
                    REPOSITORY robotology/yarp.git
@@ -56,5 +63,6 @@ ycm_ep_helper(YARP TYPE GIT
                                     -DYARP_COMPILE_EXPERIMENTAL_WRAPPERS:BOOL=ON
                                     -DYARP_DOXYGEN_XML:BOOL=OFF
                                     -DYARP_DOXYGEN_TAGFILE:BOOL=OFF
-                                    -DYARP_COMPILE_BINDINGS:BOOL=OFF
-                                    -DCREATE_PYTHON:BOOL=OFF)
+                                    -DYARP_COMPILE_BINDINGS:BOOL=${YARP_COMPILE_BINDINGS}
+                                    -DCREATE_PYTHON:BOOL=${CODYCO_USES_PYTHON}
+                                    -DCREATE_OCTAVE:BOOL=${CODYCO_USES_OCTAVE}))

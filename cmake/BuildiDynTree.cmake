@@ -43,5 +43,7 @@ ycm_ep_helper(iDynTree TYPE GIT
               TAG master
               COMPONENT libraries
               CMAKE_ARGS -DIDYNTREE_USES_MATLAB:BOOL=${CODYCO_USES_MATLAB}
+                         -DIDYNTREE_USES_PYTHON:BOOL=${CODYCO_USES_PYTHON}
+                         -DIDYNTREE_USES_OCTAVE:BOOL=${CODYCO_USES_OCTAVE}
                          -DIDYNTREE_USES_KDL=${CODYCO_USES_KDL}
               DEPENDS ${iDynTree_DEPENDS})

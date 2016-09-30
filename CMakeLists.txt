@@ -24,17 +24,21 @@ include(FeatureSummary)
 
 set(YCM_USE_CMAKE_PROPOSED TRUE CACHE BOOL "Use files including unmerged cmake patches")
 
-#Compilation options
+# Compilation options
 
-#options to build specific software or use a reduced set of dependencies
+# Matlab related options
 option(CODYCO_USES_MATLAB "Enable compilation of software that depend on Matlab and Simulink" FALSE)
 option(CODYCO_NOT_USE_SIMULINK "Disable compilation of software that depend on Simulink" FALSE)
 mark_as_advanced(CODYCO_NOT_USE_SIMULINK)
 option(CODYCO_USES_WBI_TOOLBOX "Legacy version of Whole Body Interface Toolbox 1.0 - Simulink library" FALSE)
 option(CODYCO_USES_WBI_TOOLBOX_CONTROLLERS "Controllers and Simulink models created/used with the WBI-Toolbox" FALSE)
 
+# Other dynamic languages options
 option(CODYCO_USES_LUA "Enable compilation of software that depend on Lua" FALSE)
 option(CODYCO_USES_PYTHON "Enable compilation of software that depend on Python" FALSE)
+option(CODYCO_USES_OCTAVE "Enable compilation of software that depend on Octave" FALSE)
+
+# Options related to optional dependencies 
 option(CODYCO_USES_OROCOS_BFL_BERDY "Forked Orocos Bayesian Filtering Library" FALSE)
 option(CODYCO_USES_KDL "Enable compilation of software that depends on KDL" TRUE)
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
