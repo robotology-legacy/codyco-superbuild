@@ -17,7 +17,7 @@ environment:
   ICUB_DIR:          c:/Program Files (x86)/robotology/icub-1.4.0
   BOOST_ROOT:        C:\Libraries\boost
   BOOST_LIBRARYDIR:  C:\Libraries\boost\lib32-msvc-12.0
-  EIGEN3_ROOT        c:\dev\Eigen3\include\eigen3
+  EIGEN3_ROOT:       C:\dev\Eigen3\include\eigen3
   
 
 install:
