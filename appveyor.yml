@@ -60,6 +60,8 @@ build:
 
 build_script:
   - cd c:\dev\codyco-superbuild
+  # workaround for https://github.com/robotology/codyco-superbuild/issues/148
+  - rd /q /s "c:\dev\codyco-superbuild\external" 2>nul
   - md build
   - cd build
   - cmake -G"Visual Studio 12" -DNON_INTERACTIVE_BUILD:BOOL=TRUE -DYCM_BOOTSTRAP_VERBOSE:BOOL=TRUE ..
