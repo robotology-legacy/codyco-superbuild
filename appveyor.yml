@@ -17,6 +17,7 @@ environment:
   ICUB_DIR:          c:/Program Files (x86)/robotology/icub-1.4.0
   BOOST_ROOT:        C:\Libraries\boost
   BOOST_LIBRARYDIR:  C:\Libraries\boost\lib32-msvc-12.0
+  EIGEN3_ROOT:       C:\dev\Eigen3\include\eigen3
   
 
 install:
@@ -44,14 +45,26 @@ install:
   - cmd: timeout 10
   - cmd: dir "c:\Program Files (x86)\robotology"
 
+  - cmd: if not exist c:\dev\Eigen3\include\eigen3\Eigen\Core (
+            curl -L -o eigen-eigen-dc6cfdf9bcec.tar.gz https://bitbucket.org/eigen/eigen/get/3.2.9.tar.gz &&
+            cmake -E tar zxf eigen-eigen-dc6cfdf9bcec.tar.gz &&
+            cd eigen-eigen-dc6cfdf9bcec &&
+            mkdir build &&
+            cd build &&
+            cmake -G "Visual Studio 12" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX="c:\dev\Eigen3" .. &&
+            cmake --build . --target install --config Debug &&
+            cd ..\..
+         ) else (echo Using cached Eigen3)
 
 build:
 
 build_script:
   - cd c:\dev\codyco-superbuild
+  - dir "c:\dev\codyco-superbuild"
   - md build
   - cd build
   - cmake -G"Visual Studio 12" -DNON_INTERACTIVE_BUILD:BOOL=TRUE -DYCM_BOOTSTRAP_VERBOSE:BOOL=TRUE ..
+  - cmake --build . --target ALL_UPDATE
   - msbuild /m /p:Configuration=Release /p:Platform="Win32" codyco-superbuild.sln
 
 notifications:

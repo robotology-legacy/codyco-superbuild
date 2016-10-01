@@ -20,7 +20,7 @@
 
 include(YCMEPHelper)
 
-ycm_ep_helper(Eigen3 TYPE HG
-                     STYLE BITBUCKET
-                     REPOSITORY eigen/eigen
-                     TAG 3.3-beta1)
+ycm_ep_helper(Eigen3 TYPE GIT
+                     STYLE GITHUB
+                     REPOSITORY RLovelett/eigen
+                     TAG 3.3-beta2)
