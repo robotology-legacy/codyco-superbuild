@@ -64,6 +64,7 @@ build_script:
   - md build
   - cd build
   - cmake -G"Visual Studio 12" -DNON_INTERACTIVE_BUILD:BOOL=TRUE -DYCM_BOOTSTRAP_VERBOSE:BOOL=TRUE ..
+  - cmake --build . --target UPDATE_ALL
   - msbuild /m /p:Configuration=Release /p:Platform="Win32" codyco-superbuild.sln
 
 notifications:
