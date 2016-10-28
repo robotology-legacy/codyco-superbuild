@@ -268,7 +268,7 @@ After that you can clone the superbuild repository as any other git repository, 
 Visual Studio will then download, build and install in a local directory all the CoDyCo software and its dependencies.
 If you prefer to work from the command line, you can also compile the `all` target using the following command (if you are in the `codyco-superbuild/build` directory:
 ~~~
-cmake --build .
+cmake --build . --config Release
 ~~~
 
 ###Configure your environment
