@@ -84,7 +84,8 @@ endif()
 
 
 # Bootstrap YCM
-set(YCM_TAG master)
+# Workaround for https://github.com/robotology/ycm/issues/101
+set(YCM_TAG 76cf228572e90cbb23ffc91efb57a607c8d008c0)
 include(YCMBootstrap)
 
 include(FindOrBuildPackage)
