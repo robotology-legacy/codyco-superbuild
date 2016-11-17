@@ -1,8 +1,8 @@
 include(YCMEPHelper)
 
-ycm_ep_helper(icub-gazebo
+ycm_ep_helper(icub-gazebo-wholebody
               TYPE GIT
               STYLE GITHUB
-              REPOSITORY robotology/icub-gazebo.git
+              REPOSITORY robotology-playground/icub-gazebo-wholebody.git
               TAG master
               COMPONENT main)
