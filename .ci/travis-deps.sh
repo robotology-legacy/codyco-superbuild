@@ -10,6 +10,7 @@ if [ "$TRAVIS_OS_NAME" = linux -o -z "$TRAVIS_OS_NAME" ]; then
 elif [ "$TRAVIS_OS_NAME" = osx ]; then
     gem install xcpretty
     brew update &> /dev/null
+    brew tap robotology/cask
     brew tap homebrew/x11
     brew tap homebrew/science
     source .ci/brew_install_or_upgrade_formula.sh
