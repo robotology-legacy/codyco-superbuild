@@ -84,8 +84,8 @@ endif()
 
 
 # Bootstrap YCM
-# Version working after https://github.com/robotology/ycm/issues/106
-set(YCM_TAG e72b08117618f2ec41e9a30a2545a988df57a5af)
+# Version working after https://github.com/robotology/ycm/issues/108
+set(YCM_TAG 9ffc3a48d99dd1bed603e796ec61638463c4790d)
 include(YCMBootstrap)
 
 include(FindOrBuildPackage)
