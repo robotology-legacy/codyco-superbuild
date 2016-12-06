@@ -296,14 +296,17 @@ the codyco-superbuild, you have to execute in your build system the appropriate 
 To do this, make sure to be in the `build` directory of the `codyco-superbuild` and execute:
 ~~~
 make update-all
+make
 ~~~
 using make on Linux or macOS or
 ~~~
 cmake --build . --target UPDATE_ALL
+cmake --build .
 ~~~
 using Visual Studio on Windows or 
 ~~~
 cmake --build . --target ALL_UPDATE
+cmake --build .
 ~~~
 using Xcode on macOS.
 
