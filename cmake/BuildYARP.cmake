@@ -37,7 +37,7 @@ ycm_ep_helper(YARP TYPE GIT
                    STYLE GITHUB
                    REPOSITORY robotology/yarp.git
                    TAG master
-                   COMPONENT external
+                   COMPONENT libraries
                    DEPENDS TinyXML
                    CMAKE_CACHE_ARGS -DCREATE_IDLS:BOOL=ON
                                     -DCREATE_GUIS:BOOL=ON
