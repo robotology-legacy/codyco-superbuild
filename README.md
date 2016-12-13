@@ -23,6 +23,7 @@ Table of Contents
     * [macOS](#macos)
     * [Windows](#windows)
   * [Update](#update)
+  * [Handling the devel branch](#handling-the-devel-branch)
   * [MATLAB software](#matlab-software)
 
 Superbuild structure
@@ -309,6 +310,19 @@ cmake --build . --target ALL_UPDATE
 cmake --build .
 ~~~
 using Xcode on macOS.
+
+Handling the devel branch 
+=========================
+[`yarp`](https://github.com/robotology/yarp) and [`icub-main`](https://github.com/robotology/icub-main), two of the main dependencies of the `codyco-superbuild`, use a `devel` branch for testing experimental features before a full release, when this changes are merged in their `master` branch. For more information on this workflow, see [yarp's CONTRIBUTING.md file](https://github.com/robotology/yarp/blob/master/.github/CONTRIBUTING.md).
+
+For ensuring stability to the end-users, the `codyco-superbuild` is always tested against the `master` branches of `yarp` and `icub-main`, as this are the recomended branches for users. However if you work at IIT@Genoa, it may be possible that you want to interface your robot (running the `devel` branch of `yarp` and `icub-main`) with the software on your PC compiled with the `codyco-superbuild`. This is general can be done using the `master` branch of `yarp`, but sometimes there are changes in devel that can introduce incompatibilities between yarp `master` and `devel`, see for example https://github.com/robotology/yarp/pull/1010#issuecomment-266453586 ). This incompatibilities are documented in the YARP changelog. 
+
+If you use `yarp` and `icub-main` downloaded from the `codyco-superbuild` and you want to switch them to `devel`, then you have to:
+* set the `YCM_EP_DEVEL_MODE_YARP` and `YCM_EP_DEVEL_MODE_ICUB` variables to `TRUE`, such that the superbuild will not try to manage the updates of this two repositories (see https://robotology.github.io/ycm/gh-pages/master/manual/ycm-superbuild.7.html#developer-mode),
+* manually switch the two source repositories to the devel branch .
+
+To switch back, just manually switch the branches back to `master` and set  `YCM_EP_DEVEL_MODE_YARP` and `YCM_EP_DEVEL_MODE_ICUB` variables to `FALSE`.
+
 
 MATLAB software
 ===============
