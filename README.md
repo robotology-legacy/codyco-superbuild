@@ -311,7 +311,7 @@ cmake --build .
 ~~~
 using Xcode on macOS.
 
-Handling the devel branch 
+Handling the devel branch
 =========================
 [`yarp`](https://github.com/robotology/yarp) and [`icub-main`](https://github.com/robotology/icub-main), two of the main dependencies of the `codyco-superbuild`, use a `devel` branch for testing experimental features before a full release, when this changes are merged in their `master` branch. For more information on this workflow, see [yarp's CONTRIBUTING.md file](https://github.com/robotology/yarp/blob/master/.github/CONTRIBUTING.md).
 
