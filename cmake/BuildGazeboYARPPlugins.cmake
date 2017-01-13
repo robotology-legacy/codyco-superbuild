@@ -30,10 +30,12 @@ endif()
 
 find_package(gazebo QUIET)
 
+
 ycm_ep_helper(GazeboYARPPlugins TYPE GIT
                                 STYLE GITHUB
                                 REPOSITORY robotology/gazebo-yarp-plugins.git
                                 TAG master
                                 COMPONENT libraries
                                 DEPENDS YARP
-                                        gazebo)
+                                        gazebo
+                                CMAKE_CACHE_ARGS -DGAZEBO_YARP_PLUGINS_HAS_OPENCV:BOOL=OFF)
