@@ -35,6 +35,7 @@ option(CODYCO_NOT_USE_YARP_MATLAB_BINDINGS "Disable compilation of yarp-matlab-b
 mark_as_advanced(CODYCO_NOT_USE_YARP_MATLAB_BINDINGS)
 option(CODYCO_USES_WBI_TOOLBOX "Legacy version of Whole Body Interface Toolbox 1.0 - Simulink library" FALSE)
 option(CODYCO_USES_WBI_TOOLBOX_CONTROLLERS "Controllers and Simulink models created/used with the WBI-Toolbox" FALSE)
+option(CODYCO_USES_MEX_WHOLEBODYMODEL "Enable compilation of mex-wholebodymodel software" FALSE)
 
 # Other dynamic languages options
 option(CODYCO_USES_LUA "Enable compilation of software that depend on Lua" FALSE)
@@ -148,7 +149,7 @@ if (${CODYCO_USES_OROCOS_BFL_BERDY})
 endif()
 
 #mex wholeBodyModel interface
-if (${CODYCO_USES_KDL} AND ${CODYCO_USES_MATLAB})
+if (${CODYCO_USES_MEX_WHOLEBODYMODEL})
    find_or_build_package(mexWholeBodyModel)
 endif()
 
