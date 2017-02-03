@@ -149,7 +149,7 @@ if (${CODYCO_USES_OROCOS_BFL_BERDY})
 endif()
 
 #mex wholeBodyModel interface
-if (${CODYCO_USES_KDL} AND ${CODYCO_USES_MATLAB} AND ${CODYCO_USES_MEX_WHOLEBODYMODEL})
+if (${CODYCO_USES_MEX_WHOLEBODYMODEL})
    find_or_build_package(mexWholeBodyModel)
 endif()
 
