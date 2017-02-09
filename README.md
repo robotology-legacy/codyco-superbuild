@@ -334,7 +334,6 @@ can install some libraries that depend on MATLAB, in particular:
  * MATLAB bindings of the [iDynTree](https://github.com/robotology/idyntree) library.
  * MATLAB bindings of the [qpOASES](https://github.com/robotology-dependencies/qpOASES) library.
  * The [WB-Toolbox](https://github.com/robotology/WB-Toolbox) Simulink toolbox. 
- * The [mexWholeBodyModel](https://github.com/robotology/mex-wholebodymodel) toolbox.
  
 To use this software, you can simply enable its compilation using the `CODYCO_USES_MATLAB` CMake option. 
 Once this software has been compiled by the superbuild, you just need to add some directories of the codyco-superbuild install (typically `$CODYCO_SUPERBUILD_ROOT/build/install`) to [the MATLAB path](http://mathworks.com/help/matlab/matlab_env/add-folders-to-search-path-upon-startup-on-unix-or-macintosh.html).
@@ -346,7 +345,7 @@ As an example, you could add this line to your MATLAB script that uses the codyc
     addpath(genpath(['codyco_superbuild_install_folder'  /share/WB-Toolbox]))
 ~~~
 Anyway we strongly suggest that you add this directories to the MATLAB path in robust way, 
-for example by modifyng the `startup.m` or the `MATLABPATH` enviromental variable [as described in official MATLAB documentation](http://mathworks.com/help/matlab/matlab_env/add-folders-to-search-path-upon-startup-on-unix-or-macintosh.html).
+for example by modifying the `startup.m` or the `MATLABPATH` enviromental variable [as described in official MATLAB documentation](http://mathworks.com/help/matlab/matlab_env/add-folders-to-search-path-upon-startup-on-unix-or-macintosh.html).
 Another way is to run (only once) the script `startup_codyco_superbuild.m` in the `$CODYCO_SUPERBUILD_ROOT/build` folder. This should be enough to permanently add the required paths for all the toolbox that use MATLAB. 
 
 For more info on configuring MATLAB software with the codyco-superbuild, please check the [WB-Toolbox README](https://github.com/robotology/WB-Toolbox).
@@ -359,7 +358,8 @@ For more info on configuring MATLAB software with the codyco-superbuild, please 
 
 Controllers
 -----------
-MATLAB balancing controllers developed for the CoDyCo project are available in the [WBI-Toolbox-controllers](https://github.com/robotology-playground/WBI-Toolbox-controllers) and 
-[mexWholeBodyModel](https://github.com/robotology/mex-wholebodymodel) repositories. 
-The `mexWholeBodyModel` toolbox is downloaded automatically if the option `CODYCO_USES_MATLAB` is enabled, while
-to download `WBI-Toolbox-controllers` as part of the superbuild, the user must enable the `CODYCO_USES_WBI_TOOLBOX_CONTROLLERS` CMake option. 
+SIMULINK balancing controllers developed for the CoDyCo project are available in the [WBI-Toolbox-controllers](https://github.com/robotology-playground/WBI-Toolbox-controllers) repository. To download `WBI-Toolbox-controllers` as part of the superbuild, the user must enable the `CODYCO_USES_WBI_TOOLBOX_CONTROLLERS` CMake option. 
+
+MATLAB balancing controllers (only for simulations) based on `mexWholeBodyModel` library are available in the [mexWholeBodyModel](https://github.com/robotology/mex-wholebodymodel) repository. 
+The `mexWholeBodyModel` toolbox is downloaded automatically as part of the superbuild if the option `CODYCO_USES_MEX_WHOLEBODYMODEL` is enabled.
+
