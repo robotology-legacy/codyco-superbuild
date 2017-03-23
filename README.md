@@ -34,11 +34,11 @@ For each project, the repository will be downloaded in the `component/project` s
 of the superbuild root. The build directory for a given project will be instead the `component/project` subdirectory
 of the superbuild build directory.
 
-###`external`
+### `external`
 
 The `external` component contains software not developed inside the CoDyCo consortium, but that is a dependency of CoDyCo software.
 
-###`libraries`
+### `libraries`
 
 The `libraries` component contains librares developed by the CoDyCo consortium, that could be used also by external software.
 
@@ -53,7 +53,7 @@ The projects downloaded in the `libraries` component are:
 * [`EigenLgsm`](https://github.com/ocra-recipes/eigen_lgsm) : Lie group solid mechanics header library for Eigen. 
 * [`ocra-recipes`](https://github.com/ocra-recipes/ocra-recipes) : Optimization based Control for Robotics Applications. A set of libraries designed to efficiently formulate robot control problems as a convex optimization problems. 
 
-###`main`
+### `main`
 
 The `main` component contains executable software developed by the CoDyCo consortium, for example YARP modules,
 Simulink models or Lua scripts.
@@ -75,8 +75,8 @@ We provide different instructions on how to install codyco-superbuild, depending
 
 Complete documentation on [YCM documentation](http://robotology.github.io/ycm/gh-pages/master/manual/ycm-superbuild.7.html)
 
-##Linux
-###System Dependencies
+## Linux
+### System Dependencies
 On Debian based systems (as Ubuntu) you can install the C++ toolchain, Git, CMake and Eigen (and other dependencies necessary for the codyco-superbuild) using `apt-get`:
 ```
 sudo apt-get install libeigen3-dev build-essential cmake cmake-curses-gui libboost-system-dev libboost-filesystem-dev libboost-thread-dev libtinyxml-dev libace-dev libgsl0-dev libcv-dev libhighgui-dev libcvaux-dev libode-dev liblua5.1-dev lua5.1 git swig
@@ -101,7 +101,7 @@ When enabling the flag `CODYCO_USES_OROCOS_BFL_BERDY`, the library [Orocos-BFL-B
 `export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$CODYCO_SUPERBUILD_ROOT/build/install/lib/pkgconfig/`
 And as an additional dependency of `codyco-superbuild` you will also have: `libboost-iostreams-dev`.
 
-###Superbuild
+### Superbuild
 If you didn't already configured your git, you have to set your name and email to sign your commits:
 ```
 git config --global user.name FirstName LastName
@@ -118,7 +118,7 @@ make
 ```
 You can configure the ccmake environment if you know you will use some module (put them in "ON"). For example you may need some tools presented [here](https://github.com/robotology/codyco-superbuild#matlab-software).
 
-###Configure your environment
+### Configure your environment
 Currently the YCM superbuild does not support building a global install target, so all binaries are installed in `codyco-superbuild/build/install/bin` and all libraries in `codyco-superbuild/build/install/lib`.
 
 To use this binaries and libraries, you should update the `PATH` and `LD_CONFIG_PATH` environment variables.
@@ -141,9 +141,9 @@ If may also be necessary to updates the cache of the dynamic linker:
 user@host:~$ sudo ldconfig
 ```
 
-##macOS
+## macOS
 
-###System Dependencies
+### System Dependencies
 To install Eigen and CMake, it is possible to use [Homebrew](http://brew.sh/):
 ```
 brew install eigen cmake boost tinyxml swig qt5
@@ -151,7 +151,7 @@ brew install eigen cmake boost tinyxml swig qt5
 
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
 
-###Superbuild
+### Superbuild
 If you didn't already configured your git, you have to set your name and email to sign your commits:
 ```
 git config --global user.name FirstName LastName
@@ -175,7 +175,7 @@ cmake ../ -G Xcode
 xcodebuild -configuration Release
 ```
 
-###Configure your environment
+### Configure your environment
 Currently the YCM superbuild does not support building a global install target, so all binaries are installed in `codyco-superbuild/build/install/bin` and all libraries in `codyco-superbuild/build/install/lib`.
 
 To use this binaries you should update the `PATH` environment variables.
@@ -206,7 +206,7 @@ user@host:~$ source ~/.bash_profile
 ```
 or simply open a new terminal.
 
-##Windows
+## Windows
 
 ### Disclaimer
 While the software developed in the CoDyCo project is [tested to be compatible with Windows](https://ci.appveyor.com/project/robotology/codyco-superbuild/branch/master), 
@@ -214,14 +214,14 @@ the Gazebo simulator that we use as a simulation platform [does not support Wind
 For this reason if you plan to do use the CoDyCo software with the Gazebo simulator, 
 for the time being it is easier for you to use Linux or macOS. 
 
-###System Dependencies
+### System Dependencies
 Most of the CoDyCo software is developed using the C/C++ language. For this reason, you should have Visual Studio installed on your computer to build it. In particular we install some dependencies of our software we rely on the binary installers
 provided by [the official iCub software](http://wiki.icub.org/wiki/ICub_Software_Installation). As this binaries are still not available for Visual Studio 2015 (or 64 bit, at least for iCub), we recommend to use Visual Studio 2013 32bit to compile the CoDyCo software. 
 
 You will also need some additional software, as listed afterwards.
 Some of this software can be easily installed using [Chocolatey](https://chocolatey.org), a tool to simplify software installation on Windows.
 
-####Git
+#### Git
 Most of the CoDyCo software is hosted on Git repositories, so you will need Git to download them.
 You can download the Git installer at http://msysgit.github.io/ .
 ##### Chocolatey
@@ -230,7 +230,7 @@ If you have installed Chocolatey, you can install Git with the following command
 choco install git
 ~~~
 
-####Mercurial
+#### Mercurial
 Some software required by the `codyco-superbuild` (namely the Eigen library) are hosted in Mercurial repositories, so you will need Mercurial to automatically download them.
 You can download the Mercurial installer at http://mercurial.selenic.com/wiki/Download .
 ##### Chocolatey
@@ -239,7 +239,7 @@ If you have installed Chocolatey, you can install Monotone with the following co
 choco install hg
 ~~~
 
-####CMake
+#### CMake
 To install CMake you can use the official installer available at http://www.cmake.org/cmake/resources/software.html .
 It is recommended to install the latest version of CMake.
 ##### Chocolatey
@@ -249,7 +249,7 @@ choco install cmake
 ~~~
 
 
-####Eigen
+#### Eigen
 Eigen can be automaically installed with the codyco-superbuild, so you don't have to install it manually.
 
 If you want to install Eigen manually, or you have already installed Eigen please check the following section.
@@ -257,15 +257,15 @@ If you want to install Eigen manually, or you have already installed Eigen pleas
 You can install Eigen from source code available from the [Eigen official website](http://eigen.tuxfamily.org).
 You can simply extract the Eigen source code in a directory, and then define the `EIGEN3_ROOT` environment variable to the path of the directory that contains the file `signature_of_eigen3_matrix_library` (it should be the first directory contained in the compressed file).
 
-####Boost
+#### Boost
 Some software of codyco-superbuild requires Boost. If you have already a copy of the Boost libraries
 installed on your system, you can use them for compiling codyco-superbuild by defining the appropriate
 `BOOST_DIR`, `BOOST_LIBRARYDIR` and `BOOST_INCLUDEDIR` enviroment variables.
 
-####YARP & iCub
+#### YARP & iCub
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/ICub_Software_Installation).
 
-###Superbuild
+### Superbuild
 If you didn't already configured your git, you have to set your name and email to sign your commits:
 ```
 git config --global user.name FirstName LastName
@@ -278,7 +278,7 @@ If you prefer to work from the command line, you can also compile the `all` targ
 cmake --build . --config Release
 ~~~
 
-###Configure your environment
+### Configure your environment
 Currently the YCM superbuild does not support building a global install target, so all binaries are installed in `codyco-superbuild/build/install/bin` and all libraries in `codyco-superbuild/build/install/lib`.
 
 To use this binaries and libraries, you should update the necessary environment variables.
