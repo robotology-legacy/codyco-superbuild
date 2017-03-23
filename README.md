@@ -129,6 +129,8 @@ export CODYCO_SUPERBUILD_ROOT=/directory/where/you/downloaded/codyco-superbuild
 export PATH=$PATH:$CODYCO_SUPERBUILD_ROOT/build/install/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CODYCO_SUPERBUILD_ROOT/build/install/lib
 export YARP_DATA_DIRS=$YARP_DATA_DIRS:$CODYCO_SUPERBUILD_ROOT/build/install/share/codyco
+                                     :$CODYCO_SUPERBUILD_ROOT/build/install/share/yarp
+                                     :$CODYCO_SUPERBUILD_ROOT/build/install/share/iCub
 ```
 To use the updated `.bashrc` in your terminal you should run the following command:
 ```bash
@@ -183,6 +185,8 @@ An easy way is to add these lines to the `.bashrc` or `.bash_profile` file in yo
 CODYCO_SUPERBUILD_ROOT=/directory/where/you/downloaded/codyco-superbuild
 export PATH=$PATH:$CODYCO_SUPERBUILD_ROOT/build/install/bin
 export YARP_DATA_DIRS=$YARP_DATA_DIRS:$CODYCO_SUPERBUILD_ROOT/build/install/share/codyco
+                                     :$CODYCO_SUPERBUILD_ROOT/build/install/share/yarp
+                                     :$CODYCO_SUPERBUILD_ROOT/build/install/share/iCub
 ```
 
 Most of the modules in the codyco-superbuild are correctly configured to automatically find the libraries.
