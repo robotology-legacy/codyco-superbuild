@@ -41,7 +41,6 @@ ycm_ep_helper(YARP TYPE GIT
                    DEPENDS TinyXML
                    CMAKE_CACHE_ARGS -DCREATE_IDLS:BOOL=ON
                                     -DCREATE_GUIS:BOOL=ON
-                                    -DCREATE_SHARED_LIBRARY:BOOL=ON
                                     -DYARP_USE_SYSTEM_SQLITE:BOOL=ON
                                     -DCREATE_LIB_MATH:BOOL=ON
                                     -DYARP_USE_ATLAS:BOOL=OFF
