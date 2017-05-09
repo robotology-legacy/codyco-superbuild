@@ -9,7 +9,7 @@ find_or_build_package(urdfdom_headers QUIET)
 ycm_ep_helper(urdfdom TYPE GIT
               STYLE GITHUB
               REPOSITORY ros/urdfdom.git
-              TAG 0.4.2
+              TAG 0.4
               COMPONENT external
               DEPENDS console_bridge
                       urdfdom_headers
