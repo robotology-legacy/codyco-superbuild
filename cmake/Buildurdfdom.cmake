@@ -3,14 +3,14 @@ include(YCMEPHelper)
 include(FindOrBuildPackage)
 
 find_or_build_package(TinyXML QUIET)
+find_or_build_package(console_bridge  QUIET)
 find_or_build_package(urdfdom_headers QUIET)
 
 ycm_ep_helper(urdfdom TYPE GIT
               STYLE GITHUB
-              REPOSITORY robotology-dependencies/urdfdom.git
-              TAG master
+              REPOSITORY ros/urdfdom.git
+              TAG 0.4.2
               COMPONENT external
-              DEPENDS urdfdom_headers
-                      TinyXML
-              CMAKE_CACHE_ARGS -DURDFDOM_DO_NOT_INSTALL_URDFPARSERPY:BOOL=ON
-                               -DURDFDOM_DO_NOT_USE_CONSOLEBRIDGE:BOOL=ON)
+              DEPENDS console_bridge
+                      urdfdom_headers
+                      TinyXML)
