@@ -73,7 +73,7 @@ option(CODYCO_TRAVIS_CI "Set if build is done with Travis-CI flags" FALSE)
 
 # Optionally load a file named ProjectsTags
 # for overwriting the desired branch/tag/commit
-# of the included subprojects of the superbuild
+# of the included subprojectCOs of the superbuild
 # Useful for having superbuild "branches"
 include(ProjectsTags OPTIONAL)
 
@@ -129,7 +129,7 @@ if(${CODYCO_USES_MATLAB} AND NOT ${CODYCO_NOT_USE_YARP_MATLAB_BINDINGS})
 endif()
 
 #WB-Toolbox
-if (${CODYCO_USES_KDL} AND ${CODYCO_USES_MATLAB} AND NOT ${CODYCO_NOT_USE_SIMULINK})
+if (${CODYCO_USES_MATLAB} AND NOT ${CODYCO_NOT_USE_SIMULINK})
     find_or_build_package(WBToolbox)
 endif()
 
