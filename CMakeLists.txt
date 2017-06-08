@@ -73,7 +73,7 @@ option(CODYCO_TRAVIS_CI "Set if build is done with Travis-CI flags" FALSE)
 
 # Optionally load a file named ProjectsTags
 # for overwriting the desired branch/tag/commit
-# of the included subprojectCOs of the superbuild
+# of the included subprojects of the superbuild
 # Useful for having superbuild "branches"
 include(ProjectsTags OPTIONAL)
 
