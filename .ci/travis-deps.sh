@@ -14,11 +14,9 @@ if [ "$TRAVIS_OS_NAME" = linux -o -z "$TRAVIS_OS_NAME" ]; then
 elif [ "$TRAVIS_OS_NAME" = osx ]; then
     gem install xcpretty
     brew update &> /dev/null
-    brew tap robotology/formulae
     brew tap ros/deps
-    brew tap homebrew/x11
     brew tap homebrew/science
     source .ci/brew_install_or_upgrade_formula.sh
     # brew tap homebrew/versions #useful only if we need a particular version.
-    brewInstallFormulas eigen boost ace pkg-config jpeg swig sqlite readline gsl tinyxml yarp urdfdom
+    brewInstallFormulas eigen boost ace pkg-config jpeg swig sqlite readline gsl tinyxml robotology/formulae/yarp urdfdom
 fi
