@@ -124,7 +124,7 @@ if(${CODYCO_USES_KDL} AND ${CODYCO_BUILD_OCRA_MODULES} )
 endif()
 
 #yarp-matlab-bindings
-if(${CODYCO_USES_MATLAB} AND NOT ${CODYCO_NOT_USE_YARP_MATLAB_BINDINGS})
+if ((${CODYCO_USES_MATLAB} OR ${CODYCO_USES_OCTAVE}) AND NOT ${CODYCO_NOT_USE_YARP_MATLAB_BINDINGS})
     find_or_build_package(yarp-matlab-bindings)
 endif()
 
