@@ -81,14 +81,15 @@ On Debian based systems (as Ubuntu) you can install the C++ toolchain, Git, CMak
 ```
 sudo apt-get install libeigen3-dev build-essential cmake cmake-curses-gui libboost-system-dev libboost-filesystem-dev libboost-thread-dev libtinyxml-dev libace-dev libgsl0-dev libcv-dev libhighgui-dev libcvaux-dev libode-dev liblua5.1-dev lua5.1 git swig
 ```
-The packages provided in the official distro repositories work out of the box for **Ubuntu 14.04** (`trusty`), **Ubuntu 13.10** (`saucy`) and **Debian 8** (`jessie`).
-For older distros the included CMake and Eigen are too old, and is necessary to find a way to install them from an alternative
+In particular, the version that we required are at least 3.3 for the [Eigen matrix library](http://eigen.tuxfamily.org) and at least 3.0 for the [CMake build system](https://cmake.org/). 
+The packages provided in the official distro repositories work out of the box for **Ubuntu 16.04** (`xenial`). 
+For older distros such as **Ubuntu 14.04** (`trusty`) and **Debian 8** (`jessie`) the default CMake and Eigen are too old, and is necessary to find a way to install them from an alternative
 source:
-* In **Debian 7** (`wheezy`) it is sufficient to [enable the `wheezy-backports` repository](http://backports.debian.org/Instructions/) and install the recent versions of CMake and Eigen provided in it:
+* In **Debian 8** (`jessie`) it is sufficient to [enable the `jessie-backports` repository](http://backports.debian.org/Instructions/) and install the recent versions of CMake and Eigen provided in it:
 ~~~
-sudo apt-get -t wheezy-backports install cmake libeigen3-dev
+sudo apt-get -t jessie-backports install cmake libeigen3-dev
 ~~~
-* In **Ubuntu 12.04** (`precise`) a [PPA is available to easily install CMake 2.8.12](https://launchpad.net/~robotology/+archive/ubuntu/ppa). To install a recent version of Eigen the easiest solution is [to get Eigen from source](http://eigen.tuxfamily.org/index.php?title=Main_Page#Download).
+* In **Ubuntu 14.04** (`trusty`) a recent version of CMake is available in the official repositories in the [`cmake3` package](https://packages.ubuntu.com/trusty/cmake3). To install a recent version of Eigen you can use a [PPA](https://launchpad.net/~nschloe/+archive/ubuntu/eigen-backports).
 
 #### YARP and iCub software
 For installing the latest version of YARP and ICUB software, please refer to [the official iCub documentation](http://wiki.icub.org/wiki/Linux:Installation_from_sources). Please note that at the moment
