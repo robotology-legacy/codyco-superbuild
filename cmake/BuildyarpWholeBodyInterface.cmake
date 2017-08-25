@@ -5,6 +5,7 @@ find_or_build_package(YARP QUIET)
 find_or_build_package(ICUB QUIET)
 find_or_build_package(iDynTree QUIET)
 find_or_build_package(wholeBodyInterface QUIET)
+find_or_build_package(icub-models QUIET)
 
 
 ycm_ep_helper(yarpWholeBodyInterface TYPE GIT
@@ -16,4 +17,5 @@ ycm_ep_helper(yarpWholeBodyInterface TYPE GIT
               DEPENDS YARP
                       ICUB
                       iDynTree
-                      wholeBodyInterface)
+                      wholeBodyInterface
+                      icub-models)
