@@ -1,21 +1,30 @@
-Frequent Asked Questions on whole-body torque control on the iCub robot  {#icub-whole-body-control-faqs}
+Frequently Asked Questions on Whole-Body Torque Control with the iCub Robot  {#icub-whole-body-control-faqs}
 ==================================
 
- ## iCub preliminary checks 
+ ## Preliminary checks on the iCub
  
- ### What are the things to check on the iCub robot before performing whole-body torque control experiments? 
+ ### What to check on the iCub robot before performing whole-body torque control experiments? 
  
-# Do a complete update of information (before the calibration)
+# Complete update of information (before the calibration)
 
-## Usual update before processing
-First, update the new version of yarp/icub_main/codyco\-superbuild (git pull on the pcload). You don't have to repeat this operation on the other computers of the network, because the sources are shared.
-Then, if there are some updates, you have to build them (make) on all the computers (because the builds are not shared) with the usual:  
-`cd build  
-ccmake  ../ make`
+## Update yarp, icub-main and codyco-superbuild
+First, update the yarp, icub-main and codyco\-superbuild directories on the icub laptop, as well as on the computer used for launching controllers (if different), with  
+`git pull`  
+You don't have to repeat this operation on computers which share sources with the icub laptop.
 
-You only have to update the codyco-superbuild program on the pc from where you will launch programs (with a make update all in the build folder).  /*verify it is really for that*/  
-To do the required updates on the iCub board (pc104), you have to connect to it using the command:  
-`ssh -X pc104` (\-X option to redirect the graphic output to your local machine)
+Then, if there are some updates, build them on all the computers with  
+`cd build`  
+`ccmake  ../`  
+`make`  
+
+To do the required updates on the iCub board (pc104 or icub-head), first connect to it using the command  
+`ssh -X pc104` (\-X option is used to redirect the graphic output to your local machine)  
+or  
+`ssh -X icub-head` 
+
+Additionnally, update codyco-superbuild on the computer from which you will launch controllers with  
+`cd build`  
+`make update-all`  
 
 ## Firmware update
 This is only a little summary of what you have to do. For more information look [here](http://wiki.icub.org/wiki/Firmware).
