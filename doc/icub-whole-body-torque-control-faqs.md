@@ -69,19 +69,14 @@ Thus, the source file shared between the load\_computer and the icub board (pc10
 
 After restarting the robot, check that the joints were successfully calibrated.
 
-At the end, if all is correct, commit the changes.  
-_Remarks_:  
-It is better to do many commits, rather than to commit everything at the end of the calibration procedure, in order to avoid errors.  
-If you have a copy of the calibration configuration files in the .local folder, these files are the ones which will be loaded by _robotinterface_. In that case, when you do tests, edit the file in the .local folder. When you are sure of the calibration, modify the original calibration files to the new values and commit your changes.  
-
 **IMU calibration**
 
 For IMU calibration, the robot has to be on the pole, in home position (i.e. all joints to 0).
 
 You need to receive the acceleration values of the head to be able to calibrate it: you may launch (or create) a program which writes the acceleration data. Just for that, codyco-superbuild provides the Simulink file _calibrateIMU.mdl_ in `codyco-superbuild/main/wBIToolboxControllers/utilities`. When running _calibrateIMU.mdl_, the IMU scope shows the acceleration values, which need to be around  
-      0 for _x_ (yellow)  
-      0 for _y_ (blue)  
-      9.8 for _z_ (red)  
+- 0 for _x_ (yellow)  
+- 0 for _y_ (blue)  
+- 9.8 for _z_ (red)  
 In other words, gravity has to be sensed only on the z axis.  
 
 In _yarpmotorgui_, switch to the tab associated to the head. Then, click the "_idle_" button for the joints to calibrate: _neck_pitch_ and _neck_roll_ (_neck_yaw_ is usually not required), allowing you to move them freely. Then, move the head joints to bring signals are near their desired values. If the _x_ and _y_ positions have an error of less than 0.1, it is fine. Click the "_run_" button for the two joints. Note the _encoder_ values. 
@@ -90,31 +85,38 @@ If the head uses ETH, the _encoder_ values can be added in the corresponding joi
 
 If the head uses CAN, the head\-calib.xml file would not be loaded properly. The configuration file for the head would instead be in another folder (for example `.../robots/$ROBOT_NAME/hardware/mechanicals`), and the parameter to modify would be _zero parameter_.
 
+**Commit the changes**
+
+At the end, if all is correct, commit the changes.  
+_Remarks_:  
+It is better to do many commits, rather than to commit everything at the end of the calibration procedure, in order to avoid errors.  
+If you have a copy of the calibration configuration files in the .local folder, these files are the ones which will be loaded by _robotinterface_. In that case, when you do tests, edit the file in the .local folder. When you are sure of the calibration, modify the original calibration files to the new values and commit your changes.  
+
 
  ### move these parts to an installation tips and tricks page. 
 
 # Things to know before downloading the project.
-* Install only Gazebo from binaries. The other programs will have to be installed from sources (not binaries). Thanks to that you can choose where there are installed, where are the libraries are placed, and you are able to update them easily.  
-* To be able to clean up easily the whole project, we have to avoid the program to be installed in the _/usr_ folder and avoid to install the library in the _/lib_ folder. To do that, follow these recommendations:  
+* Install only Gazebo from binaries. The other programs will have to be installed from sources (not binaries). Thanks to that, you can choose where they are installed, where the libraries are located, and you are able to update them easily.  
+* To be able to clean up easily the whole project, it is recommended to avoid installing programs in the _/usr_ folder and to avoid installing libraries in the _/lib_ folder. To do that, follow these recommendations:  
 1. Create a new folder (for example “software”) in your home directory and install all programs in this folder.  
-2. When you download the files allowing to install the program, a new folder is created. Go to it and create two directories called "build" and "libraries". Then, go to the "build" folder, and build the program using the command line `ccmake [_options_] ../`. You should have something like: `~/software/$yourProgram/build`. Moreother, all librairies of your programm has be installed in the "libraries" file that you should have created. To do that, add to the previous command line the option `\-DCMAKE\_INSTALL\_PREFIX=~/software/$yourProgram/install`).  
-3. Normaly, after the command line `make` we write the command `make install`. Don't write this last command because we want to keep this program in the current directories without installing it in the "/usr" and "/lib" folders. Thanks to that, it is easier to clean up the program. Due to this specification, the program is not accessible from other folders. 
-4. Now, configure some variables to allow our programm to be found from anywhere. These configurations are precised during the installation guide. For example you will be informed to add to the "~/.bashrc" file the command lines:    
+2. When you download the source files of a program, a new folder is created. Go to this folder and create two directories called "build" and "install". Then, in the "build" folder, build the program using the command line `ccmake [_options_] ../`. You should have something like: `~/software/$yourProgram/build`. Moreover, all librairies of your programm have to be installed in the "install" folder that you should have created. To do that, add to the previous command line the option `\-DCMAKE\_INSTALL\_PREFIX=~/software/$yourProgram/install`).  
+3. Normally, after the command line `make`, we write the command `make install`. Don't use this last command because we want to keep programs in the current directories without installing them in the "/usr" and "/lib" folders. Thanks to that, it is easier to clean up the programs. Due to this specification, programs are not accessible from other folders. 
+4. Now, configure some variables to allow a program to be found from anywhere. These configurations are precised during the installation guide. For example you will be informed to add to the "~/.bashrc" file the command lines:    
 `export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/software/$yourProgram/install/lib)`  
 `export PATH=$PATH:~/software/$yourProgram/build`
 
 # Launch the first iCub test
-Now, all is correctly updated and calibrated.  
-1. Open the power suppliers (wait a little for the power to come to the iCub).  
-2. Open the CPO.  
-3. It is recommended to create three terminals called yarpserver/yarpmanger/yarpmotorgui to avoid making some mistakes between them.  
+Once all is correctly updated and calibrated,  
+1. Switch on the power supplies (wait a little for the power to come to the iCub).  
+2. Switch on the CPU.  
+3. It is recommended to create three terminals, called yarpserver/yarpmanager/yarpmotorgui to avoid making some mistakes between them.  
 4. Go to the yarpserver terminal and launch "_icub\_cluster.py_" that launches yarpserver + yarprun (or, if you have it, launch the file that configures the cluster correctly. It should be called "launchApplicationGui.sh").  
-5. Check that the main computer is correctly connected: correct the name  of the computer if it is not correct, and click the "_verify_" button.  
+5. Check that the main computer is correctly connected: correct the name of the computer if it is not correct, and click the "_verify_" button.  
 Then, click “_check all_” for all computers that you want to connect. If one of them is not connected, select it and connect it.  
-6. Now, you can push the switch that launches the motors.  
+6. Now, you can switch on the motors.  
 7. Launch yarpmanager and run, for example, the basic application “_icubstartup_”. For some applications that require to connect components, you have to click on “connect”.  
  
 # Some little things to know 
 * Be careful with the head and hands of the robot.  
-+* If you modify some source files on one computer of the network linked to the robot, these files will not be taken into account if their names are also in the ./local directory. Indeed, when you build a program, files are first read in the /local directory, then in the source folder.  
-+* How to hide DEBUG information: in the cmake information, put the variable DEBUG from DEBUG to RELEASE  
+* If you modify some source files on one computer of the network linked to the robot, these files will not be taken into account if their names are also in the ./local directory. Indeed, when you build a program, files are first read in the /local directory, then in the source folder.  
+* How to hide DEBUG information: in the cmake information, put the variable DEBUG from DEBUG to RELEASE  
