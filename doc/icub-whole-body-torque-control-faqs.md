@@ -53,7 +53,10 @@ You can find information about CAN-bus numbers and CAN-bus device drivers [here]
 - The net 9 is for the neck.  
 - There are BLL and RMHDC drivers. Download all corresponding ".out.s" files, of which the name corresponds to the current version. 
 
-# Joint calibration of the robot
+# Calibration of the robot
+
+**Joint calibration**
+
 With a new iCub, or after modifying a component of the robot, it is required to calibrate the “zero position” associated to the joints of the robot. The robot should be fixed on the pole for calibration. After moving it to home position with _yarpmotorgui_, fine calibration can be done with the help of a level tool, as described in the [wiki](http://wiki.icub.org/wiki/Manual#Three._Calibration). First the torso must be calibrated, before proceeding to the head, arms and legs.
 
 The following lines provide further information, as well as an example.  
