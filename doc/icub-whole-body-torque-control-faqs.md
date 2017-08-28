@@ -53,39 +53,43 @@ You can find information about CAN-bus numbers and CAN-bus device drivers [here]
 - The net 9 is for the neck.  
 - There are BLL and RMHDC drivers. Download all corresponding ".out.s" files, of which the name corresponds to the current version. 
 
-# Check the joint calibration
-After changing an iCub component, or the first time we obtain an iCub, it is required to calibrate the “zero position” of the robot (home position). To do that, we launch the home position in yarpmanager and we use a level tool.
+# Joint calibration of the robot
+With a new iCub, or after modifying a component of the robot, it is required to calibrate the “zero position” associated to the joints of the robot. The robot should be fixed on the pole for calibration. After moving it to home position with _yarpmotorgui_, fine calibration can be done with the help of a level tool, as described in the [wiki](http://wiki.icub.org/wiki/Manual#Three._Calibration). First the torso must be calibrated, before proceeding to the head, arms and legs.
 
-# Calibration of the robot
-Perform the calibration in this order: from the torso to the legs, then the head and the arm.  
-You can follow [these information](http://wiki.icub.org/wiki/Manual#Three._Calibration) to do it this [part](http://wiki.icub.org/wiki/ArmFineCalibration) explain quickly what you have to do.  
-The following lines give other information and an example.  
-In _Yarpmanager_, go to the part linked to the member you want to calibrate. Then, choose the "_idle mode_" wich allows you to move it. With a level, put the joint in the parallel position to the floor. Then put the mode of the considered joint in “_run mode_”. Note the encoder value.  
-This value has to be added in the specific file linked to the joint. Go to the folder:  
-`$CODYCO_SUPERBUILD_ROOT/external/ICUB/app/robots/$ROBOT_NAME/conf/calibration`     
-**/*Check it*/**   
-Search the corresponding file (for example left\_leg\_calib.xml), and add the “encoder value” that you have noted to the current one (parameter _calibrationDelta_: all numbers correspond to the joints). For example, we add some values to the line:  
+The following lines provide further information, as well as an example.  
+In _yarpmotorgui_, switch to the tab associated to the body part you want to calibrate. Then, click the "_idle_" button for the joints to calibrate, allowing you to move them freely. With the help of a level tool, move the joint such that you can measure that it is level. Then click the "_run_" button for the considered joint, activating joint position control. Note the _encoder_ value.  
+This value will be added in the specific file associated to the joint. Go to the folder containing the "\.xml" calibration files for your robot and open the corresponding file (example: `.../robots/$ROBOT_NAME/calibrators/left\_leg\_calib.xml`). Add the _encoder_ value that you have previously noted to the current "calibrationDelta" of the joint (each number of the parameter "calibrationDelta" corresponds to a joint). For example, we add some values to the line:  
 `<param name="calibrationDelta">         -5.0        8.7        -11.4        -0.6        0.0        0.0       3.0        0.0        0.0        0.0        0.0        0.0        0.0        0.0        0.0        0.0        </param>`  
 
-Thus, the source file shared between the load\_computer and the icub\_board (pc104) has been changed. Now, you have to update the icub\_board.  
+Thus, the source file shared between the load\_computer and the icub board (pc104 or icub-head) has been changed. Now, you have to update the icub board with the same values, for example with  
 `ssh -X pc104`  
 `cd $YARP_DIR/icub_main/build`  
-`ccmake […]`  
+`ccmake ../`  
 `make`  
 
-At the end, if all is correct, you have to commit it.  
+After restarting the robot, check that the joints were successfully calibrated.
+
+At the end, if all is correct, commit the changes.  
 _Remarks_:  
-It is better to do many commit and not to commit at the end all the configuration files to avoid errors.  
-If you have the same configuration file in the local folder, the computer will use this file and not the one you modify. In that case, when you do tests, edit the file in the local folder. When you are sure of the calibration, modify the correct one and commit it.  
+It is better to do many commits, rather than to commit everything at the end of the calibration procedure, in order to avoid errors.  
+If you have a copy of the calibration configuration files in the .local folder, these files are the ones which will be loaded by _robotinterface_. In that case, when you do tests, edit the file in the .local folder. When you are sure of the calibration, modify the original calibration files to the new values and commit your changes.  
 
-To calibrate the head:  
-The configuration file for the head is on another folder:  
-`$CODYCO_SUPERBUILD_ROOT/external/ICUB/app/robots/$ROBOT_NAME/hardware/mecanicals`    
-Take the file linked to the head and modify the _zero parameter_.  
-You need to receive the acceleration values of the head to be able to calibrate it: choose (or create) a programm which writes these acceleration data and launch it. Choose to the _idle mode_ in the _yarpmanager_ for the two first joints of the head. Then, turn the head until the acceleration values are near (0;0;9) (the gravity has to be sensed only on the z axis). If the x and y positions have an error of less than 0.1, it is ok.  After that, click on run and copy the encoder value on the corresponding XML file. 
+**IMU calibration**
 
-To calibrate the arm:  
-Follow [this configuration](http://wiki.icub.org/wiki/ArmFineCalibration).
+For IMU calibration, the robot has to be on the pole, in home position (i.e. all joints to 0).
+
+You need to receive the acceleration values of the head to be able to calibrate it: you may launch (or create) a program which writes the acceleration data. Just for that, codyco-superbuild provides the Simulink file _calibrateIMU.mdl_ in `codyco-superbuild/main/wBIToolboxControllers/utilities`. When running _calibrateIMU.mdl_, the IMU scope shows the acceleration values, which need to be around  
+      0 for _x_ (yellow)  
+      0 for _y_ (blue)  
+      9.8 for _z_ (red)  
+In other words, gravity has to be sensed only on the z axis.  
+
+In _yarpmotorgui_, switch to the tab associated to the head. Then, click the "_idle_" button for the joints to calibrate: _neck_pitch_ and _neck_roll_ (_neck_yaw_ is usually not required), allowing you to move them freely. Then, move the head joints to bring signals are near their desired values. If the _x_ and _y_ positions have an error of less than 0.1, it is fine. Click the "_run_" button for the two joints. Note the _encoder_ values. 
+
+If the head uses ETH, the _encoder_ values can be added in the corresponding joints in "calibrationDelta" of the head\-calib.xml file. (It may be useful to restart the robot and check again the calibration, since some small error may remain in the IMU values).
+
+If the head uses CAN, the head\-calib.xml file would not be loaded properly. The configuration file for the head would instead be in another folder (for example `.../robots/$ROBOT_NAME/hardware/mechanicals`), and the parameter to modify would be _zero parameter_.
+
 
  ### move these parts to an installation tips and tricks page. 
 
