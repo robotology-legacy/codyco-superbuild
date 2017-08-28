@@ -5,7 +5,7 @@ Frequently Asked Questions on Whole-Body Torque Control with the iCub Robot  {#i
  
  ### What to check on the iCub robot before performing whole-body torque control experiments? 
  
-# Complete update of information (before the calibration)
+# Complete update of information (before calibration)
 
 ## Update yarp, icub-main and codyco-superbuild
 First, update the yarp, icub-main and codyco\-superbuild directories on the icub laptop, as well as on the computer used for launching controllers (if different), with  
@@ -27,14 +27,20 @@ Additionnally, update codyco-superbuild on the computer from which you will laun
 `make update-all`  
 
 ## Firmware update
-This is only a little summary of what you have to do. For more information look [here](http://wiki.icub.org/wiki/Firmware).
+
+*iCub software version anterior to 1.8.0*:  
+This is only a quick summary of what you have to do. For more information, look [here](http://wiki.icub.org/wiki/Firmware).
 
 `cd /usr/local/src/robot/icub-firmware-build/`  
 `git pull`  
 
-Then, launch the cluster by using icub\_cluster.py  (or a script that configures and launch the icub_cluster.py).  
-Now, you can open _eth_loader_ and click “_discover_” to make sure that the server is connected (where yarpserver is launched). Now, you can check that all computers are connected together (if not, you just have to select the unconnected computer and click connect).
-Open [_can_loader_](http://wiki.icub.org/wiki/CanLoader) and update the version of devices by searching the corresponding EMS_file and uploading it.  
+Then, launch the cluster with  
+`icub_cluster.py`  (or a script that configures and launches the icub_cluster.py)  
+Now, you can open _eth_loader_ and click “_discover_” to make sure that the server is connected (where yarpserver is launched). Now, you can check that all computers are connected together (if not, you just have to select the unconnected computer and click  “_connect_").
+Open [_can_loader_](http://wiki.icub.org/wiki/CanLoader) and update the version of devices by searching for the corresponding EMS_file and uploading it.  
+
+*Latest iCub software version*:   
+look [here](https://github.com/robotology/QA/issues/240) for instructions on how to perform an update using `firmware-updater`.
 
 # Check the joint calibration
 After changing an iCub component, or the first time we obtain an iCub, it is required to calibrate the “zero position” of the robot (home position). To do that, we launch the home position in yarpmanager and we use a level tool.
