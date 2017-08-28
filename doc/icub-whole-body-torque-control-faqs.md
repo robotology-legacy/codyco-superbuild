@@ -5,7 +5,7 @@ Frequently Asked Questions on Whole-Body Torque Control with the iCub Robot  {#i
  
  ### What to check on the iCub robot before performing whole-body torque control experiments? 
  
-# Complete update of information (before calibration)
+# Complete update of information
 
 ## Update yarp, icub-main and codyco-superbuild
 First, update the yarp, icub-main and codyco\-superbuild directories on the icub laptop, as well as on the computer used for launching controllers (if different), with  
@@ -40,21 +40,21 @@ Now, you can open _eth_loader_ and click “_discover_” to make sure that the 
 Open [_can_loader_](http://wiki.icub.org/wiki/CanLoader) and update the version of devices by searching for the corresponding EMS_file and uploading it.  
 
 *Latest iCub software version*:   
-look [here](https://github.com/robotology/QA/issues/240) for instructions on how to perform an update using `firmware-updater`.
+Look [here](https://github.com/robotology/QA/issues/240) for instructions on how to perform an update using `firmware-updater`.
+
+## Devices update
+Before proceeding to the calibration, you have to update the device information.
+You can find information about CAN-bus numbers and CAN-bus device drivers [here](http://wiki.icub.org/wiki/Can_addresses_and_associated_firmware#PCAN2:_Right_arm). Example for icubDarmstadt01:  
+- Select EMS and can2: you can see the F/T sensors information (_strain_).  
+- For ID 1,3,6,7,8,9, we select the "strain.hex" files one by one and update them.  
+- For ID 2, 4 it is different because they correspond to the skin sensors: download the "skin.hex" file, if needed.  
+- Select EMS and can1, which is about motion control: type MAIS for the skin and RM 4DC for motors. Download all corresponding "\.hex" files by clicking the _download_ button.  
+- If you select _net0_ can\-bus _cfw2_, you have information about the chest: Download the ".out.s" files linked to BLL (motor\-driver card) and RMHDC.  
+- The net 9 is for the neck.  
+- There are BLL and RMHDC drivers. Download all corresponding ".out.s" files, of which the name corresponds to the current version. 
 
 # Check the joint calibration
 After changing an iCub component, or the first time we obtain an iCub, it is required to calibrate the “zero position” of the robot (home position). To do that, we launch the home position in yarpmanager and we use a level tool.
-
-## Devices update
-Before the calibration, you have to update the device information.
-You can find [Here](http://wiki.icub.org/wiki/Can_addresses_and_associated_firmware#PCAN2:_Right_arm) the information about the can bus number and the can bus device driver. Example for the icubDarmstadt01:  
-- Select EMS and can2: you can see the F/T sensors information (called strain).  
-- For the id 1,3,6,7,8,9 ID, we select the strain.hex file one by one and we update them.  
-- For the id 2, 4 it is different because they correspond to the skin sensors: download the skin.hex file if needed.  
-- If you select EMS and can1, is about motion control: type MAIS for the skin and RM 4DC for motors. Download all corresponding "\.hex" files by pushing the download button.  
-- If you select _net0_ can\-bus _cfw2_, you have information about the chest: Download the .out.s files linked to BLL (motor\-driver card) and RMHDC.  
-- The net 9 is here for the neck.  
-- There are BLL and RMHDC drivers. Download all corresponding file.out.s where the name correspond to the current version.  
 
 # Calibration of the robot
 Perform the calibration in this order: from the torso to the legs, then the head and the arm.  
