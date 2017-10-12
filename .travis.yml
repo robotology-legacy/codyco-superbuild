@@ -26,6 +26,9 @@ matrix:
       env: TRAVIS_CMAKE_GENERATOR="Xcode", TRAVIS_BUILD_TYPE="Release", CODYCO_BUILD_OCRA_MODULES=OFF, USES_KDL=OFF
 
 before_script:
+  # Update homebrew on osx
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew update; fi
+
   # Install ccache on osx
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install ccache; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then export PATH="/usr/local/opt/ccache/libexec:$PATH"; fi
