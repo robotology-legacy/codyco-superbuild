@@ -44,7 +44,8 @@ option(CODYCO_USES_OCTAVE "Enable compilation of software that depend on Octave"
 
 # Options related to optional dependencies 
 option(CODYCO_USES_OROCOS_BFL_BERDY "Forked Orocos Bayesian Filtering Library" FALSE)
-option(CODYCO_USES_KDL "Enable compilation of software that depends on KDL" TRUE)
+option(CODYCO_USES_KDL "Enable compilation of software that depends on KDL" FALSE)
+mark_as_advanced(CODYCO_USES_KDL)
 option(CODYCO_BUILD_ICUB_MODEL_GENERATOR "Enable compilation of the icub-model-generator" FALSE)
 option(CODYCO_BUILD_OCRA_MODULES "Enable compilation of ISIR controllers" FALSE)
 option(CODYCO_BUILD_QPOASES "Enable compilation of qpOASES" TRUE)
