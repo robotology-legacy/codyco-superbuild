@@ -28,11 +28,17 @@ if(${CODYCO_USES_KDL})
     find_or_build_package(orocos_kdl QUIET NO_CMAKE_PACKAGE_REGISTRY)
     list(APPEND iDynTree_DEPENDS orocos_kdl)
 
-    if( NOT MSVC )
+    if( NOT MSVC AND NOT APPLE )
         find_or_build_package(urdfdom_headers QUIET)
         find_or_build_package(urdfdom QUIET)
         list(APPEND iDynTree_DEPENDS urdfdom_headers)
         list(APPEND iDynTree_DEPENDS urdfdom)
+    endif()
+
+    # On macOS we allow only system URDFDOM
+    if( APPLE )
+      find_package(urdfdom_headers)
+      find_package(urdfdom)
     endif()
 endif()
 
