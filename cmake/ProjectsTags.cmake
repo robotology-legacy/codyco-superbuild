@@ -1,1 +1,10 @@
-
+set(codycoCommons_TAG 4a19683)
+set(codyco-modules_TAG nomerge/wbd_ros)
+set(ICUB_TAG af91f27)
+set(iDynTree_TAG ac8e48e)
+set(qpOASES_TAG f5b1406)
+set(TinyXML_TAG 9cb9e09)
+set(WBToolbox_TAG 2bd115f)
+set(wholeBodyInterface_TAG 7eafe42)
+set(YARP_TAG 40f73b4)
+set(yarpWholeBodyInterface_TAG 9f9bc1a)
