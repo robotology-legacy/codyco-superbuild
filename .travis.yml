@@ -22,12 +22,6 @@ matrix:
     - os: linux
       compiler: gcc
       env: TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Release", CODYCO_BUILD_OCRA_MODULES=OFF, USES_KDL=ON
-    - os: osx
-      compiler: gcc
-      env: TRAVIS_CMAKE_GENERATOR="Unix Makefiles", TRAVIS_BUILD_TYPE="Debug", CODYCO_BUILD_OCRA_MODULES=OFF, USES_KDL=ON
-    - os: osx
-      compiler: clang
-      env: TRAVIS_CMAKE_GENERATOR="Xcode", TRAVIS_BUILD_TYPE="Release", CODYCO_BUILD_OCRA_MODULES=OFF, USES_KDL=OFF
 
 before_script:
   # Update homebrew on osx
