@@ -18,5 +18,5 @@ elif [ "$TRAVIS_OS_NAME" = osx ]; then
     brew tap ros/deps
     source .ci/brew_install_or_upgrade_formula.sh
     # brew tap homebrew/versions #useful only if we need a particular version.
-    brewInstallFormulas eigen boost ace pkg-config jpeg swig sqlite readline gsl tinyxml robotology/formulae/yarp urdfdom
+    brew install eigen boost ace pkg-config jpeg swig sqlite readline gsl tinyxml robotology/formulae/yarp urdfdom
 fi
