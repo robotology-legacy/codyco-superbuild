@@ -186,3 +186,7 @@ set_package_properties(PkgConfig PROPERTIES TYPE RUNTIME)
 set_package_properties(Doxygen PROPERTIES TYPE RUNTIME)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+
+# Deprecation warning (at the end as user tend to read only the last part of the cmake output
+message(WARNING "WARNING: The codyco-superbuild is being deprecated, and all users are recommended to "
+                "migrate to the robotology-superbuild. See https://github.com/robotology/codyco-superbuild/issues/198 .")
