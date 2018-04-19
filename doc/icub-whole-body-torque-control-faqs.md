@@ -1,13 +1,9 @@
-Frequently Asked Questions on Whole-Body Torque Control with the iCub Robot  {#icub-whole-body-control-faqs}
-==================================
+Things to check on the real robot before performing whole body torque control experiments
+=========================================================================================
 
- ## Preliminary checks on the iCub
+## Preliminary checks on the iCub: What to check on the iCub robot before performing whole-body torque control experiments? 
  
- ### What to check on the iCub robot before performing whole-body torque control experiments? 
- 
-# Complete update of information
-
-## Update yarp, icub-main and codyco-superbuild
+### Update yarp, icub-main and codyco-superbuild
 First, update the yarp, icub-main and codyco\-superbuild directories on the icub laptop, as well as on the computer used for launching controllers (if different), with  
 `git pull`  
 You don't have to repeat this operation on computers which share sources with the icub laptop.
